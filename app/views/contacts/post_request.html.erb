@@ -1,5 +1,15 @@
-<div class="container-xxl pt-5">
-  <h1><%= t('form.title') %></h1>
+<div class="container-xxl pt-5 contact">
+  <a href="/">TOP</a> - <a href="/contacts">お問い合わせ</a> - 店舗掲載について
+
+  <h1>店舗掲載について</h1>
+  <p class="text-center">
+    全国のバー情報アルバでは自薦・他薦問わず掲載店舗様を広く募集しております。<br>
+    掲載ご希望の方は以下のフォームより必要事項の入力をお願いします。<br>
+    折り返しご連絡致します。
+  </p>
+
+
+  <h2 mt-5><%= t('form.title') %></h2>
 
   <%= form_with model: @shop, local: true do |form| %>
     <% if @shop.errors.any? %>
@@ -144,7 +154,7 @@
       </div>
 
       <div class="actions">
-        <%= form.submit t('helpers.submit.create'), class: "btn btn-primary w-100" %>
+        <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
       </div>
     </div>
   <% end %>

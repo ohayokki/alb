@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root "top#index"
   get "prefectures/:id", to: "prefectures#index", as: :prefectures
   get "districts/:id", to: "districts#index", as: :districts
-
+  get "privacy-policy", to: "top#privacy_policy", as: :privacy_policy #プライバシーポリシー
+  get "terms-of-use", to: "top#terms", as: :terms #プライバシーポリシー
   namespace :admin do
     resources :shops, except: [:new, :edit, :create] do
       member do

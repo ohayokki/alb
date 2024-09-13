@@ -15,4 +15,10 @@ class TopController < ApplicationController
       @shops.sort_by!(&:distance) # 距離でソート
     end
   end
+
+  def privacy_policy
+  end
+
+  def terms
+  end
 end
