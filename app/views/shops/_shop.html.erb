@@ -1,0 +1,30 @@
+<div class="shop_list mb-5">
+  <div class="shop_list_logo">
+    <% if shop.shop_logo.present? %>
+      <%= image_tag shop.shop_logo.to_s, class: "img-fluid" %>
+    <% else %>
+      <img src="/ispace.jpg" class="img-fluid">
+    <% end %>
+  </div>
+  <div class="shop_list_detail">
+    <div class="shop-tag">
+      <% if shop.distance.present? %>
+        <span class="shop_distance">距離:<%= shop.distance.round(2) %> km</span>
+      <% end %>
+      <span class="shop_area_name"><%= shop.area.name %></span>
+      <span class="shop_genre_name <%= shop.genre.rubi %>"><%= shop.genre.name %></span>
+    </div>
+    <h3><%= link_to shop.name, shop_path(shop) %></h3>
+    <%= shop.title %>
+    <hr>
+    <% if shop.hours.present? %>
+      <div>営業時間:&emsp;<%= shop.hours %></div>
+    <% end %>
+    <% if shop.budget.present? %>
+      <div>予算:&emsp;<%= shop.budget %></div>
+    <% end %>
+    <% if shop.access.present? %>
+      <div>アクセス:&emsp;<%= shop.access %></div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<% title = t("districts.#{@district.name}") %>
+<%= render "layouts/header", title: title %>
+
+<div class="container-xxl">
+  <div class="bread-column">
+    <%= link_to "アルバ", root_path %>
+    &emsp;-&emsp;
+    <%= link_to t("prefectures.#{@district.prefecture.name}"), prefectures_path(@district.prefecture.name) %>
+    &emsp;-&emsp;
+    <%= title %>
+  </div>
+
+  <div class="row area-links">
+    <% @district.areas.each do |area| %>
+      <%# if area.shops.any? %>
+        <div class="col-sm-3 mb-1">
+          <%= link_to area.name, area_path(area), class: "link-badge" %>
+        </div>
+      <%# end %>
+    <% end %>
+  </div>
+
+  <h2><%= title %>のバー</h2>
+  <%= render "shops/near_serch", url:  districts_path(@district.name) %>
+  <%= render @shops %>
+
+  <div class="genre">
+    <h2><%= title %>バージャンル別</h2>
+    <div class="row">
+      <% @genres.each do |genre| %>
+        <div class="col-sm-4 mb-3">
+          <div class="card">
+            <% if false%>
+              <img src="..." class="card-img-top" alt="...">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.rubi, @district.name) %></h5>
+              <p class="card-text"><%= genre.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

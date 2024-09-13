@@ -1,0 +1,13 @@
+.map_link a{
+  background-color: rgb(255, 24, 66);
+  color: #fff;
+  padding: 5px;
+  margin-left:10px;
+  border-radius: 5px;
+}
+
+.danger-zone{
+  background: rgb(255, 52, 52);
+  color: #fff;
+  padding: 10px;
+}

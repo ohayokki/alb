@@ -1,0 +1,46 @@
+<% title = t("prefectures.#{@prefecture.name}") %>
+<%= render "layouts/header", title: title %>
+
+<div class="container-xxl">
+  <div class="bread-column">
+    <%= link_to "アルバ", root_path %>
+    &emsp;-&emsp;
+    <%= title %>
+  </div>
+
+  <div class="row">
+    <% @prefecture.districts.each do |district| %>
+      <div class="col-6">
+        <%= link_to t("districts.#{district.name}"), districts_path(district.name)  %><br>
+
+                <%# district.areas.each do |area| %>
+                  <%#= area.name %><br>
+                <%# end %>
+      </div>
+    <% end %>
+  </div>
+
+  <h2><%= title %>のバー</h2>
+  <%= render "shops/near_serch", url:  prefectures_path(@prefecture.name) %>
+  <%= render @shops %>
+
+  <div class="genre">
+    <h2><%= title %>バージャンル別</h2>
+    <div class="row">
+      <% @genres.each do |genre| %>
+        <div class="col-sm-4 mb-3">
+          <div class="card">
+            <% if false%>
+              <img src="..." class="card-img-top" alt="...">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.rubi, @prefecture.name) %></h5>
+              <p class="card-text"><%= genre.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

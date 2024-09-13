@@ -1,0 +1,144 @@
+.link-badge {
+  text-decoration: none;
+  color: #444;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 0.7em;
+  padding: 5px 7px; 
+}
+
+a:hover{
+  background: #655c28;
+  background-size: cover;
+  background-position: center;
+  color: #eee;
+}
+
+.genre{
+  margin-top: 40px;
+}
+
+
+.shop_list{
+  display: flex;
+}
+.shop-tag{
+  margin-top: 5px;
+}
+.shop_list_logo{
+  width: 200px;
+}
+.shop_list_detail{
+  margin-left:20px;
+  width: calc(100% - 200px);
+}
+.shop_area_name{
+  background-color: #444;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 16px;
+  margin-right: 12px;
+}
+.shop_distance{
+  background: #018f2c;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 16px;
+  margin-right: 12px;
+}
+.shop_genre_name{
+  padding: 5px 15px;
+  border-radius: 16px;
+  margin-right: 12px;
+}
+.shop_list_detail h3{
+  margin-top: 24px;
+}
+.shop_list_detail h3 a{
+  color:#fa2b2b;
+}
+.shop_list_detail h3 a:hover{
+  color:#fa2b2b;
+  background-color: #fff;
+}
+.cafe {
+  color: #fff;
+  background-color: #d4a373; /* 柔らかいコーヒー色 */
+}
+
+.cocktail-bar {
+  color: #fff;
+  background-color: #ff6f61; /* カクテルの鮮やかさを反映したオレンジレッド */
+}
+
+.wine-bar {
+  color: #fff;
+  background-color: #8b0000; /* 深みのあるワインレッド */
+}
+
+.authentic-bar {
+  color: #fff;
+  background-color: #2f4f4f; /* 高級感のあるダークスレートグレー */
+}
+
+.shisha-bar {
+  color: #fff;
+  background-color: #ff6347; /* 鮮やかなトマト色 */
+}
+
+.karaoke-bar {
+  color: #fff;
+  background-color: #4169e1; /* ロイヤルブルー */
+}
+
+.darts-bar {
+  color: #fff;
+  background-color: #6a5acd; /* スレートブルー */
+}
+
+.pool-bar {
+  color: #fff;
+  background-color: #4682b4; /* スチールブルー */
+}
+
+.dining-bar {
+  color: #fff;
+  background-color: #8b4513; /* チョコレート色 */
+}
+
+.sports-bar {
+  color: #fff;
+  background-color: #32cd32; /* ライムグリーン */
+}
+
+.club {
+  color: #fff;
+  background-color: #9400d3; /* ダークバイオレット */
+}
+
+.concept-cafe {
+  color: #fff;
+  background-color: #ffb6c1; /* ライトピンク */
+}
+
+.concept-bar {
+  color: #fff;
+  background-color: #20b2aa; /* ライトシーグリーン */
+}
+
+.snack-pub {
+  color: #fff;
+  background-color: #daa520; /* ゴールデンロッド */
+}
+
+.girls-bar {
+  color: #fff;
+  background-color: #ff69b4; /* ホットピンク */
+}
+
+.mens-pub {
+  color: #fff;
+  background-color: #4682b4; /* スチールブルー */
+}

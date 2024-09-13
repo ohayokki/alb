@@ -1,0 +1,41 @@
+Rails.application.routes.draw do
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Defines the root path route ("/")
+  root "top#index"
+  get "prefectures/:id", to: "prefectures#index", as: :prefectures
+  get "districts/:id", to: "districts#index", as: :districts
+
+  namespace :admin do
+    resources :shops, except: [:new, :edit, :create] do
+      member do
+        get :status_change
+      end
+    end
+    resources :areas, only: [:create, :edit, :update] do
+      get 'prefectures', on: :collection
+      get 'districts', on: :collection
+    end
+  end
+  get "genre/:genre/:area", to: "genres#area", as: :genre_area
+ 
+  resources :contacts, only: [:index] do
+    collection do
+      get :post_request
+    end
+  end
+
+  resources :shops, only: [:create, :show]
+  resources :areas, only: [:show]
+
+  # 地域選択用
+  get 'districts/by_prefecture/:prefecture_id', to: 'districts#by_prefecture', as: 'districts_by_prefecture'
+  get 'areas/by_district/:district_id', to: 'admin/areas#by_district', as: 'areas_by_district'
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", as: :rails_health_check
+
+  # Render dynamic PWA files from app/views/pwa/*
+  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+end

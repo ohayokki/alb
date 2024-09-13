@@ -1,0 +1,19 @@
+<div class="container-fluid footer">
+  <h2>都道府県別</h2>
+  <div class="row area-links">
+    <% Prefecture.all.each do |prefecture| %>
+      <div class="col-2">
+        <%= link_to t("prefectures.#{prefecture.name}"), prefectures_path(prefecture.name), class: "link-badge" %><br>
+      </div>
+    <% end %>
+  </div>
+
+  <nav class="footer_nav">
+    <%= link_to "アルバ", root_path %>
+    <%= link_to "管理", admin_shops_path %>
+    <%= link_to "お問い合わせ", contacts_path %>
+  </nav>
+</div>
+<div class="copy text-center">
+  &copy;allbar all right reserved.
+</div>

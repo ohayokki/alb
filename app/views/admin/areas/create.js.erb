@@ -1,0 +1,4 @@
+// 新しく追加されたエリアのオプションを更新
+const areaSelect = document.querySelector('select[name="shop[area_id]"]');
+const newOption = new Option("<%= j @area.name %>", "<%= j @area.id %>");
+areaSelect.add(newOption, areaSelect.options[0]);

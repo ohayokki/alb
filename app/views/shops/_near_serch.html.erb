@@ -1,0 +1,52 @@
+<button class="current_location mb-3 mt-3">現在地から近い順に表示する</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    class CurrentLocations {
+      constructor() {
+        this.getCurrentLocation();
+      }
+
+      getCurrentLocation() {
+        document.querySelectorAll('.current_location').forEach(element => {
+          element.addEventListener('click', () => {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(this.successGetPosition, this.failGetPosition, this.options);
+            } else {
+              const message = 'ご使用中のブラウザは現在地検索に対応されておりません。';
+              Alert.set('warning', message);
+            }
+          });
+        });
+      }
+
+      successGetPosition(position) {
+        window.location.href = `<%= url %>?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
+      }
+
+      failGetPosition(error) {
+        let message;
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            message = '位置情報の提供を許可してください。';
+            break;
+          case error.POSITION_UNAVAILABLE:
+            message = '位置情報の取得に失敗しました。';
+            break;
+          default:
+            message = '位置情報の取得中にエラーが発生しました。';
+            break;
+        }
+        Alert.set('warning', message);
+      }
+
+      get options() {
+        return {
+          enableHighAccuracy: true
+        };
+      }
+    }
+
+    new CurrentLocations();
+  });
+</script>

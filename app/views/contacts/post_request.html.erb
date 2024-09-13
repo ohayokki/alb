@@ -1,0 +1,151 @@
+<div class="container-xxl pt-5">
+  <h1><%= t('form.title') %></h1>
+
+  <%= form_with model: @shop, local: true do |form| %>
+    <% if @shop.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
+
+        <ul>
+          <% @shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row mb-3">
+      <div class="mb-3">
+        <%= form.label :manager_name %>
+        <%= form.text_field :manager_name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :shop_logo %>
+        <%= form.file_field :shop_logo %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :tel %>&emsp; <%= t('form.tel_note') %>
+        <%= form.text_field :tel, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :genre_id %>
+        <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: t('prompts.genre_id') }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :area_description %>
+        <%= form.text_field :area_description, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :access %>
+        <%= form.text_area :access, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :hours %>
+        <%= form.text_field :hours, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :holiday %>
+        <%= form.text_field :holiday, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :budget %>
+        <%= form.text_field :budget, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :introduction %>
+        <%= form.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :reservation %>
+        <%= form.check_box :reservation, class: "form-check-input" %>
+        <%= form.label :reservation, t('form.reservation_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :wifi %>
+        <%= form.check_box :wifi, class: "form-check-input" %>
+        <%= form.label :wifi, t('form.wifi_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :alcohol %>
+        <%= form.check_box :alcohol, class: "form-check-input" %>
+        <%= form.label :alcohol, t('form.alcohol_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :smoking %>
+        <%= form.check_box :smoking, class: "form-check-input" %>
+        <%= form.label :smoking, t('form.smoking_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :english %>
+        <%= form.check_box :english, class: "form-check-input" %>
+        <%= form.label :english, t('form.english_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :korean %>
+        <%= form.check_box :korean, class: "form-check-input" %>
+        <%= form.label :korean, t('form.korean_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_payment %>
+        <%= form.check_box :card_payment, class: "form-check-input" %>
+        <%= form.label :card_payment, t('form.card_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :mobile_payment %>
+        <%= form.check_box :mobile_payment, class: "form-check-input" %>
+        <%= form.label :mobile_payment, t('form.mobile_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :website %>
+        <%= form.text_field :website, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :notes %>
+        <%= form.text_area :notes, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit t('helpers.submit.create'), class: "btn btn-primary w-100" %>
+      </div>
+    </div>
+  <% end %>
+</div>
