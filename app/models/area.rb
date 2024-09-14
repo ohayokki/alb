@@ -3,7 +3,7 @@ class Area < ApplicationRecord
   belongs_to :district
   has_many :shops
 
-  def localized_name
+  def display_name
     I18n.t("areas.#{name}", default: name)
   end
 end

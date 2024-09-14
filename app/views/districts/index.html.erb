@@ -10,36 +10,23 @@
     <%= title %>
   </div>
 
-  <div class="row area-links">
-    <% @district.areas.each do |area| %>
-      <%# if area.shops.any? %>
-        <div class="col-sm-3 mb-1">
-          <%= link_to area.name, area_path(area), class: "link-badge" %>
-        </div>
-      <%# end %>
-    <% end %>
-  </div>
+  <% if @areas.any? %>
+    <h2><%= @district.display_name %>のエリア</h2>
+    <div class="row area-links">
+      <%= render @areas %>
+    </div>
+  <% end %>
 
   <h2><%= title %>のバー</h2>
   <%= render "shops/near_serch", url:  districts_path(@district.name) %>
   <%= render @shops %>
 
-  <div class="genre">
-    <h2><%= title %>バージャンル別</h2>
-    <div class="row">
-      <% @genres.each do |genre| %>
-        <div class="col-sm-4 mb-3">
-          <div class="card">
-            <% if false%>
-              <img src="..." class="card-img-top" alt="...">
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.rubi, @district.name) %></h5>
-              <p class="card-text"><%= genre.description %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+  <% if @genres.any? %>
+    <div class="genre">
+      <h2><%= title %>ジャンル別</h2>
+      <div class="row">
+        <%= render @genres %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
