@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_27_031718) do
     t.float "latitude"
     t.float "longitude"
     t.integer "status", default: 1, null: false
+    t.datetime "tiral_start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_shops_on_area_id"

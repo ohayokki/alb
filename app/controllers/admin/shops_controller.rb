@@ -32,6 +32,10 @@ class Admin::ShopsController < ApplicationController
   end
 
   def status_change
+
+    if params[:status] == "お試し有料掲載"
+      @shop.update(tiral_start_date: Time.current)
+    end
     @shop.update!(status: params[:status])
     redirect_to admin_shops_url
   end

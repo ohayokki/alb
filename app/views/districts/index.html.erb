@@ -23,9 +23,21 @@
 
   <% if @genres.any? %>
     <div class="genre">
-      <h2><%= title %>ジャンル別</h2>
+      <h2><%= title %>バージャンル別</h2>
       <div class="row">
-        <%= render @genres %>
+        <% @genres.each do |genre| %>
+          <div class="col-sm-4 mb-3">
+            <div class="card">
+              <% if false%>
+                <img src="..." class="card-img-top" alt="...">
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.rubi, @district.name) %></h5>
+                <p class="card-text"><%= genre.description %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>

@@ -1,7 +1,7 @@
 class Shop < ApplicationRecord
   mount_uploader :shop_logo, ShopLogoUploader
   attr_accessor :distance #仮想属性（お店までの距離）
-  enum status: { "掲載依頼": 1, "無料掲載": 2, "有料掲載": 3, "閉店": 4 }
+  enum status: { "掲載依頼": 1, "無料掲載": 2, "お試し有料掲載": 3, "有料掲載": 4, "閉店": 5 }
   
   belongs_to :area, optional: true
   belongs_to :prefecture, optional: true
@@ -25,4 +25,16 @@ class Shop < ApplicationRecord
   # 逆ジオコーディングの設定（オプション）
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode, if: :latitude_changed? && :longitude_changed?
+
+  # お試し掲載中か判定する
+  def trial_period_active?
+    trial_start_date.present? && trial_start_date > 3.months.ago
+  end
+
+  # お試し期間が終了したら無料掲載にするメソッド
+  def update_status_if_trial_ended
+    if trial_start_date.present? && trial_start_date <= 3.months.ago
+      update(status: "無料掲載")
+    end
+  end
 end

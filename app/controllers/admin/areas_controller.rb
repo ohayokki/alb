@@ -22,7 +22,7 @@ class Admin::AreasController < ApplicationController
   # 地域登録用
   def by_district
     @areas = Area.where(district_id: params[:district_id])
-    render json: @areas.map { |area| { id: area.id, name: area.localized_name } }
+    render json: @areas.map { |area| { id: area.id, name: area.display_name } }
   end
 
 
