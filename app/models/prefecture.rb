@@ -3,7 +3,7 @@ class Prefecture < ApplicationRecord
   has_many :areas
   has_many :shops
 
-  def localized_name
+  def display_name
     I18n.t("prefectures.#{name}")
   end
 end

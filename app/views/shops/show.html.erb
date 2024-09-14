@@ -1,13 +1,13 @@
-<% title = @shop.prefecture.localized_name %>
+<% title = @shop.prefecture.display_name %>
 <%= render "layouts/header", title: title %>
 
 <div class="container-xxl">
   <div class="bread-column">
     <%= link_to "アルバ", root_path %>
     &emsp;-&emsp;
-    <%= link_to @shop.prefecture.localized_name, prefectures_path(@shop.prefecture.name) %>
+    <%= link_to @shop.prefecture.display_name, prefectures_path(@shop.prefecture.name) %>
     &emsp;-&emsp;
-    <%= link_to @shop.district.localized_name, districts_path(@shop.district.name) %>
+    <%= link_to @shop.district.display_name, districts_path(@shop.district.name) %>
     &emsp;-&emsp;
     <%= link_to @shop.area.name, area_path(@shop.area) %>
     &emsp;-&emsp;
@@ -23,24 +23,21 @@
         <h2><%= @shop.tel %><br><%= @shop.area.name %></h2>
       </div>
     </div>
-
-
-        <%= @shop.hours if @shop.hours %> |
-        <%= @shop.access if @shop.access %> |
-        <%= @shop.budget if @shop.budget %> |
-        <%= "予約可" if @shop.reservation %> |
-        <%= "Wifi有" if @shop.wifi %> |
-        <%= "アルコール有" if @shop.alcohol %> |
-        <%= "喫煙可" if @shop.smoking %> |
-        <%= "English OK" if @shop.english %> |
-        <%= "韓国語 OK" if @shop.korean %> |
-        <%= "クレジットカード可" if @shop.card_payment %> |
-        <%= "スマホ決済可" if @shop.mobile_payment %> |
-        <%= @shop.website if @shop.website %> |
-        <%= @shop.address if @shop.address %> |
-        <%= @shop.coupon if @shop.coupon %> |
-        <%= @shop.googlemap.html_safe if @shop.googlemap %> |
-
+      <%= @shop.hours if @shop.hours %> |
+      <%= @shop.access if @shop.access %> |
+      <%= @shop.budget if @shop.budget %> |
+      <%= "予約可" if @shop.reservation %> |
+      <%= "Wifi有" if @shop.wifi %> |
+      <%= "アルコール有" if @shop.alcohol %> |
+      <%= "喫煙可" if @shop.smoking %> |
+      <%= "English OK" if @shop.english %> |
+      <%= "韓国語 OK" if @shop.korean %> |
+      <%= "クレジットカード可" if @shop.card_payment %> |
+      <%= "スマホ決済可" if @shop.mobile_payment %> |
+      <%= @shop.website if @shop.website %> |
+      <%= @shop.address if @shop.address %> |
+      <%= @shop.coupon if @shop.coupon %> |
+      <%= @shop.googlemap.html_safe if @shop.googlemap %> |
     <h3><%= @shop.title %></h3>
     <p><%= @shop.introduction %></p>
   </div>
