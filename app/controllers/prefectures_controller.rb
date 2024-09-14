@@ -3,7 +3,7 @@ class PrefecturesController < ApplicationController
     #@prefecture = Prefecture.includes(districts: :areas).find_by(name: params[:id])
     @prefecture = Prefecture.includes(:districts).find_by(name: params[:id])
     @genres = Genre.all
-    @shops = @prefecture.shops.where(status: ["無料掲載", "有料掲載"])
+    @shops = @prefecture.shops.where(status: ["無料掲載", "有料掲載"]).includes(:area, :genre)
 
     if params[:latitude].present? && params[:longitude].present?
       @latitude = params[:latitude].to_f

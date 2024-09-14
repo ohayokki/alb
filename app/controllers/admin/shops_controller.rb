@@ -61,7 +61,7 @@ class Admin::ShopsController < ApplicationController
       :notes,
       :coupon,
       :address,
-      :area_id,
+      :area_id, :district_id, :prefecture_id,
       :costume_id,
       :genre_id,
       tag_ids: []

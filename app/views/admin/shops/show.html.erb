@@ -72,10 +72,10 @@
           <%= form.text_field :address, class: "form-control" %>
         </div>
 
-        <div class="mb-3">
-          <%= form.label :area_description, "エリア概要（お客様が入力されたエリア。表示されません）", class: "form-label" %>
-          <%= form.text_field :area_description, class: "form-control" %>
+        <div class="area_description">
+          <%= @shop.area_description %>
         </div>
+        <p>※お客様が入力したエリア（表示されません）</p>
 
         <% unless @shop.district_id.present? %>
           <div class="danger-zone">

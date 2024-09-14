@@ -3,8 +3,7 @@ class AreasController < ApplicationController
     @genres = Genre.all
     @area = Area.find(params[:id])
     @areas = Area.all - [@area] # 現在のエリアを除外したリスト
-
-    @shops = @area.shops.where(status: ["無料掲載", "有料掲載"])
+    @shops = @area.shops.where(status: ["無料掲載", "有料掲載"]).includes(:genre)
 
     if params[:latitude].present? && params[:longitude].present?
       @latitude = params[:latitude].to_f

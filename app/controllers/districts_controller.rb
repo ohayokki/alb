@@ -2,7 +2,7 @@ class DistrictsController < ApplicationController
   def index
     @district = District.includes(:areas).find_by(name: params[:id])
     @genres = Genre.all
-    @shops = @district.shops.where(status: ["無料掲載", "有料掲載"])
+    @shops = @district.shops.where(status: ["無料掲載", "有料掲載"]).includes(:area, :genre)
 
     if params[:latitude].present? && params[:longitude].present?
       @latitude = params[:latitude].to_f
