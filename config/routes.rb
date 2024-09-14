@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "districts/:id", to: "districts#index", as: :districts
   get "privacy-policy", to: "top#privacy_policy", as: :privacy_policy #プライバシーポリシー
   get "terms-of-use", to: "top#terms", as: :terms #プライバシーポリシー
+  get "shop_request_confirm", to: "contacts#shop_request_confirm",as: :shop_request_confirm #お店登録申請後の結果画面
+ 
   namespace :admin do
     resources :shops, except: [:new, :edit, :create] do
       member do

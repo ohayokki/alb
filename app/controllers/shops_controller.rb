@@ -4,9 +4,9 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     @shop.status = "掲載依頼"
     if @shop.save
-      redirect_to admin_shops_path, notice: 'ショップが正常に作成されました。'
+      redirect_to shop_request_confirm_path
     else
-      flash.now[:alert] = 'ショップの作成に失敗しました。'
+      flash.now[:danger] = 'ショップの作成に失敗しました。'
       render "contacts/post_request", status: :unprocessable_entity
     end
   end

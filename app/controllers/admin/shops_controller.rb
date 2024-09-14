@@ -2,7 +2,7 @@ class Admin::ShopsController < ApplicationController
   before_action :set_shop, only: %i[edit show update status_change]
 
   def index
-    @shops = Shop.all.order(status: :asc)
+    @shops = Shop.includes(:genre, :area).order(status: :asc)
   end
 
   def new

@@ -5,4 +5,8 @@ class ContactsController < ApplicationController
   def post_request
     @shop = Shop.new
   end
+
+  def shop_request_confirm
+
+  end
 end
