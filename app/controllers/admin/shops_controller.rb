@@ -45,6 +45,12 @@ class Admin::ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
+  def shop_trial_end_check
+    Shop.where('trial_start_date IS NOT NULL AND trial_start_date <= ?', 3.months.ago)
+      .where(status: ["お試し有料掲載"]) # お試し中のものだけ
+      .find_each(&:update_status_if_trial_ended)
+  end
+
   def shop_params
     params.require(:shop).permit(
       :name,
