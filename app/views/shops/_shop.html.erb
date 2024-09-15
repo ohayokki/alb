@@ -1,12 +1,12 @@
 <div class="shop_list row mb-5">
-  <div class="shop_list_logo">
+  <div class="shop_list_logo col-3">
     <% if shop.shop_logo.present? %>
       <%= image_tag shop.shop_logo.to_s, class: "img-fluid" %>
     <% else %>
       <img src="/no-image.png" class="img-fluid">
     <% end %>
   </div>
-  <div class="shop_list_detail">
+  <div class="shop_list_detail col">
     <div class="shop-tag">
       <% if shop.distance.present? %>
         <span class="shop_distance">距離:<%= shop.distance.round(2) %> km</span>
