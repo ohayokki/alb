@@ -1,0 +1,2 @@
+module AdminShop::AdminHelper
+end

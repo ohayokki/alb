@@ -2,8 +2,15 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
   before_action :set_area
-
+  include SessionsHelper
   private
+
+  def shop_signed_in?
+    unless shop_logged_in?
+      redirect_to root_url
+    end
+  end
+
   def set_area
     # Create prefectures if none exist
     if Prefecture.none?

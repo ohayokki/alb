@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin_shop do
+    get "admin/index"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   root "top#index"
@@ -29,6 +32,11 @@ Rails.application.routes.draw do
 
   resources :shops, only: [:create, :show]
   resources :areas, only: [:show]
+
+  #　店舗ログイン関係
+  get "shop_login", to: "shops#login", as: :shop_login
+  post "shop_login", to: "shops#login_process"
+  delete "shop_logout", to: "shops#logout", as: :shop_logout
 
   # 地域選択用
   get 'districts/by_prefecture/:prefecture_id', to: 'districts#by_prefecture', as: 'districts_by_prefecture'

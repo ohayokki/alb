@@ -233,9 +233,17 @@
       </div>
 <% end %>
 
-        <div class="actions">
-          <%= form.submit "店舗情報修正", class: "btn btn-primary w-100" %>
+        <div class="mb-3">
+          <%= form.label :password %> ※パスワード変更する場合
+          <%= form.password_field :password, class: "form-control" %>
         </div>
+
+        <div class="mb-3">
+          <%= form.label :password_confirmation %> ※パスワードは暗号化されて送信されデータベースに保存されます。
+          <%= form.password_field :password_confirmation, class: "form-control" %>
+        </div>
+
+          <%= form.submit "店舗情報修正", class: "btn btn-primary w-100" %>
     <% end %>
     <%= link_to "閉店にする", status_change_admin_shop_path(@shop, status: "閉店"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-danger w-100 mt-5" %>
 
