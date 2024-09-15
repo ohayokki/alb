@@ -15,6 +15,14 @@
   </div>
 
   <%= month_calendar do |date| %>
-    <%= date.day %>
+    <% if @holidays&.include?(date) %>
+      <div class="holiday" style="background-color: #ffcccc; color: #ff0000;">
+        <%= date.day %> 定休日
+      </div>
+    <% else %>
+      <div>
+        <%= date.day %>
+      </div>
+    <% end %>
   <% end %>
 </div>

@@ -61,4 +61,19 @@ class Shop < ApplicationRecord
   def password_required?
     new_record? || password.present?
   end
+
+  def holidays_for_month(year, month)
+    holidays = []
+    
+    # もし weekly_holidays が nil だったら、空配列にする
+    self.weekly_holidays ||= []
+    
+    # 月の日数をループして、曜日が一致する日を holidays に追加
+    (1..Time.days_in_month(month, year)).each do |day|
+      date = Date.new(year, month, day)
+      holidays << date if weekly_holidays.include?(date.wday)
+    end
+
+    holidays
+  end
 end
