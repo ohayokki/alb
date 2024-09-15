@@ -1,5 +1,6 @@
 class Admin::ShopsController < ApplicationController
   before_action :set_shop, only: %i[edit show update status_change]
+  before_action :shop_trial_end_check, only: [:index]
 
   def index
     @shops = Shop.includes(:genre, :area).order(status: :asc)
@@ -46,7 +47,7 @@ class Admin::ShopsController < ApplicationController
   end
 
   def shop_trial_end_check
-    Shop.where('trial_start_date IS NOT NULL AND trial_start_date <= ?', 3.months.ago)
+    Shop.where('tiral_start_date IS NOT NULL AND tiral_start_date <= ?', 3.months.ago)
       .where(status: ["お試し有料掲載"]) # お試し中のものだけ
       .find_each(&:update_status_if_trial_ended)
   end
