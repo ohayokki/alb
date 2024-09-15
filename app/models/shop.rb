@@ -64,14 +64,18 @@ class Shop < ApplicationRecord
 
   def holidays_for_month(year, month)
     holidays = []
-    
-    # もし weekly_holidays が nil だったら、空配列にする
-    self.weekly_holidays ||= []
-    
-    # 月の日数をループして、曜日が一致する日を holidays に追加
+
+    # 月の日数をループして、曜日や特別営業日/休業日を考慮する
     (1..Time.days_in_month(month, year)).each do |day|
       date = Date.new(year, month, day)
-      holidays << date if weekly_holidays.include?(date.wday)
+
+      # 特別な営業日や休業日がある場合は優先
+      holiday_status = Holiday.status_for_date(self, date)
+      if holiday_status == 'closed'
+        holidays << date # 休業日として扱う
+      elsif holiday_status.nil? && weekly_holidays.include?(date.wday)
+        holidays << date # 定休日として扱う
+      end
     end
 
     holidays
