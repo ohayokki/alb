@@ -3,4 +3,9 @@ class AdminShop::AdminController < ApplicationController
 
   def index
   end
+
+  # 店舗情報編集
+  def shopedit
+
+  end
 end

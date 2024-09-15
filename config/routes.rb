@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin_shop do
-    get "admin/index"
-  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   root "top#index"
@@ -10,7 +8,15 @@ Rails.application.routes.draw do
   get "privacy-policy", to: "top#privacy_policy", as: :privacy_policy #プライバシーポリシー
   get "terms-of-use", to: "top#terms", as: :terms #プライバシーポリシー
   get "shop_request_confirm", to: "contacts#shop_request_confirm",as: :shop_request_confirm #お店登録申請後の結果画面
- 
+
+  # 店舗管理
+  namespace :admin_shop do
+    get "admin/index"
+    get "shop-edit"
+    resources :shop, only: [:update]
+  end
+
+  # 管理者用
   namespace :admin do
     resources :shops, except: [:new, :edit, :create] do
       member do
