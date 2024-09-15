@@ -3,9 +3,9 @@
   <% page_title = @area.name %>
   <% title =  "[#{@genre.name}]" + @area.name %>
 <% elsif @district %>
-  <% page_title = @district.localized_name %>
+  <% page_title = @district.display_name %>
 <% elsif @prefecture %>
-  <% page_title = @prefecture.localized_name %>
+  <% page_title = @prefecture.display_name %>
 <% end %>
 
 <%= render "layouts/header", title: page_title, genre: @genre.name if @genre.present? %>
@@ -16,7 +16,7 @@
     <%= link_to "アルバ", root_path %>
     <% if @prefecture%>
       &emsp;-&emsp;
-      <%= link_to @prefecture.localized_name, prefectures_path(@prefecture.name) %>
+      <%= link_to @prefecture.display_name, prefectures_path(@prefecture.name) %>
     <% end %>
 
     <% if @district%>
