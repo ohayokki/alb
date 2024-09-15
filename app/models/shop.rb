@@ -9,6 +9,7 @@ class Shop < ApplicationRecord
   attr_accessor :distance #仮想属性（お店までの距離）
   enum status: { "掲載依頼": 1, "無料掲載": 2, "お試し有料掲載": 3, "有料掲載": 4, "閉店": 5 }
   
+  has_many :holidays
   belongs_to :area, optional: true
   belongs_to :prefecture, optional: true
   belongs_to :district, optional: true
