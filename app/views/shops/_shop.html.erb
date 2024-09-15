@@ -1,5 +1,5 @@
 <div class="row mb-5">
-  <div class="col-3">
+  <div class="col-4">
     <% if shop.shop_logo.present? %>
       <%= image_tag shop.shop_logo.to_s, class: "img-fluid w-100" %>
     <% else %>
@@ -11,7 +11,7 @@
   </div>
   <div class="col">
     <div class="shop-tag mb-3 row">
-      <span class="shop_area_name col-sm-6"><%= shop.area.name %></span>
+      <span class="shop_area_name col-sm-6 mb-2"><%= shop.area.name %></span>
       <span class="shop_genre_name <%= shop.genre.rubi %> col-sm-6"><%= shop.genre.name %></span>
     </div>
     <h3><%#= link_to shop.name, shop_path(shop) %><%= shop.name %></h3>
