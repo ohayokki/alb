@@ -21,18 +21,13 @@ a:hover{
 }
 
 
-.shop_list{
-  display: flex;
-}
+
 .shop-tag{
   margin-top: 5px;
 }
-.shop_list_logo{
-  width: 200px;
-}
+
 .shop_list_detail{
   margin-left:20px;
-  width: calc(100% - 200px);
 }
 .shop_area_name{
   background-color: #444;
