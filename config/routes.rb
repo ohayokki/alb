@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # 店舗管理
   namespace :admin_shop do
     get "admin/index"
+    resources :holidays, except: [:new]
     resources :shops, only: [:update]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
   end

@@ -81,6 +81,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_123137) do
     t.text "googlemap"
     t.string "hours"
     t.string "holiday"
+    t.integer "weekly_holidays", default: [], array: true
     t.boolean "card_payment"
     t.string "card_company"
     t.boolean "mobile_payment"

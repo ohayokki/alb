@@ -94,6 +94,11 @@ ja:
       mobile_payment: "モバイル決済の有無"
       website: "ホームページURL"
       notes: "ご質問・ご要望・備考"
+  
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    week: Woche
 
   prefectures:
     hokkaido: "北海道"

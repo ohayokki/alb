@@ -10,6 +10,11 @@
     </div>
 
     <%= link_to "店舗編集", admin_shop_shopedit_path %><br>
-    <%= link_to "お知らせ・休日登録", admin_shop_shopedit_path %>
+    <%= link_to "休日管理",  admin_shop_holidays_path %>
+    <%= link_to "お知らせ登録", admin_shop_shopedit_path %>
   </div>
+
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
 </div>

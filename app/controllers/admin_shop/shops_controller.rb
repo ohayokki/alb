@@ -17,6 +17,6 @@ class AdminShop::ShopsController < ApplicationController
   def shop_params
     params.require(:shop).permit(:shop_logo, :tel, :address, :hours, :holiday, :budget, :access,
      :title, :introduction, :website, :reservation, :wifi, :alcohol, :smoking, :english, :korean, :card_payment, :mobile_payment,
-     :image1, :image2, :image3, :image4, :image5)
+     :image1, :image2, :image3, :image4, :image5, weekly_holidays: [])
   end
 end

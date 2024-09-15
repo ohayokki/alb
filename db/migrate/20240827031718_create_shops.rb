@@ -18,7 +18,8 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.text :access
       t.text :googlemap
       t.string :hours
-      t.string :holiday
+      t.string :holiday # 定休日説明文
+      t.integer :weekly_holidays, array: true, default: [] #定休日保存用
       t.boolean :card_payment
       t.string :card_company
       t.boolean :mobile_payment

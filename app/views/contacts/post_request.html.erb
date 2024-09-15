@@ -11,7 +11,7 @@
 
   <h2 mt-5><%= t('form.title') %></h2>
 
-  <%= form_with model: @shop, local: true do |form| %>
+  <%= form_with model: @shop, local: true, data: { turbo: false } do |form| %>
     <% if @shop.errors.any? %>
       <div id="error_explanation" class="alert alert-danger">
         <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>

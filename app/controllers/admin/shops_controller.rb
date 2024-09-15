@@ -30,7 +30,6 @@ class Admin::ShopsController < ApplicationController
     @holidays = @shop.holidays.where(date: params[:start_date]..params[:end_date])
     @events = @shop.events.where(event_date: params[:start_date]..params[:end_date])
   end
-  end
 
   def edit
   end

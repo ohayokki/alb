@@ -62,3 +62,5 @@ gem 'geocoder'
 gem 'cloudinary'
 gem 'carrierwave'
 gem 'rmagick'
+gem "simple_calendar"
+gem "sassc-rails"

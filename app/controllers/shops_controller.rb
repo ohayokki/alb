@@ -63,7 +63,7 @@ class ShopsController < ApplicationController
       :shop_logo,
       :reservation,
       :wifi,
-      :alcohol,
+      :alcohol, :holiday,
       :smoking,
       :english,
       :korean,
