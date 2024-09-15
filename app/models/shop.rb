@@ -1,4 +1,9 @@
 class Shop < ApplicationRecord
+  mount_uploader :image1, ShopUploader
+  mount_uploader :image2, ShopUploader
+  mount_uploader :image3, ShopUploader
+  mount_uploader :image4, ShopUploader
+  mount_uploader :image5, ShopUploader
   mount_uploader :shop_logo, ShopLogoUploader
   has_secure_password
   attr_accessor :distance #仮想属性（お店までの距離）
