@@ -25,6 +25,7 @@ class ShopsController < ApplicationController
     email = params[:session][:email].downcase
     password = params[:session][:password]
     if shop_login(email, password)
+      flash[:success] = "店舗アカウントにログインしました。"
       redirect_to admin_shop_admin_index_url
     else
       flash.now[:danger] = "ログインできませんでした。"

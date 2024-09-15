@@ -1,0 +1,40 @@
+<div class="container-xxl mb-5 mt-5">
+
+  <h1>お知らせ作成</h1>
+
+  <%= form_with model: @notice, url: admin_shop_notices_path, local: true, multipart: true do |form| %>
+    <% if @notice&.errors&.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @notice.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :content, "内容" %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :date, "日付" %>
+      <%= form.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :image, "画像" %>
+      <%= form.file_field :image, class: "form-control" %>
+    </div>
+
+    <%= form.submit "作成", class: "btn btn-user w-100" %>
+  <% end %>
+
+
+</div>

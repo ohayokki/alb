@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_123137) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_180740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,12 +48,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_123137) do
 
   create_table "holidays", force: :cascade do |t|
     t.bigint "shop_id"
-    t.integer "day_of_week"
     t.date "date"
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_holidays_on_shop_id"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.date "date"
+    t.bigint "shop_id", null: false
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_notices_on_shop_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -129,4 +139,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_123137) do
   add_foreign_key "areas", "prefectures"
   add_foreign_key "districts", "prefectures"
   add_foreign_key "holidays", "shops"
+  add_foreign_key "notices", "shops"
 end

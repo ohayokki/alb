@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "admin/index"
     resources :holidays, except: [:new]
     resources :shops, only: [:update]
+    resources :notices, except: [:new]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
   end
 

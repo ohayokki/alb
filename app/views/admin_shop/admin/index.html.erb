@@ -11,18 +11,55 @@
 
     <%= link_to "店舗編集", admin_shop_shopedit_path %><br>
     <%= link_to "休日管理",  admin_shop_holidays_path %>
-    <%= link_to "お知らせ登録", admin_shop_shopedit_path %>
+    <%= link_to "お知らせ登録",  admin_shop_notices_path %>
   </div>
 
   <%= month_calendar do |date| %>
-    <% if @holidays&.include?(date) %>
-      <div class="holiday" style="background-color: #ffcccc; color: #ff0000;">
-        <%= date.day %> 定休日
-      </div>
-    <% else %>
-      <div>
-        <%= date.day %>
-      </div>
-    <% end %>
+    <div class="day">
+      <%= date.day %>
+      <% if @holidays.include?(date) %>
+        <div class="holiday">休</div>
+      <% end %>
+
+      <% notices_on_date = @notices.select { |notice| notice.date == date } %>
+      <% notices_on_date.each do |notice| %>
+        <div class="notice">
+          <%= image_tag notice.image.to_s if notice.image? %>
+          <%#= link_to notice.title, shop_notice_path(@shop, notice) %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
+
+
+
+<style>
+.day {
+  position: relative;
+}
+
+.holiday {
+  background-color: #f8d7da; /* 定休日の色 */
+  color: #721c24;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.notice {
+  background-color: #d4edda; /* お知らせの色 */
+  color: #155724;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+
+.notice img {
+  max-width: 100px;
+  height: auto;
+  display: block;
+}
+</style>
