@@ -6,7 +6,7 @@
       <img src="/no-image.png" class="img-fluid w-100">
     <% end %>
     <% if shop.distance.present? %>
-      <div class="shop_distance text cente mt-1">距離:<%= shop.distance.round(2) %> km</div>
+      <div class="shop_distance text cente mt-1"><%= shop.distance.round(2) %> km</div>
     <% end %>
   </div>
   <div class="col">
