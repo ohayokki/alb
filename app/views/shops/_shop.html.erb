@@ -10,10 +10,9 @@
     <% end %>
   </div>
   <div class="col">
-    <div class="shop-tag">
-
-      <span class="shop_area_name"><%= shop.area.name %></span>
-      <span class="shop_genre_name <%= shop.genre.rubi %>"><%= shop.genre.name %></span>
+    <div class="shop-tag mb-3 row">
+      <span class="shop_area_name col-sm-6"><%= shop.area.name %></span>
+      <span class="shop_genre_name <%= shop.genre.rubi %> col-sm-6"><%= shop.genre.name %></span>
     </div>
     <h3><%#= link_to shop.name, shop_path(shop) %><%= shop.name %></h3>
     <%= shop.title %>
