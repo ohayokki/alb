@@ -15,7 +15,6 @@
     <% if @shop.errors.any? %>
       <div id="error_explanation" class="alert alert-danger">
         <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
-
         <ul>
           <% @shop.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -51,17 +50,17 @@
       </div>
 
       <div class="mb-3">
-        <%= form.label :address %>
+        <%= form.label :address %> ※必須
         <%= form.text_field :address, class: "form-control" %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :genre_id %>
+        <%= form.label :genre_id %> ※必須
         <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: t('prompts.genre_id') }, { class: "form-select" } %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :area_description %>
+        <%= form.label :area_description %> ※必須
         <%= form.text_field :area_description, class: "form-control" %>
       </div>
 
@@ -146,6 +145,16 @@
       <div class="mb-3">
         <%= form.label :website %>
         <%= form.text_field :website, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password, "ご希望のログインパスワード" %> ※必須
+        <%= form.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="mb-3"> ※必須
+        <%= form.label :password_confirmation %> ※パスワードは暗号化されて送信されデータベースに保存されます。
+        <%= form.password_field :password_confirmation, class: "form-control" %>
       </div>
 
       <div class="mb-3">

@@ -26,8 +26,8 @@ ja:
         holiday: "店休日"
         card_payment: "カード支払い"
         mobile_payment: "モバイル決済"
-        website: "ウェブサイト"
-        notes: "メモ"
+        website: "ウェブサイトURL"
+        notes: "備考"
         coupon: "クーポン"
         address: "住所"
         area_description: "地域説明"
@@ -38,6 +38,8 @@ ja:
         latitude: "緯度"
         longitude: "経度"
         status: "ステータス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
 
   prefectures:
     hokkaido: "北海道"
@@ -217,8 +219,11 @@ ja:
     naha: "那覇"
     uruma: "うるま"
 
+  prompts:
+    genre_id: "選択してください"
 
-
+  submit:
+    create: "作成"
 
 
   form:
@@ -235,7 +240,8 @@ ja:
 
   errors:
     count: "error"
-    prohibited: "prohibited this shop from being saved"
+    prohibited: "が発生しました"
+
 
   helpers:
     label:
@@ -262,9 +268,3 @@ ja:
       mobile_payment: "モバイル決済の有無"
       website: "ホームページURL"
       notes: "ご質問・ご要望・備考"
-
-  prompts:
-    genre_id: "選択してください"
-
-  submit:
-    create: "作成"

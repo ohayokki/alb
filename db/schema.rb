@@ -85,6 +85,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_27_031718) do
     t.bigint "genre_id"
     t.float "latitude"
     t.float "longitude"
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.string "image5"
+    t.boolean "vacant_seat_inquiry", default: false
+    t.string "password_digest"
     t.integer "status", default: 1, null: false
     t.datetime "tiral_start_date"
     t.datetime "created_at", null: false

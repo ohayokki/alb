@@ -23,9 +23,8 @@ class ShopsController < ApplicationController
   def shop_params
     params.require(:shop).permit(
       :manager_name, :name, :address, :genre_id, :access, :area_description, :hours, :budget,
-      :title, :introduction, :tel,
+      :title, :introduction, :tel, :email,
       :shop_logo,
-
       :reservation,
       :wifi,
       :alcohol,
@@ -38,6 +37,7 @@ class ShopsController < ApplicationController
       :notes,
       :coupon,
       :costume_id,
+      :password, :password_confirmation,
       tag_ids: []
     )
   end

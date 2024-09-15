@@ -33,6 +33,13 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.references :genre
       t.float :latitude
       t.float :longitude
+      t.string :image1
+      t.string :image2
+      t.string :image3
+      t.string :image4
+      t.string :image5
+      t.boolean :vacant_seat_inquiry, default: false #空席があるかどうか
+      t.string :password_digest, default: nil
       t.integer :status, default: 1, null: false
       t.datetime :tiral_start_date, default: nil # 無料掲載開始日 １度だけOK初期値nil
       t.timestamps
