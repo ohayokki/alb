@@ -6,6 +6,9 @@ class AdminShop::AdminController < ApplicationController
 
   # 店舗情報編集
   def shopedit
+    @shop = Shop.find(session[:shop_id])
+  end
 
+  def update
   end
 end

@@ -1,10 +1,15 @@
-<div class="container-xxl mt-5">
+<div class="container-xxl mt-5 mb-5">
+  <%= render "layouts/flash" %>
 
   <div class="row">
     <div class="col-8">
       <h1>掲載店舗様店舗管理</h1>
     </div>
     <div class="col">
-      <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, confirm: "本当にログアウトしますか？" } %>
+      <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
     </div>
+
+    <%= link_to "店舗編集", admin_shop_shopedit_path %><br>
+    <%= link_to "お知らせ・休日登録", admin_shop_shopedit_path %>
+  </div>
 </div>

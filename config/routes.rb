@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # 店舗管理
   namespace :admin_shop do
     get "admin/index"
-    get "shop-edit"
-    resources :shop, only: [:update]
+    resources :shops, only: [:update]
+    get "shop-edit", to: "admin#shopedit", as: :shopedit
   end
 
   # 管理者用

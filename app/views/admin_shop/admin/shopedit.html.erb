@@ -1,0 +1,198 @@
+<div class="container-xxl mt-5 mb-5">
+  <%= render "layouts/flash" %>
+  <h1><%= @shop.name %>店舗基本情報編集</h1>
+    <%= form_with model: @shop, url: admin_shop_shop_path(@shop), local: true do |form| %>
+    <% if @shop.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
+        <ul>
+          <% @shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :shop_logo %>
+        <%= form.file_field :shop_logo %>
+      </div>
+      <div class="col">
+        <% if @shop.shop_logo %>
+          <%= image_tag(@shop.shop_logo.to_s, class: "img-fluid") %>
+        <% else %>
+          お店ロゴが登録されていません。
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :image1 %>
+        <%= form.file_field :image1 %>
+      </div>
+      <div class="col">
+        <% if @shop.image1.present? %>
+          <%= image_tag(@shop.image1.to_s, class: "img-fluid") %>
+        <% else %>
+          画像１が登録されていません。
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :image2 %>
+        <%= form.file_field :image2 %>
+      </div>
+      <div class="col">
+        <% if @shop.image2.present? %>
+          <%= image_tag(@shop.image2.to_s, class: "img-fluid") %>
+        <% else %>
+          画像2が登録されていません。
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :image3 %>
+        <%= form.file_field :image3 %>
+      </div>
+      <div class="col">
+        <% if @shop.image3.present? %>
+          <%= image_tag(@shop.image1.to_s, class: "img-fluid") %>
+        <% else %>
+          画像3が登録されていません。
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :image4 %>
+        <%= form.file_field :image4 %>
+      </div>
+      <div class="col">
+        <% if @shop.image4.present? %>
+          <%= image_tag(@shop.image4.to_s, class: "img-fluid") %>
+        <% else %>
+          画像4が登録されていません。
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :image5 %>
+        <%= form.file_field :image5 %>
+      </div>
+      <div class="col">
+        <% if @shop.image5.present? %>
+          <%= image_tag(@shop.image5.to_s, class: "img-fluid") %>
+        <% else %>
+          画像5が登録されていません。
+        <% end %>
+      </div>
+    </div>
+
+      <div class="mb-3">
+        <%= form.label :tel %>
+        <%= form.text_field :tel, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :access %>
+        <%= form.text_area :access, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :hours %>
+        <%= form.text_area :hours, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :holiday %>
+        <%= form.text_area :holiday, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :budget %>
+        <%= form.text_area :budget, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :introduction %>
+        <%= form.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :website %>
+        <%= form.text_field :website, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :reservation %>
+        <%= form.check_box :reservation, class: "form-check-input" %>
+        <%= form.label :reservation, t('form.reservation_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :wifi %>
+        <%= form.check_box :wifi, class: "form-check-input" %>
+        <%= form.label :wifi, t('form.wifi_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :alcohol %>
+        <%= form.check_box :alcohol, class: "form-check-input" %>
+        <%= form.label :alcohol, t('form.alcohol_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :smoking %>
+        <%= form.check_box :smoking, class: "form-check-input" %>
+        <%= form.label :smoking, t('form.smoking_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :english %>
+        <%= form.check_box :english, class: "form-check-input" %>
+        <%= form.label :english, t('form.english_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :korean %>
+        <%= form.check_box :korean, class: "form-check-input" %>
+        <%= form.label :korean, t('form.korean_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_payment %>
+        <%= form.check_box :card_payment, class: "form-check-input" %>
+        <%= form.label :card_payment, t('form.card_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :mobile_payment %>
+        <%= form.check_box :mobile_payment, class: "form-check-input" %>
+        <%= form.label :mobile_payment, t('form.mobile_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
+      </div>
+    </div>
+  <% end %>
+</div>
