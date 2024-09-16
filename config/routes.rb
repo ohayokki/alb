@@ -1,4 +1,6 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
@@ -13,7 +15,9 @@ Rails.application.routes.draw do
   namespace :admin_shop do
     get "admin/index"
     resources :holidays, except: [:new]
-    resources :shops, only: [:update]
+    resources :shops, only: [:update] do
+      patch :set_vacant, on: :member # 空席中の処理
+    end
     resources :notices, except: [:new]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
   end

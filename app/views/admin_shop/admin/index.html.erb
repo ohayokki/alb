@@ -1,6 +1,4 @@
 <div class="container-xxl mt-5 mb-5">
-  <%= render "layouts/flash" %>
-
   <div class="row">
     <div class="col-8">
       <h1>掲載店舗様店舗管理</h1>
@@ -8,7 +6,17 @@
     <div class="col">
       <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
     </div>
+    <%= @shop.inspect %>
 
+    <% unless @shop.vacant_until %>
+      <%= form_with url: set_vacant_admin_shop_shop_path(@shop), method: :patch, remote: true, id: "vacant_form" do |form| %>
+        <div class="form-group">
+          <%= form.label :vacant_time, "空席にする時間を選択してください" %>
+          <%= form.select :vacant_time, options_for_select([1, 2, 3]), { prompt: '時間を選択' }, class: "form-control" %>
+        </div>
+        <%= form.submit "空席にする", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
     <%= link_to "店舗編集", admin_shop_shopedit_path %><br>
     <%= link_to "休日管理",  admin_shop_holidays_path %>
     <%= link_to "お知らせ登録",  admin_shop_notices_path %>
@@ -31,8 +39,6 @@
     </div>
   <% end %>
 </div>
-
-
 
 
 <style>

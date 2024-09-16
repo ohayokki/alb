@@ -81,4 +81,22 @@ class Shop < ApplicationRecord
 
     holidays
   end
+
+  # 現在時刻より前で、vacant_until がnil ではない店舗
+  scope :vacant_expired, -> { where("vacant_until <= ?", Time.current).where.not(vacant_until: nil) }
+  # 空席の終了時間を計算し、vacant_untilに保存するメソッド
+  def set_vacant_time(hours)
+    self.vacant_until = Time.current + hours.hours
+    self.vacant_time = hours
+    save
+  end
+
+  # 空席の状態を更新するメソッド
+  def update_vacant_status
+    if vacant_until.present? && Time.current >= vacant_until
+      self.vacant_time = nil
+      self.vacant_until = nil
+      save
+    end
+  end
 end

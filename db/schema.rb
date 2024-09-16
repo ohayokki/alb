@@ -111,7 +111,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_180740) do
     t.string "image3"
     t.string "image4"
     t.string "image5"
-    t.boolean "vacant_seat_inquiry", default: false
+    t.integer "vacant_time"
+    t.datetime "vacant_until"
     t.string "password_digest"
     t.integer "status", default: 1, null: false
     t.datetime "tiral_start_date"

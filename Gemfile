@@ -64,3 +64,5 @@ gem 'carrierwave'
 gem 'rmagick'
 gem "simple_calendar"
 gem "sassc-rails"
+gem 'sidekiq'
+gem 'sidekiq-cron'

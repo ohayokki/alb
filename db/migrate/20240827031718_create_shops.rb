@@ -39,7 +39,8 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.string :image3
       t.string :image4
       t.string :image5
-      t.boolean :vacant_seat_inquiry, default: false #空席があるかどうか
+      t.integer :vacant_time, default: nil #空席中と表示する時間
+      t.datetime :vacant_until, default: nil #空席中の終了時間
       t.string :password_digest, default: nil
       t.integer :status, default: 1, null: false
       t.datetime :tiral_start_date, default: nil # 無料掲載開始日 １度だけOK初期値nil

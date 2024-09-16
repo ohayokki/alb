@@ -12,6 +12,29 @@ class AdminShop::ShopsController < ApplicationController
     end
   end
 
+  def set_vacant
+    @shop = shop_obj
+
+    # ユーザーが選択した時間を params から取得
+    vacant_hours = params[:vacant_time].to_i
+    wait_time = vacant_hours.hours
+    if vacant_hours > 0 && !@shop.vacant_until.present?
+      @shop.update(vacant_time: wait_time, vacant_until: Time.current + vacant_hours.hours)
+
+      # ジョブを予約して、指定した時間が過ぎた後に vacant_time を nil にする
+      ClearVacantStatusJob.set(wait: vacant_hours.hours).perform_later(@shop.id)
+
+      flash[:success] = "空席状況を更新しました。#{vacant_hours}時間後に空席状況が解除されます。"
+    else
+      flash[:danger] = "既に設定済みか無効な時間が選択されました。"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to admin_shop_shop_path(@shop) }
+      format.js   # 非同期処理のためにJSでのレスポンスも用意
+    end
+  end
+
   private
 
   def shop_params
