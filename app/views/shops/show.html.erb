@@ -15,13 +15,19 @@
   </div>
 
   <div class="shop_detail">
-    <div class="row">
+    <div class="text-center mb-3">
+      <%= image_tag @shop.image1.to_s %>
+    </div>
+    <div class="row mb-3">
       <div class="col-sm-7">
-        <h2><%= @shop.area.name + @shop.genre.name %><br><%= @shop.name %></h2>
+        <h2><%= @shop.name %></h2>
       </div>
       <div class="col-sm-5 text-end">
         <h2><%= @shop.tel %><br><%= @shop.area.name %></h2>
       </div>
+    </div>
+    <div class="shop-genre-name <%= @shop.genre.rubi %> w-50 text-center">
+      <%= @shop.genre.name %>
     </div>
       <%= @shop.hours if @shop.hours %> |
       <%= @shop.access if @shop.access %> |

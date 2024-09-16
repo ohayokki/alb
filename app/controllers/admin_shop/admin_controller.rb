@@ -5,8 +5,9 @@ class AdminShop::AdminController < ApplicationController
     @shop = shop_obj
     # カレンダーで表示されている月の開始日と終了日を取得
     start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today.beginning_of_month
-    @holidays = @shop.holidays_for_month(start_date.year, start_date.month)
-    @notices = @shop.notices.order(:date)
+    @holidays = @shop.holidays_for_month(start_date)
+    @notices = Notice.where(shop: @shop)
+    @notices_by_date = @notices.group_by(&:date)
   end
 
   # 店舗情報編集

@@ -16,7 +16,7 @@
         <%= form.submit "空席にする", class: "btn btn-primary" %>
       <% end %>
     <% else %>
-      <p><%= @shop.vacant_until.strftime("%y %m/%d %H:%M") %>まで空席と表示されています。</p>
+      <p><%= @shop.vacant_until.strftime("%y %m/%d %H:%M") %>まで空席と表示されます。</p>
       <%= form_with url: remove_vacant_admin_shop_shop_path(@shop), method: :delete, remote: true, id: "vacant_form" do |form| %>
         <%= form.submit "今すぐ空席を解除する", class: "btn btn-danger" %>
       <% end %>
@@ -26,22 +26,7 @@
     <%= link_to "お知らせ登録",  admin_shop_notices_path %>
   </div>
 
-  <%= month_calendar do |date| %>
-    <div class="day">
-      <%= date.day %>
-      <% if @holidays.include?(date) %>
-        <div class="holiday">休</div>
-      <% end %>
-
-      <% notices_on_date = @notices.select { |notice| notice.date == date } %>
-      <% notices_on_date.each do |notice| %>
-        <div class="notice">
-          <%= image_tag notice.image.to_s if notice.image? %>
-          <%#= link_to notice.title, shop_notice_path(@shop, notice) %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "shops/calendar" %>
 </div>
 
 
