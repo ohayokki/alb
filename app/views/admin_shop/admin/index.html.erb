@@ -6,7 +6,7 @@
     <div class="col">
       <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
     </div>
-    <%= @shop.inspect %>
+    <%#= @shop.inspect %>
 
     <% unless @shop.vacant_until %>
       <%= form_with url: set_vacant_admin_shop_shop_path(@shop), method: :patch, remote: true, id: "vacant_form" do |form| %>
