@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :holidays, except: [:new]
     resources :shops, only: [:update] do
       patch :set_vacant, on: :member # 空席中の処理
+      delete :remove_vacant, on: :member # 空席中の処理
     end
     resources :notices, except: [:new]
     get "shop-edit", to: "admin#shopedit", as: :shopedit

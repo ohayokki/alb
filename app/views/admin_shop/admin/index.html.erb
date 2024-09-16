@@ -16,6 +16,11 @@
         </div>
         <%= form.submit "空席にする", class: "btn btn-primary" %>
       <% end %>
+    <% else %>
+      <p><%= @shop.vacant_until %>まで空席と表示されています。</p>
+      <%= form_with url: remove_vacant_admin_shop_shop_path(@shop), method: :delete, remote: true, id: "vacant_form" do |form| %>
+        <%= form.submit "今すぐ空席を解除する", class: "btn btn-danger" %>
+      <% end %>
     <% end %>
     <%= link_to "店舗編集", admin_shop_shopedit_path %><br>
     <%= link_to "休日管理",  admin_shop_holidays_path %>

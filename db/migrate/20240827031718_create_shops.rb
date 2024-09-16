@@ -39,7 +39,7 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.string :image3
       t.string :image4
       t.string :image5
-      t.integer :vacant_time, default: nil #空席中と表示する時間
+      t.string :vacant_job_id, default: nil # 空席中JobのID
       t.datetime :vacant_until, default: nil #空席中の終了時間
       t.string :password_digest, default: nil
       t.integer :status, default: 1, null: false

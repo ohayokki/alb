@@ -7,9 +7,15 @@ class Shop < ApplicationRecord
   mount_uploader :shop_logo, ShopLogoUploader
   has_secure_password
   attr_accessor :distance #仮想属性（お店までの距離）
-  enum status: { "掲載依頼": 1, "無料掲載": 2, "お試し有料掲載": 3, "有料掲載": 4, "閉店": 5 }
   
-  has_many :holidays
+  enum status: {
+    掲載依頼: 1,
+    無料掲載: 2,
+    お試し有料掲載: 3,
+    有料掲載: 4,
+    閉店: 5
+  }
+    has_many :holidays
   has_many :notices
   belongs_to :area, optional: true
   belongs_to :prefecture, optional: true
