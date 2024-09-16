@@ -17,18 +17,18 @@ class Admin::ShopsController < ApplicationController
     @districts = District.where(prefecture_id: @shop.prefecture_id)
     @areas = Area.where(district_id: @shop.district_id)
 
-    # これ以降はカレンダー関係なので現状は使用しない
-    @shop = Shop.find(params[:id])
+  #   # これ以降はカレンダー関係なので現状は使用しない
+  #   @shop = Shop.find(params[:id])
 
-    # 定休日 (曜日ベース)
-    @weekly_holidays = @shop.holidays.where.not(day_of_week: nil).pluck(:day_of_week, :status)
+  #   # 定休日 (曜日ベース)
+  #   @weekly_holidays = @shop.holidays.where.not(day_of_week: nil).pluck(:day_of_week, :status)
 
-    # 例外日 (特定の日)
-    @exceptional_days = @shop.holidays.where.not(date: nil).where(date: params[:start_date]..params[:end_date])
+  #   # 例外日 (特定の日)
+  #   @exceptional_days = @shop.holidays.where.not(date: nil).where(date: params[:start_date]..params[:end_date])
 
-    # 臨時休業やイベント
-    @holidays = @shop.holidays.where(date: params[:start_date]..params[:end_date])
-    @events = @shop.events.where(event_date: params[:start_date]..params[:end_date])
+  #   # 臨時休業やイベント
+  #   @holidays = @shop.holidays.where(date: params[:start_date]..params[:end_date])
+  #   @events = @shop.events.where(event_date: params[:start_date]..params[:end_date])
   end
 
   def edit
