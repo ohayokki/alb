@@ -1,0 +1,26 @@
+.calendar .day {
+  position: relative;
+}
+
+.calendar .holiday {
+  background-color: #f8d7da; /* 定休日の色 */
+  color: #721c24;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.calendar .notice {
+  background-color: #d4edda; /* お知らせの色 */
+  color: #155724;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+
+.calendar .notice img {
+  max-width: 100px;
+  height: auto;
+  display: block;
+}

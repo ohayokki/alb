@@ -10,7 +10,7 @@ class AdminShop::NoticesController < ApplicationController
     @notice = @shop.notices.build(notice_params)
     if @notice.save
       flash[:success] = "お知らせが作成されました。"
-      redirect_to shop_path(@shop)
+      redirect_to  admin_shop_admin_index_url
     else
       flash.now[:danger] = "お知らせの作成に失敗しました。"
       render "admin_shop/notices/index", status: :unprocessable_entity

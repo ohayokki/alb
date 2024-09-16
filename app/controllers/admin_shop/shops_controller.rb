@@ -20,7 +20,7 @@ class AdminShop::ShopsController < ApplicationController
     if vacant_hours > 0 && !@shop.vacant_until.present?
       vacant_time = vacant_hours * 60
       job = ClearVacantStatusJob.perform_at(vacant_time.minutes.from_now, @shop.id)
-      @shop.update!(vacant_job_id: job, vacant_until: Time.current + vacant_time)
+      @shop.update!(vacant_job_id: job, vacant_until: Time.current + vacant_time * 60)
 
       flash[:success] = "空席状況を更新しました。#{vacant_hours}時間後に空席状況が解除されます。"
     else

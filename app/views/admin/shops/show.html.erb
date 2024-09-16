@@ -1,7 +1,7 @@
 <div class="container-xxl mt-5">
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
-
+<%= Area.all.pluck(:name) %>
       <h1><%= @shop.name %>(<%= @shop.status %>)中</h1>
       <% unless @shop.area%>
         <div class="alert alert-danger">
@@ -251,7 +251,7 @@
 </div>
 <!-- JavaScript -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('turbo:load', function() {
   const prefectureSelect = document.getElementById("prefecture_select");
   const districtSelect = document.getElementById("district_select");
   const districtLabel = document.getElementById("district_label");

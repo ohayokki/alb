@@ -69,23 +69,26 @@ class Shop < ApplicationRecord
     new_record? || password.present?
   end
 
-  def holidays_for_month(year, month)
-    holidays = []
+  def holidays_for_month(start_date)
+    start_date = start_date.beginning_of_month
+    end_date = start_date.end_of_month
+
+    # 該当月の全ての休日を一度のクエリで取得
+    holidays = Holiday.where(shop: self, date: start_date..end_date)
+
+    holiday_dates = holidays.pluck(:date)
 
     # 月の日数をループして、曜日や特別営業日/休業日を考慮する
-    (1..Time.days_in_month(month, year)).each do |day|
-      date = Date.new(year, month, day)
+    (start_date.day..end_date.day).each_with_object([]) do |day, holidays|
+      date = Date.new(start_date.year, start_date.month, day)
 
       # 特別な営業日や休業日がある場合は優先
-      holiday_status = Holiday.status_for_date(self, date)
-      if holiday_status == 'closed'
+      if holiday_dates.include?(date)
         holidays << date # 休業日として扱う
-      elsif holiday_status.nil? && weekly_holidays.include?(date.wday)
+      elsif self.weekly_holidays.include?(date.wday)
         holidays << date # 定休日として扱う
       end
     end
-
-    holidays
   end
 
   # 現在時刻より前で、vacant_until がnil ではない店舗
