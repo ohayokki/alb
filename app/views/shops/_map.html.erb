@@ -1,7 +1,5 @@
-<div class="container-xxl">
-  <% if @shop.googlemap %>
-    <div class="map mt-5">
-      <%= @shop.googlemap.html_safe if @shop.googlemap %>
-    </div>
-  <% end %>
-</div>
+<% if @shop.googlemap %>
+  <div class="map mt-5">
+    <%= @shop.googlemap.html_safe if @shop.googlemap %>
+  </div>
+<% end %>

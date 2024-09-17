@@ -1,69 +1,68 @@
-<div class="container-xxl mb-5">
-  <div class="shop_basic_information mt-5">
-    <h2><%= @shop.name %>の店舗情報</h2>
-    <div class="row">
-      <div class="col-3">
-        店名
-      </div>
-      <div class="col-9">
-        <%= @shop.name %>
-      </div>
+<section class="shop-basic-information">
+  <h2><%= @shop.name %>の店舗情報</h2>
+  <div class="row">
+    <div class="col-3">
+      店名
     </div>
-    <div class="row">
-      <div class="col-3">
-        TEL
-      </div>
-      <div class="col-9">
-        <%= @shop.tel %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        住所
-      </div>
-      <div class="col-9">
-        <%= @shop.address %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        アクセス
-      </div>
-      <div class="col-9">
-        <%= @shop.access %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        営業時間
-      </div>
-      <div class="col-9">
-        <%= @shop.hours %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        定休日
-      </div>
-      <div class="col-9">
-        <%= @shop.holiday %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        平均予算
-      </div>
-      <div class="col-9">
-        <%= @shop.budget %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        ホームページ
-      </div>
-      <div class="col-9">
-        <%= @shop.website %>
-      </div>
+    <div class="col-9">
+      <%= @shop.name %>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-3">
+      TEL
+    </div>
+    <div class="col-9">
+      <%= @shop.tel %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      住所
+    </div>
+    <div class="col-9">
+      <%= @shop.address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      アクセス
+    </div>
+    <div class="col-9">
+      <%= @shop.access %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      営業時間
+    </div>
+    <div class="col-9">
+      <%= @shop.hours %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      定休日
+    </div>
+    <div class="col-9">
+      <%= @shop.holiday %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      平均予算
+    </div>
+    <div class="col-9">
+      <%= @shop.budget %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      ホームページ
+    </div>
+    <div class="col-9">
+      <%= link_to @shop.website, @shop.website, target: "blank" %>
+    </div>
+  </div>
+</section>
+
