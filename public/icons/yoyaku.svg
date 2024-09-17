@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #000;
+        stroke-linejoin: round;
+        stroke-width: 2.78px;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" width="100" height="100"/>
+  <path class="cls-3" d="M88.63,71.07V14.88H11.38v70.24h57.04"/>
+  <path class="cls-3" d="M11.38,24.6h77.25"/>
+  <g>
+    <g id="_レイヤー1" data-name="レイヤー1">
+      <path class="cls-2" d="M65.41,64.49h6.56"/>
+      <path class="cls-2" d="M65.41,55.16h6.56"/>
+      <path class="cls-2" d="M65.41,45.83h6.56"/>
+      <path class="cls-2" d="M65.41,36.5h6.56"/>
+    </g>
+    <g id="_レイヤー11" data-name="レイヤー11">
+      <path class="cls-2" d="M56.07,73.81h6.56"/>
+      <path class="cls-2" d="M56.07,64.49h6.56"/>
+      <path class="cls-2" d="M56.07,55.16h6.56"/>
+      <path class="cls-2" d="M56.07,45.83h6.56"/>
+      <path class="cls-2" d="M56.07,36.5h6.56"/>
+    </g>
+    <g id="_レイヤー12" data-name="レイヤー12">
+      <path class="cls-2" d="M46.72,73.81h6.56"/>
+      <path class="cls-2" d="M46.72,64.49h6.56"/>
+      <path class="cls-2" d="M46.72,55.16h6.56"/>
+      <path class="cls-2" d="M46.72,45.83h6.56"/>
+      <path class="cls-2" d="M46.72,36.5h6.56"/>
+    </g>
+    <g id="_レイヤー13" data-name="レイヤー13">
+      <path class="cls-2" d="M37.37,73.81h6.56"/>
+      <path class="cls-2" d="M37.37,64.49h6.56"/>
+      <path class="cls-2" d="M37.37,55.16h6.56"/>
+      <path class="cls-2" d="M37.37,45.83h6.56"/>
+      <path class="cls-2" d="M37.37,36.5h6.56"/>
+    </g>
+    <g id="_レイヤー14" data-name="レイヤー14">
+      <path class="cls-2" d="M28.02,73.81h6.56"/>
+      <path class="cls-2" d="M28.02,64.49h6.56"/>
+      <path class="cls-2" d="M28.02,55.16h6.56"/>
+      <path class="cls-2" d="M28.02,45.83h6.56"/>
+    </g>
+    <g id="_レイヤー15" data-name="レイヤー15">
+      <path class="cls-2" d="M18.68,73.81h6.56"/>
+      <path class="cls-2" d="M18.68,64.49h6.56"/>
+      <path class="cls-2" d="M18.68,55.16h6.56"/>
+      <path class="cls-2" d="M18.68,45.83h6.56"/>
+    </g>
+    <g id="_レイヤー16" data-name="レイヤー16">
+      <path class="cls-2" d="M74.76,64.49h6.56"/>
+      <path class="cls-2" d="M74.76,55.16h6.56"/>
+      <path class="cls-2" d="M74.76,45.83h6.56"/>
+      <path class="cls-2" d="M74.76,36.5h6.56"/>
+    </g>
+  </g>
+  <path class="cls-3" d="M73.67,80.11l6.63,6.59,15.5-17.29"/>
+  <circle class="cls-3" cx="81.32" cy="82.32" r="12.91"/>
+</svg>

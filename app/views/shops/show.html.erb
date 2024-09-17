@@ -26,31 +26,59 @@
         <h2><%= @shop.tel %><br><%= @shop.area.name %></h2>
       </div>
     </div>
-    <div class="shop-genre-name <%= @shop.genre.rubi %> w-50 text-center">
+    <div class="shop-genre-name <%= @shop.genre.rubi %> w-50 text-center mb-3">
       <%= @shop.genre.name %>
     </div>
-      <%= @shop.hours if @shop.hours %> |
-      <%= @shop.access if @shop.access %> |
-      <%= @shop.budget if @shop.budget %> |
-      <%= "予約可" if @shop.reservation %> |
-      <%= "Wifi有" if @shop.wifi %> |
-      <%= "アルコール有" if @shop.alcohol %> |
-      <%= "喫煙可" if @shop.smoking %> |
-      <%= "English OK" if @shop.english %> |
-      <%= "韓国語 OK" if @shop.korean %> |
+
+    <div class="icon-space">
+      <img src="/icons/alc.svg" alt="お酒アイコン" class="icon">
+      <% if @shop.alcohol %>
+        お酒有
+      <% else %>
+        お酒無
+      <% end %>
+      <% if @shop.smoking %>
+        <img src="/icons/smoking.png" alt="喫煙OKアイコン" class="icon">喫煙OK
+      <% else %>
+        <img src="/icons/smoking-ng.png" alt="喫煙NGアイコン" class="icon">店内禁煙
+      <% end %>
+      <% if @shop.wifi %>
+        <img src="/icons/wifi.svg" alt="wifiアイコン" class="icon"><%= "Wifi有" %>
+      <% end %>
+
+      <%if @shop.reservation %> |
+        <img src="/icons/yoyaku.svg" alt="予約OKアイコン" class="icon">予約OK
+      <% end %>
+
+      <% if @shop.english %>
+        <img src="/icons/en.png" alt="英語対応OKアイコン" class="icon">英語対応可
+      <% end %>
+
+      <% if @shop.korean %>
+        <img src="/icons/kor.png" alt="韓国語対応OKアイコン" class="icon">韓国語対応可
+      <% end %>
+
       <%= "クレジットカード可" if @shop.card_payment %> |
       <%= "スマホ決済可" if @shop.mobile_payment %> |
-      <%= @shop.website if @shop.website %> |
-      <%= @shop.address if @shop.address %> |
-      <%= @shop.coupon if @shop.coupon %> |
-      <%= @shop.googlemap.html_safe if @shop.googlemap %> |
+      <% if @shop.googlemap %>
+        <div class="map mt-5">
+          <%= @shop.googlemap.html_safe if @shop.googlemap %>|
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="shop-description">
+  <div class="container-xxl">
     <h3><%= @shop.title %></h3>
     <p><%= @shop.introduction %></p>
   </div>
+</div>
 
+      <%= @shop.coupon if @shop.coupon %> |
+
+<div class="container-xxl">
   <%= render "calendar" %>
-
-
   <div class="shop_basic_information mt-5">
     <h2><%= @shop.name %>の店舗情報</h2>
     <div class="row">
@@ -107,6 +135,14 @@
       </div>
       <div class="col-9">
         <%= @shop.budget %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        ホームページ
+      </div>
+      <div class="col-9">
+        <%= @shop.website %>
       </div>
     </div>
   </div>

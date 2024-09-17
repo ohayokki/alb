@@ -1,3 +1,26 @@
+.icon-space{
+  background-color: #bbd2d1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.icon-space .icon{
+  height: 30px;
+  width: 30px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 100%;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+}
+
+.shop-description{
+  padding:30px 5px;
+  margin-top: 60px;
+  background-color: #bbd2d1;
+
+}
+
 .shop_detail h2{
   font-size: 1.5em;
   color: #333;
@@ -96,4 +119,20 @@
 .casual-bar{
   color: #333;
   background-color: #a7ff33;
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9のアスペクト比 */
+  height: 0;
+}
+
+.map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
