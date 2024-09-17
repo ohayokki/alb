@@ -1,5 +1,8 @@
 <div class="row mb-5">
   <div class="col-4">
+    <% if shop.vacant_job_id %>
+      <div class="btn btn-primary w-100">ただいま空席あります！</div>
+    <% end %>
     <% if shop.shop_logo.present? %>
       <%= image_tag shop.shop_logo.to_s, class: "img-fluid w-100" %>
     <% else %>
