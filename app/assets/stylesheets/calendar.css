@@ -1,3 +1,8 @@
+.calendar{
+  background-color: #cad5be;
+  padding: 18px 2px;
+  border-radius: 10px;
+}
 .calendar .day {
   position: relative;
 }
@@ -17,7 +22,6 @@
   border-radius: 4px;
   font-size: 0.9em;
 }
-
 
 .calendar .notice img {
   max-width: 100px;

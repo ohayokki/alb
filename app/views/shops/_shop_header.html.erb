@@ -1,0 +1,29 @@
+<div class="shop-header">
+  <% if @shop.image1.present? %>
+    <div class="text-center mb-3">
+      <%= image_tag @shop.image1.to_s %>
+    </div>
+  <% end %>
+
+  <div class="row mb-3">
+    <div class="col-sm-7">
+      <h2><%= @shop.name %></h2>
+    </div>
+    <div class="col-sm-5 text-end">
+      <h2><%= @shop.tel %></h2>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-6">
+      <div class="shop-genre-name <%= @shop.genre.rubi %> text-center">
+        <%= @shop.genre.name %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="shop-area-name text-center">
+        <%= @shop.area.name %>
+      </div>
+    </div>
+  </div>
+</div>
