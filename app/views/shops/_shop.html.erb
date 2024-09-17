@@ -1,7 +1,7 @@
 <div class="row mb-5">
   <div class="col-4">
     <% if shop.vacant_job_id %>
-      <div class="btn btn-primary w-100">ただいま空席あります！</div>
+      <div class="btn btn-primary w-100 rounded-0">ただいま空席あります！</div>
     <% end %>
     <% if shop.shop_logo.present? %>
       <%= image_tag shop.shop_logo.to_s, class: "img-fluid w-100" %>
@@ -9,7 +9,7 @@
       <img src="/no-image.png" class="img-fluid w-100">
     <% end %>
     <% if shop.distance.present? %>
-      <div class="shop_distance text cente mt-1"><%= shop.distance.round(2) %> km</div>
+      <div class="shop_distance"><%= shop.distance.round(2) %> km</div>
     <% end %>
   </div>
   <div class="col">

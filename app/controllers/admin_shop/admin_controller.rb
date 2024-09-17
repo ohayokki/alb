@@ -1,5 +1,6 @@
 class AdminShop::AdminController < ApplicationController
-  before_action :shop_signed_in?
+  before_action :shop_signed_in?, :set_shop
+  layout "admin_shop"
 
   def index
     @shop = shop_obj
@@ -15,6 +16,14 @@ class AdminShop::AdminController < ApplicationController
     @shop = Shop.find(session[:shop_id])
   end
 
-  def update
+  private
+  def shop_signed_in?
+    unless shop_logged_in?
+      redirect_to root_url
+    end
+  end
+
+  def set_shop
+    @shop = shop_obj
   end
 end

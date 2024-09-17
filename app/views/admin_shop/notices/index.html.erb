@@ -36,4 +36,17 @@
     <%= form.submit "作成", class: "btn btn-user w-100" %>
   <% end %>
 
+  <h2 class="mt-5">過去のお知らせ一覧</h2>
+  <table class="table table-responsive table-striped table-bordered">
+  <% @notices.each do | notice| %>
+    <tr>
+      <td><%= notice.title %></td>
+      <td><%= notice.content %></td>
+      <td><%= notice.date %></td>
+      <td><%= image_tag notice.image.to_s, class: "image-responsive", style: "width: 50px" %></td>
+      <td><%= link_to "編集",  edit_admin_shop_notice_path(notice) %></td>
+      <td><%= link_to "削除", admin_shop_notice_path(notice), data: { turbo_method: :delete, turbo_confirm: "本当に削除してよろしいですか？" } %></td>
+    </tr>
+  <% end %>
+  </table>
 </div>

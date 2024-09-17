@@ -4,13 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_area
   include SessionsHelper
   private
-
-  def shop_signed_in?
-    unless shop_logged_in?
-      redirect_to root_url
-    end
-  end
-
   def set_area
     # Create prefectures if none exist
     if Prefecture.none?

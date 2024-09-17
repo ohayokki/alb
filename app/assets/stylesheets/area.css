@@ -31,8 +31,8 @@ a:hover{
   background: #018f2c;
   color: #fff;
   padding: 5px 15px;
-  border-radius: 16px;
-  margin-right: 12px;
+  width: 100%;
+  text-align: center;
 }
 
 .shop_list_detail h3{

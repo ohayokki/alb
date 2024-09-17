@@ -1,11 +1,6 @@
 <div class="container-xxl mt-5 mb-5">
   <div class="row">
-    <div class="col-8">
-      <h1>掲載店舗様店舗管理</h1>
-    </div>
-    <div class="col">
-      <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
-    </div>
+    <h1>掲載店舗様店舗管理</h1>
 
     <% unless @shop.vacant_until %>
       <%= form_with url: set_vacant_admin_shop_shop_path(@shop), method: :patch, remote: true, id: "vacant_form" do |form| %>
@@ -13,17 +8,25 @@
           <%= form.label :vacant_time, "空席にする時間を選択してください" %>
           <%= form.select :vacant_time, options_for_select([1, 2, 3]), { prompt: '時間を選択' }, class: "form-control" %>
         </div>
-        <%= form.submit "空席にする", class: "btn btn-primary" %>
+        <%= form.submit "空席にする", class: "btn btn-primary w-100 mt-3" %>
       <% end %>
     <% else %>
       <p><%= @shop.vacant_until.strftime("%y %m/%d %H:%M") %>まで空席と表示されます。</p>
       <%= form_with url: remove_vacant_admin_shop_shop_path(@shop), method: :delete, remote: true, id: "vacant_form" do |form| %>
-        <%= form.submit "今すぐ空席を解除する", class: "btn btn-danger" %>
+        <%= form.submit "今すぐ空席を解除する", class: "btn btn-danger w-100" %>
       <% end %>
     <% end %>
-    <%= link_to "店舗編集", admin_shop_shopedit_path %><br>
-    <%= link_to "休日管理",  admin_shop_holidays_path %>
-    <%= link_to "お知らせ登録",  admin_shop_notices_path %>
+    <div class="row mt-5">
+      <div class="col-6 mb-5">
+        <%= link_to "店舗編集", admin_shop_shopedit_path, class: "btn btn-user w-50" %>
+      </div>
+      <div class="col-6 mb-5">
+        <%= link_to "休日管理",  admin_shop_holidays_path, class: "btn btn-user w-50" %>
+      </div>
+      <div class="col-6 mb-5">
+        <%= link_to "お知らせ登録",  admin_shop_notices_path, class: "btn btn-user w-50" %>
+      </div>
+    </div>
   </div>
 
   <%= render "shops/calendar" %>

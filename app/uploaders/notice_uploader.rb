@@ -10,7 +10,7 @@ class NoticeUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  process resize_to_fill: [ 800, 450,  gravity = ::Magick::CenterGravity ]
+  process resize_to_fill: [ 450, 800,  gravity = ::Magick::CenterGravity ]
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

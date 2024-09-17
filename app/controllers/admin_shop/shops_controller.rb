@@ -1,8 +1,5 @@
-class AdminShop::ShopsController < ApplicationController
-  before_action :shop_signed_in?
-
+class AdminShop::ShopsController < AdminShop::AdminController 
   def update
-    @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
       flash[:success] = "店舗情報修正しました。"
       redirect_to admin_shop_admin_index_url
@@ -13,8 +10,6 @@ class AdminShop::ShopsController < ApplicationController
   end
 
   def set_vacant
-    @shop = shop_obj
-
     # ユーザーが選択した時間を params から取得
     vacant_hours = params[:vacant_time].to_i
     if vacant_hours > 0 && !@shop.vacant_until.present?
@@ -34,8 +29,6 @@ class AdminShop::ShopsController < ApplicationController
   end
 
   def remove_vacant
-    @shop = shop_obj
-
     if @shop.vacant_job_id.present?
       scheduled_jobs = Sidekiq::ScheduledSet.new
 
@@ -60,11 +53,12 @@ class AdminShop::ShopsController < ApplicationController
       format.js   # 非同期処理のためにJSでのレスポンスも用意
     end
   end
+
   private
 
   def shop_params
     params.require(:shop).permit(:shop_logo, :tel, :address, :hours, :holiday, :budget, :access,
      :title, :introduction, :website, :reservation, :wifi, :alcohol, :smoking, :english, :korean, :card_payment, :mobile_payment,
-     :image1, :image2, :image3, :image4, :image5, weekly_holidays: [])
+     :image1, :image2, :image3, :image4, :image5, :remove_image1, :remove_image2, :remove_image3, :remove_image4, :remove_image5, weekly_holidays: [])
   end
 end

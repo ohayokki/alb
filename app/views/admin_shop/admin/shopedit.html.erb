@@ -16,7 +16,7 @@
     <div class="row mb-3">
       <div class="col-9">
         <%= form.label :shop_logo %>
-        <%= form.file_field :shop_logo %>
+        <%= form.file_field :shop_logo, class: "form-control" %>
       </div>
       <div class="col">
         <% if @shop.shop_logo %>
@@ -30,11 +30,15 @@
     <div class="row mb-3">
       <div class="col-9">
         <%= form.label :image1 %>
-        <%= form.file_field :image1 %>
+        <%= form.file_field :image1, class: "form-control" %>
       </div>
       <div class="col">
         <% if @shop.image1.present? %>
           <%= image_tag(@shop.image1.to_s, class: "img-fluid") %>
+          <label>
+            <%= form.check_box :remove_image1 %>
+            画像削除
+          </label>
         <% else %>
           画像１が登録されていません。
         <% end %>
@@ -44,7 +48,11 @@
     <div class="row mb-3">
       <div class="col-9">
         <%= form.label :image2 %>
-        <%= form.file_field :image2 %>
+        <%= form.file_field :image2, class: "form-control" %>
+        <label>
+          <%= form.check_box :remove_image2 %>
+          画像削除
+        </label>
       </div>
       <div class="col">
         <% if @shop.image2.present? %>
@@ -58,7 +66,11 @@
     <div class="row mb-3">
       <div class="col-9">
         <%= form.label :image3 %>
-        <%= form.file_field :image3 %>
+        <%= form.file_field :image3, class: "form-control" %>
+        <label>
+          <%= form.check_box :remove_image3 %>
+          画像削除
+        </label>
       </div>
       <div class="col">
         <% if @shop.image3.present? %>
@@ -72,7 +84,11 @@
     <div class="row mb-3">
       <div class="col-9">
         <%= form.label :image4 %>
-        <%= form.file_field :image4 %>
+        <%= form.file_field :image4, class: "form-control" %>
+        <label>
+          <%= form.check_box :remove_image4 %>
+          画像削除
+        </label>
       </div>
       <div class="col">
         <% if @shop.image4.present? %>
@@ -86,7 +102,11 @@
     <div class="row mb-3">
       <div class="col-9">
         <%= form.label :image5 %>
-        <%= form.file_field :image5 %>
+        <%= form.file_field :image5, class: "form-control" %>
+        <label>
+          <%= form.check_box :remove_image5 %>
+          画像削除
+        </label>
       </div>
       <div class="col">
         <% if @shop.image5.present? %>

@@ -1,12 +1,9 @@
-class AdminShop::HolidaysController < ApplicationController
-
+class AdminShop::HolidaysController < AdminShop::AdminController
   def index
-    @shop = shop_obj
     @holiday = @shop.holidays.build
   end
 
   def create
-    @shop = shop_obj
     @holiday = @shop.holidays.new(holiday_params)
     if @holiday.save
       flash[:success] = "特別な日が登録されました。"
@@ -18,12 +15,10 @@ class AdminShop::HolidaysController < ApplicationController
   end
 
   def edit
-    @shop = shop_obj
     @holiday = @shop.holidays.find(params[:id])
   end
 
   def update
-    @shop = shop_obj
     @holiday = @shop.holidays.find(params[:id])
     if @holiday.update(holiday_params)
       flash[:success] = "特別な日が更新されました。"
@@ -35,7 +30,6 @@ class AdminShop::HolidaysController < ApplicationController
   end
 
   def destroy
-    @shop = shop_obj
     @holiday = @shop.holidays.find(params[:id])
     @holiday.destroy
     flash[:success] = "特別な日が削除されました。"
@@ -43,14 +37,7 @@ class AdminShop::HolidaysController < ApplicationController
   end
 
   private
-
-  def set_shop
-    @shop = Shop.find(params[:shop_id])
-  end
-
   def holiday_params
     params.require(:holiday).permit(:date, :status)
   end
-
-  
 end
