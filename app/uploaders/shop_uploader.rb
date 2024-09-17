@@ -18,7 +18,7 @@ class ShopUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-  process resize_to_fill: [450, 800, gravity = ::Magick::CenterGravity]
+  process resize_to_fill: [ 800, 450,  gravity = ::Magick::CenterGravity ]
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
