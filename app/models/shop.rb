@@ -24,6 +24,7 @@ class Shop < ApplicationRecord
 
 
   before_save { self.email.downcase! }
+  validate :googlemap_must_contain_iframe
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
@@ -109,6 +110,14 @@ class Shop < ApplicationRecord
       self.vacant_time = nil
       self.vacant_until = nil
       save
+    end
+  end
+
+  private
+  def googlemap_must_contain_iframe
+    # googlemapがnilでないかつ、iframeタグが含まれていない場合、エラーを追加
+    unless googlemap.present? && googlemap.match?(/<iframe.*?>.*?<\/iframe>/)
+      errors.add(:googlemap, "には有効なiframeタグが必要です")
     end
   end
 end

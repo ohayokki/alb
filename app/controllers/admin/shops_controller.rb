@@ -28,7 +28,11 @@ class Admin::ShopsController < ApplicationController
     if @shop.valid?(:update_shop) && @shop.save
       redirect_to admin_shops_url, notice: 'ショップ情報が更新されました。'
     else
-      render "admin/shops/show"
+      flash.now[:danger] = "登録に失敗しました。"
+      @districts = @shop.area.district.prefecture.districts
+      @areas = @shop.district.areas
+
+      render "admin/shops/show", status: :unprocessable_entity
     end
   end
 
@@ -73,7 +77,7 @@ class Admin::ShopsController < ApplicationController
       :address,
       :area_id, :district_id, :prefecture_id,
       :costume_id,
-      :genre_id,
+      :genre_id, :password, :password_confirmation,
       tag_ids: []
     ).tap do |whitelisted|
       if params[:shop][:area_id].present?
