@@ -36,6 +36,14 @@
   margin-right: 12px;
 }
 
+.shop-area-name{
+  background-color: #444;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 16px;
+  margin-right: 12px;
+}
+
 .cafe {
   color: #fff;
   background-color: #d4a373; /* 柔らかいコーヒー色 */
