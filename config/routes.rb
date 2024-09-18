@@ -1,6 +1,16 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
+  # Sidekiqの管理画面にBasic認証を追加する
+  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
+  
+  # Basic Authentication
+  if Rails.env.production?
+    require 'rack/auth/basic'
+
+    Sidekiq::Web.use(Rack::Auth::Basic) do |username, password|
+      username == 'admin-yokki' && password == 'password-yokki-Love'
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
