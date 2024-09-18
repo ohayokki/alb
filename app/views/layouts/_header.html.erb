@@ -8,7 +8,7 @@
 
       <div class="col-6 text-end">
         <% if user_signed_in? %>
-          <div>ようこそ<%= current_user.inspect %>さん</div>
+          <div>ようこそ<%= current_user.name %>さん</div>
           <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete} %>
         <% else %>
           <%= link_to "ログイン", login_path %>
