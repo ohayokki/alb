@@ -8,6 +8,9 @@
   <div class="row mb-3">
     <div class="col-sm-7">
       <h2><%= @shop.name %></h2>
+      <% if @shop.status == "閉店" %>
+        <p class="btn btn-danger rounded-0">閉店しました</p>
+      <% end %>
     </div>
     <div class="col-sm-5 text-end">
       <h2><%= @shop.tel %></h2>

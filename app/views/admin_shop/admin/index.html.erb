@@ -1,41 +1,11 @@
-<div class="container-xxl mt-5 mb-5">
-  <div class="row">
-    <h1>掲載店舗様店舗管理</h1>
+<h1>掲載店舗様店舗管理</h1>
 
-    <% unless @shop.vacant_until %>
-      <%= form_with url: set_vacant_admin_shop_shop_path(@shop), method: :patch, remote: true, id: "vacant_form" do |form| %>
-        <div class="form-group">
-          <%= form.label :vacant_time, "空席にする時間を選択してください" %>
-          <%= form.select :vacant_time, options_for_select([1, 2, 3]), { prompt: '時間を選択' }, class: "form-control" %>
-        </div>
-        <%= form.submit "空席にする", class: "btn btn-primary w-100 mt-3" %>
-      <% end %>
-    <% else %>
-      <p><%= @shop.vacant_until.strftime("%y %m/%d %H:%M") %>まで空席と表示されます。</p>
-      <%= form_with url: remove_vacant_admin_shop_shop_path(@shop), method: :delete, remote: true, id: "vacant_form" do |form| %>
-        <%= form.submit "今すぐ空席を解除する", class: "btn btn-danger w-100" %>
-      <% end %>
-    <% end %>
-    <div class="row mt-5">
-      <div class="col-6 mb-5">
-        <%= link_to "店舗編集", admin_shop_shopedit_path, class: "btn btn-user w-50" %>
-      </div>
-      <div class="col-6 mb-5">
-        <%= link_to "休日管理",  admin_shop_holidays_path, class: "btn btn-user w-50" %>
-      </div>
-      <div class="col-6 mb-5">
-        <%= link_to "お知らせ登録",  admin_shop_notices_path, class: "btn btn-user w-50" %>
-      </div>
-      <div class="col-6 mb-5">
-        <%= link_to "クーポン管理", admin_shop_coupon_path, class: "btn btn-user w-50" %>
-      </div>
-      <div class="col-6 mb-5">
-        <%= link_to "画像管理", admin_shop_images_path, class: "btn btn-user w-50" %>
-      </div>
-    </div>
-  </div>
-
+<% if @shop.status == "掲載依頼" %>
+  順次掲載しております。恐れ入りますがお待ちくださいませ。
+<% else %>
+  <%= render "vacant", shop: @shop %>
+  <%= render "menu" %>
   <%= render "shops/calendar" %>
-</div>
+<% end %>
 
 

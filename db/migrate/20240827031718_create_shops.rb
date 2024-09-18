@@ -25,7 +25,7 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.boolean :mobile_payment
       t.string :website
       t.text :notes
-      t.text :coupon
+      t.text :coupon, default: nil
       t.string :address
       t.text :area_description
       t.references :area

@@ -131,9 +131,8 @@
         </div>
 
         <div class="mb-3">
-          <%= form.label :coupon, "クーポンの有無", class: "form-label" %>
-          <%= form.check_box :coupon, class: "form-check-input" %>
-          <%= form.label :coupon, "クーポンあり", class: "form-check-label" %>
+          <%= form.label :coupon, class: "form-label" %>
+          <%= form.text_area :coupon, class: "form-control", rows: 10 %>
         </div>
 
         <div class="mb-3">
@@ -219,7 +218,7 @@
 
           <%= form.submit "店舗情報修正", class: "btn btn-primary w-100" %>
     <% end %>
-    <%= link_to "閉店にする", status_change_admin_shop_path(@shop, status: "閉店"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-danger w-100 mt-5" %>
+    <%= link_to "閉店にする", status_change_admin_shop_path(@shop, status: "閉店"), data: { turbo_method: :get, turbo_confirm: "本当に閉店にしますか？"}, class: "btn btn-danger w-100 mt-5" %>
 
   </div>
 </div>

@@ -1,0 +1,44 @@
+/* 全体のセクションのスタイル */
+.coupon {
+  background: #ffcfcf; /* 明るいグレーの背景 */
+  padding: 2rem 0; /* 上下に2remの余白 */
+  text-align: center; /* セクション内のテキストを中央揃え */
+}
+
+
+/* 見出しのスタイル */
+.coupon h2 {
+  font-size: 2rem; /* フォントサイズを2remに設定 */
+  color: #333; /* ダークグレーの文字色 */
+  margin-bottom: 1.5rem; /* 下に1.5remの余白 */
+  font-weight: bold; /* 太字 */
+}
+
+/* クーポン内容のスタイル */
+.coupon-content {
+  background: #fff; /* 白い背景 */
+  border-radius: 8px; /* 角を8px丸める */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽いシャドウ */
+  padding: 2rem; /* 内側に2remの余白 */
+  max-width: 600px; /* 最大幅を600pxに設定 */
+  margin: 0 auto; /* 中央に配置 */
+  white-space: pre-wrap;
+
+}
+
+/* クーポンのテキストスタイル */
+.coupon-content p {
+  font-size: 1.125rem; /* フォントサイズを1.125remに設定 */
+  color: #666; /* グレーの文字色 */
+  margin: 0; /* 余白をリセット */
+}
+
+/* クーポンのリンクスタイル */
+.coupon-content a {
+  color: #007bff; /* ブルーのリンク色 */
+  text-decoration: none; /* 下線をなし */
+}
+
+.coupon-content a:hover {
+  text-decoration: underline; /* ホバー時に下線を追加 */
+}
