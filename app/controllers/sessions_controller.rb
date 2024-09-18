@@ -72,10 +72,13 @@ class SessionsController < ApplicationController
     @user.name = user_info['displayName']
     @user.image_url = user_info['pictureUrl']
     @user.save
-  
-    session[:user_id] = @user.id
-  
-    redirect_to root_path, notice: 'Logged in successfully!'
+    if @user
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: 'Logged in successfully!'
+    else
+      flash[:danger] = "ログインに失敗しました。"
+      redirect_to root_path
+    end
   end
 
 
