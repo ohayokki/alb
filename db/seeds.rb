@@ -55,20 +55,52 @@
   end
 
   # Create districts if none exist
-  if District.none?
-    districts = [
-      {prefecture_id: 1, name: "do-oh"},
-      {prefecture_id: 1, name: "do-nan"},
-      {prefecture_id: 1, name: "do-hoku"},
-      {prefecture_id: 1, name: "do-toh"},
-      {prefecture_id: 2, name: "aomori"},
-      {prefecture_id: 2, name: "hirosaki"},
-      {prefecture_id: 2, name: "hachinohe"},
-      # その他の地区データも続けて追加
-    ]
-    districts.each do |district|
-      District.create!(district)
-    end
+  districts = [
+    {prefecture_id: 1, name: "do-oh"},
+    {prefecture_id: 1, name: "do-nan"},
+    {prefecture_id: 1, name: "do-hoku"},
+    {prefecture_id: 1, name: "do-toh"},
+    {prefecture_id: 2, name: "aomori"},
+    {prefecture_id: 2, name: "hirosaki"},
+    {prefecture_id: 2, name: "hachinohe"},
+    {prefecture_id: 3, name: "iwate"},
+    {prefecture_id: 3, name: "morioka"},
+    {prefecture_id: 4, name: "miyagi"},
+    {prefecture_id: 4, name: "sendai"},
+    {prefecture_id: 5, name: "akita"},
+    {prefecture_id: 6, name: "yamagata"},
+    {prefecture_id: 7, name: "fukushima"},
+    {prefecture_id: 8, name: "chuo"},
+    {prefecture_id: 8, name: "minato"},
+    {prefecture_id: 8, name: "chiyoda"},
+    {prefecture_id: 8, name: "koto"},
+    {prefecture_id: 8, name: "shinagawa"},
+    {prefecture_id: 8, name: "edogawa"},
+    {prefecture_id: 8, name: "katsushika"},
+    {prefecture_id: 8, name: "sumida"},
+    {prefecture_id: 8, name: "ota"},
+    {prefecture_id: 8, name: "meguro"},
+    {prefecture_id: 8, name: "setagaya"},
+    {prefecture_id: 8, name: "shibuya"},
+    {prefecture_id: 8, name: "shinjyuku"},
+    {prefecture_id: 8, name: "nakano"},
+    {prefecture_id: 8, name: "suginami"},
+    {prefecture_id: 8, name: "toshima"},
+    {prefecture_id: 8, name: "kita"},
+    {prefecture_id: 8, name: "nerima"},
+    {prefecture_id: 8, name: "bunkyo"},
+    {prefecture_id: 8, name: "arakawa"},
+    {prefecture_id: 8, name: "taito"},
+    {prefecture_id: 8, name: "itabashi"},
+    {prefecture_id: 8, name: "adachi"},
+    {prefecture_id: 8, name: "kitatama"},
+    {prefecture_id: 8, name: "minamitama"},
+    {prefecture_id: 8, name: "nishitama"},
+    {prefecture_id: 8, name: "izuogasawara"},
+
+  ]
+  districts.each do |district|
+    District.find_or_create_by!(district)
   end
 
   if Area.none?
