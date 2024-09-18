@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     if params[:state] == session[:state]
 
       line_user_id = ENV['LINE_REDIRECT_URI']
-      user = User.find_or_initialize_by(line_user_id: line_user_id)
+      user = User.find_or_initialize_by(line_uid: line_user_id)
 
       if user.save
         session[:user_id] = user.id
