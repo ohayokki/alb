@@ -1,7 +1,7 @@
 <div class="shop-header">
   <% if @shop.image1.present? %>
     <div class="text-center mb-3">
-      <%= image_tag @shop.image1.to_s %>
+      <%= image_tag @shop.image1.to_s, class: "img-fluid" %>
     </div>
   <% end %>
 
