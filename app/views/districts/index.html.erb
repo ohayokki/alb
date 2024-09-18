@@ -1,14 +1,15 @@
-<% title = t("districts.#{@district.name}") %>
-<%= render "layouts/header", title: title %>
-
 <div class="container-xxl">
-  <div class="bread-column">
-    <%= link_to "アルバ", root_path %>
-    &emsp;-&emsp;
-    <%= link_to t("prefectures.#{@district.prefecture.name}"), prefectures_path(@district.prefecture.name) %>
-    &emsp;-&emsp;
-    <%= title %>
+    <div class="bread-column">
+      <%= link_to "アルバ", root_path %>
+      &emsp;-&emsp;
+      <%= link_to t("prefectures.#{@district.prefecture.name}"), prefectures_path(@district.prefecture.name) %>
+
+      &emsp;-&emsp;
+
+      <%= @title %>
+
   </div>
+
 
   <% if @areas.any? %>
     <h2><%= @district.display_name %>のエリア</h2>
@@ -17,13 +18,13 @@
     </div>
   <% end %>
 
-  <h2><%= title %>のバー</h2>
+  <h2><%= @district.display_name %>のバー</h2>
   <%= render "shops/near_serch", url:  districts_path(@district.name) %>
   <%= render @shops %>
 
   <% if @genres.any? %>
     <div class="genre">
-      <h2><%= title %>バージャンル別</h2>
+      <h2><%= @district.display_name %>バージャンル別</h2>
       <div class="row">
         <% @genres.each do |genre| %>
           <div class="col-sm-4 mb-3">

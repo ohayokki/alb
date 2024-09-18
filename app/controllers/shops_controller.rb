@@ -13,6 +13,7 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @title = @shop.prefecture.display_name
     start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today.beginning_of_month
     @holidays = @shop.holidays_for_month(start_date)
     @notices = Notice.where(shop: @shop)

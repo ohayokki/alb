@@ -1,6 +1,7 @@
 class PrefecturesController < ApplicationController
   def index
     @prefecture = Prefecture.includes(:districts).find_by(name: params[:id])
+    @title = @prefecture.display_name
     @shops = @prefecture.shops.where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).includes(:area, :genre)
     @genres = Genre.joins(:shops).where(shops: { id: @shops.select(:id) }).distinct
 

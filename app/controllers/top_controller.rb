@@ -1,5 +1,6 @@
 class TopController < ApplicationController
   def index
+    @title = "全国"
     @new_shops = Shop.includes(:area, :genre).order("created_at desc").where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).limit(25)
     if params[:latitude].present? && params[:longitude].present?
       @latitude = params[:latitude].to_f

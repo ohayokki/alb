@@ -1,4 +1,3 @@
-
 <% if @area %>
   <% page_title = @area.name %>
   <% title =  "[#{@genre.name}]" + @area.name %>
@@ -8,7 +7,6 @@
   <% page_title = @prefecture.display_name %>
 <% end %>
 
-<%= render "layouts/header", title: page_title, genre: @genre.name if @genre.present? %>
 <%= render "layouts/header", title: page_title unless @genre.present? %>
 
 <div class="container-xxl">

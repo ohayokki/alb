@@ -1,6 +1,6 @@
 <header>
   <div class="container-fluid">
-    <div class="page-title"><%= title %>のBAR・飲み屋情報ポータル</div>
-      <h1>Allbar -アルバ<%= title %>版-<%= "&emsp;".html_safe + genre + "一覧" if @genre.present? %></h1>
+    <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
+      <h1>Allbar -アルバ<%= @title %>版-&emsp;<%= @genre.name + "一覧" if @genre.present? %></h1>
   </div>
 </header>
