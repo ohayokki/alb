@@ -7,12 +7,15 @@
       </div>
 
       <div class="col-6 text-end">
-        <% if user_signed_in? %>
-          <div>ようこそ<%= current_user.name %>さん</div>
-          <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete} %>
-        <% else %>
-          <%= link_to "ログイン", login_path %>
-        <% end %>
+        <div class="signed">
+          <% if user_signed_in? %>
+            ようこそ<%= current_user.name %>さん
+            <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
+          <% else %>
+            <%= link_to "ログイン", login_path %>
+          <% end %>
+        </div>
       </div>
+    </div>
   </div>
 </header>
