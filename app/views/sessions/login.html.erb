@@ -1,6 +1,6 @@
 <!-- app/views/home/index.html.erb -->
 <% if session[:user_id] %>
-  <p>ようこそ、<%= current_user.name %>さん!</p>
+  <p>ようこそ、<%= User.find(session[:uset_id]).name %>さん!</p>
   <%= link_to 'ログアウト', logout_path, method: :delete %>
 <% else %>
   <%= link_to 'LINEでログイン', line_login_path, data: { turbo: false }, class: 'btn btn-primary' %>
@@ -23,4 +23,3 @@
     background-color: #17a85a;
   }
 </style>
-
