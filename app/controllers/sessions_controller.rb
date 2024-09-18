@@ -26,6 +26,9 @@ class SessionsController < ApplicationController
     # CSRF対策のトークンが一致する場合のみ、ログイン処理を続ける
     if params[:state] == session[:state]
 
+      puts "@@@@@@@@@@@@@"
+
+      puts params.inspect
       line_user_id = ENV['LINE_REDIRECT_URI']
       user = User.find_or_initialize_by(line_uid: line_user_id)
 
@@ -54,7 +57,6 @@ class SessionsController < ApplicationController
     # https://developers.line.biz/ja/reference/line-login/#issue-access-token
 
     url = 'https://api.line.me/oauth2/v2.1/token'
-    redirect_uri = line_login_api_callback_url
 
     options = {
       headers: {
