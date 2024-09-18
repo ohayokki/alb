@@ -9,21 +9,16 @@ class SessionsController < ApplicationController
   end
 
   def line_login
-    # ログインセッションごとにWebアプリでランダム生成
+    # ログインセッションごとにWebアプリでランダム生成CSRF用
     session[:state] = SecureRandom.urlsafe_base64
     base_authorization_url = 'https://access.line.me/oauth2/v2.1/authorize'
-    response_type = 'code'
     client_id = ENV['LINE_CHANNEL_ID']
     redirect_uri = ENV['LINE_REDIRECT_URI']
     state = session[:state]
     scope = 'profile%20openid' #ユーザーに付与を依頼する権限
-    authorization_url = "#{base_authorization_url}?response_type=#{response_type}&client_id=#{client_id}&redirect_uri=#{redirect_uri}&state=#{state}&scope=#{scope}"
-    puts "@@@@@@@@@@@@@@@@"
-    puts "client_id:" +  client_id
-    puts "state:" + session[:state]
-    puts "redirect_uri:" + redirect_uri
-    redirect_to authorization_url, allow_other_host: true
-    puts "1111111111111111111111111"
+    authorization_url = "#{base_authorization_url}?response_type=code&client_id=#{client_id}&redirect_uri=#{redirect_uri}&state=#{state}&scope=#{scope}"
+
+    redirect_to authorization_url
   end
 
 
