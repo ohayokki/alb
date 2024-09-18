@@ -28,3 +28,8 @@
   height: auto;
   display: block;
 }
+.calendar-title{
+  margin-left: 8px;
+  font-size: 1.8em;
+}
+
