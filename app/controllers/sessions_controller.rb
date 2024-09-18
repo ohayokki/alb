@@ -35,7 +35,6 @@ class SessionsController < ApplicationController
 
     puts "@@@@@@@@@@@@@"
 
-    puts params.inspect
     line_user_id = ENV['LINE_REDIRECT_URI']
     user = User.find_or_initialize_by(line_uid: line_user_id)
 
@@ -57,7 +56,9 @@ class SessionsController < ApplicationController
     req = Net::HTTP::Get.new(uri)
     req['Authorization'] = "Bearer #{access_token}"
     begin
-      http = Net::HTTP.new(uri.host, uri.port, use_ssl: true)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+
       res = http.request(req)
     rescue TypeError => e
       Rails.logger.error "TypeError: #{e.message}"
