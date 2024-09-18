@@ -99,9 +99,4 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
-
-  config.action_controller.allow_forgery_protection = true
-  config.hosts << "access.line.me"
-  config.hosts << "allbar-beb6bcef5d43.herokuapp.com/"
 end
