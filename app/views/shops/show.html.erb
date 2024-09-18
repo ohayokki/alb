@@ -12,15 +12,17 @@
 
   </div>
   <%= render "shop_header" %>
-
   <% if @shop.vacant_job_id %>
     <div class="btn btn-primary w-100 mb-3">ただいま空席あります！</div>
   <% end %>
   <%= render "icon" %>
+
   <%= render "calendar" %>
 </div>
 
 <%= render "description" %>
+<%= render "comment" %>
+
 <%= render "coupon" %>
 <div class="container-xxl mb-5">
   <%= render "map"%>

@@ -18,6 +18,10 @@ class ShopsController < ApplicationController
     @holidays = @shop.holidays_for_month(start_date)
     @notices = Notice.where(shop: @shop)
     @notices_by_date = @notices.group_by(&:date)
+    @comments = @shop.user_comments.includes(:user).order("created_at")
+    if user_signed_in?
+      @comment = current_user.user_comments.new
+    end
   end
 
   def login

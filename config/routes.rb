@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   
   # Basic Authentication
   if Rails.env.production?
-    require 'rack/auth/basic'
-
     Sidekiq::Web.use(Rack::Auth::Basic) do |username, password|
-      username == 'admin-yokki' && password == 'password-yokki-Love'
+      username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
     end
   end
 
@@ -58,6 +56,8 @@ Rails.application.routes.draw do
   resources :shops, only: [:create, :show]
   resources :areas, only: [:show]
 
+  #口コミ用
+  resources :user_comments, only: [:create, :destroy]
   #　店舗ログイン関係
   get "shop_login", to: "shops#login", as: :shop_login
   post "shop_login", to: "shops#login_process"

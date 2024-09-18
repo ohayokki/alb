@@ -9,7 +9,7 @@
       <div class="col-6 text-end">
         <div class="signed">
           <% if user_signed_in? %>
-            ようこそ<%= current_user.name %>さん
+            ようこそ<%= current_user.name %>さん<br>
             <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
           <% else %>
             <%= link_to "ログイン", login_path %>
