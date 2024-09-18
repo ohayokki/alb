@@ -57,6 +57,14 @@ Rails.application.routes.draw do
   get 'districts/by_prefecture/:prefecture_id', to: 'districts#by_prefecture', as: 'districts_by_prefecture'
   get 'areas/by_district/:district_id', to: 'admin/areas#by_district', as: 'areas_by_district'
 
+  # ユーザセッション関係
+  # OmniAuthコールバック用のルート
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: redirect('/')
+  delete '/logout', to: 'sessions#destroy'
+  get "login", to: "sessions#login"
+  post "line-login,", to: "sessions#line_login", as: :line_login
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
