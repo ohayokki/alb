@@ -1,13 +1,12 @@
 .shop-description{
   padding:30px 5px;
   margin-top: 60px;
-  background-color: #bbd2d1;
-  font-size: 1.5em;
-  font-style: italic;
+  font-size: 1.3em;
+  background: linear-gradient(#e0efef, #bbd2d1);
 }
 
 .shop-description h3{
-  font-size: 1.6em;
+  font-size: 1.4em;
 }
 
 .shop-description p{
