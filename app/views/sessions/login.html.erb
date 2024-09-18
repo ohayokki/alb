@@ -1,7 +1,7 @@
 <!-- app/views/home/index.html.erb -->
 <% if session[:user_id] %>
   <p>ようこそ、さん!</p>
-  <%= link_to 'ログアウト', logout_path, method: :delete %>
+  <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete} %>
 <% else %>
   <%= link_to 'LINEでログイン', line_login_path, data: { turbo: false }, class: 'btn btn-primary' %>
 
