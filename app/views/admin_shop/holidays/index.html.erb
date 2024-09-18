@@ -48,4 +48,19 @@
     </div>
     <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
   <% end %>
+
+  <% if @holidays.any? %>
+    <h2 class="mt-5">登録された特別な日</h2>
+    <table class="table table-responsive">
+      <tr><th>ステータス</th><th>日付</th><th></th><th></th></tr>
+      <% @holidays.each do |holiday| %>
+        <tr>
+          <td><%= holiday.status %></td>
+          <td><%= holiday.date %></td>
+          <td><%= link_to "編集", edit_admin_shop_holiday_path(holiday) %></td>
+          <td><%= link_to "削除", admin_shop_holiday_path(holiday), data: { turbo_method: :delete, turbo_confirm: "本当に削除してよろしいですか？" } %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>

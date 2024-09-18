@@ -15,7 +15,7 @@ class Shop < ApplicationRecord
     有料掲載: 4,
     閉店: 5
   }
-    has_many :holidays
+  has_many :holidays
   has_many :notices
   belongs_to :area, optional: true
   belongs_to :prefecture, optional: true

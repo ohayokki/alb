@@ -1,2 +1,13 @@
-<h1>AdminShop::Holidays#edit</h1>
-<p>Find me in app/views/admin_shop/holidays/edit.html.erb</p>
+<%= form_with(model: @holiday, url: admin_shop_holiday_path(@holiday)) do |form| %>
+  <div class="mb-3">
+    <%= form.label :date, "特別な営業日" %>
+    <%= form.date_field :date, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, "営業状況" %>
+    <%= form.select :status, Holiday.statuses.keys.map { |status| [status.humanize, status] }, class: "form-control" %>
+  </div>
+
+  <%= form.submit "保存", class: "btn btn-user w-100" %>
+<% end %>

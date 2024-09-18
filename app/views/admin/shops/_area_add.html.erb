@@ -1,0 +1,17 @@
+<%= form_with(url: admin_areas_path, method: :post, local: false, id: 'new_area_form') do |form| %>
+  <div class="form-group">
+    <%= form.label :name, "エリア名", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", id: 'new_area_name' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :prefecture_id, "都道府県", class: "form-label" %>
+    <%= form.collection_select :prefecture_id, Prefecture.all, :id, :display_name, { prompt: "選択" }, { class: "form-select", id: 'new_area_prefecture_select' } %>
+  </div>
+  <div class="form-group">
+    <%= form.label :district_id, "広域エリア", class: "form-label" %>
+    <%= form.collection_select :district_id, [], :id, :display_name, { prompt: "選択" }, { class: "form-select", id: 'new_area_district_select' } %>
+  </div>
+  <div class="form-group">
+    <%= form.submit "追加", class: "btn btn-primary" %>
+  </div>
+<% end %>

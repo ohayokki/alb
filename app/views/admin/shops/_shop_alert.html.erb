@@ -1,0 +1,15 @@
+<% unless @shop.area%>
+  <div class="alert alert-danger">
+    エリアを登録しないと一覧に表示されません。<br>
+  </div>
+<% end %>
+<% unless @shop.latitude || @shop.longitude %>
+  <div class="alert alert-danger">
+    緯度・経度を登録しないと距離を計算できません。
+  </div>
+<% end %>
+<% unless @shop.googlemap.present? %>
+  <div class="alert alert-danger">
+    GoogleMapの共有埋め込みリンクを登録しないと地図が表示されません。
+  </div>
+<% end %>

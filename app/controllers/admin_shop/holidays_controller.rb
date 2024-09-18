@@ -1,6 +1,7 @@
 class AdminShop::HolidaysController < AdminShop::AdminController
   def index
     @holiday = @shop.holidays.build
+    @holidays = @shop.holidays.where.not(id: nil).order("created_at")
   end
 
   def create
@@ -22,7 +23,7 @@ class AdminShop::HolidaysController < AdminShop::AdminController
     @holiday = @shop.holidays.find(params[:id])
     if @holiday.update(holiday_params)
       flash[:success] = "特別な日が更新されました。"
-      redirect_to admin_shop_shop_path(@shop)
+      redirect_to admin_shop_holidays_url
     else
       flash.now[:danger] = "特別な日の更新に失敗しました。"
       render :edit, status: :unprocessable_entity
@@ -33,7 +34,7 @@ class AdminShop::HolidaysController < AdminShop::AdminController
     @holiday = @shop.holidays.find(params[:id])
     @holiday.destroy
     flash[:success] = "特別な日が削除されました。"
-    redirect_to admin_shop_shop_path(@shop)
+    redirect_to admin_shop_holidays_url
   end
 
   private

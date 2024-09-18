@@ -1,36 +1,11 @@
 <div class="container-xxl mt-5">
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
-      <h1><%= @shop.name %>(<%= @shop.status %>)中</h1>
-      <% unless @shop.area%>
-        <div class="alert alert-danger">
-          エリアを登録しないと一覧に表示されません。<br>
-        </div>
-      <% end %>
-      <% unless @shop.latitude || @shop.longitude %>
-        <div class="alert alert-danger">
-          緯度・経度を登録しないと距離を計算できません。
-        </div>
-      <% end %>
-      <% unless @shop.googlemap.present? %>
-        <div class="alert alert-danger">
-          GoogleMapの共有埋め込みリンクを登録しないと地図が表示されません。
-        </div>
-      <% end %>
-      <% if @shop.tiral_start_date.nil? && ( @shop.status != "無料掲載" || @shop.status != "有料掲載" ) %>
-        <%= link_to "お試し有料掲載にする", status_change_admin_shop_path(@shop, status: "お試し有料掲載"), data: { turbo_confirm: "お試し有料掲載にしますか？"}, class: "btn btn-warning" %>
-      <% end  %>
-      <% if @shop.status == "掲載依頼" || @shop.status == "お試し有料掲載" %>
-        <%= link_to "無料掲載にする", status_change_admin_shop_path(@shop, status: "無料掲載"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-success" %>
-        <%= link_to "有料掲載にする", status_change_admin_shop_path(@shop, status: "有料掲載"), data: { turbo_confirm: "有料掲載しますか？"}, class: "btn btn-primary" %>
-      <% elsif @shop.status ==  "有料掲載" %>
-        <%= link_to "無料掲載にする", status_change_admin_shop_path(@shop, status: "無料掲載"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-success" %>
-      <% elsif @shop.status ==  "無料掲載" %>
-        <%= link_to "有料掲載にする", status_change_admin_shop_path(@shop, status: "有料掲載"), data: { turbo_confirm: "有料掲載しますか？"}, class: "btn btn-primary" %>
-      <% elsif @shop.status ==  "閉店" %>
-        <%= link_to "無料掲載にする", status_change_admin_shop_path(@shop, status: "無料掲載"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-success" %>
-        <%= link_to "有料掲載にする", status_change_admin_shop_path(@shop, status: "有料掲載"), data: { turbo_confirm: "有料掲載しますか？"}, class: "btn btn-primary" %>
-      <% end %>
+      <h1><%= @shop.name %>(<%= @shop.status %>中）</h1>
+
+      <%= render "shop_status" %>
+      <%= render "shop_alert" %>
+      <%= render "area_add" %>
 
       <h2 class="mt-3">編集フォーム</h2>
       <%= form_with model: @shop, url: admin_shop_path(@shop), local: true, html: { class: "container" } do |form| %>
