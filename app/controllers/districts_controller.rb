@@ -2,7 +2,8 @@ class DistrictsController < ApplicationController
   def index
     @district = District.find_by(name: params[:id])
     @title = @district.display_name 
-    @genres = Genre.all
+    @genres = Genre.joins(:shops).where(shops: { district_id: @district.id, status: ["無料掲載", "有料掲載", "お試し有料掲載"] }).distinct
+
     @shops = @district.shops.where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).includes(:area, :genre)
     @areas = @district.areas.joins(:shops).where(shops: { status: ["無料掲載", "有料掲載", "お試し有料掲載"] }).distinct
 
