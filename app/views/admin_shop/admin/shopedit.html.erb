@@ -13,110 +13,6 @@
       </div>
     <% end %>
 
-    <div class="row mb-3">
-      <div class="col-9">
-        <%= form.label :shop_logo %>
-        <%= form.file_field :shop_logo, class: "form-control" %>
-      </div>
-      <div class="col">
-        <% if @shop.shop_logo %>
-          <%= image_tag(@shop.shop_logo.to_s, class: "img-fluid") %>
-        <% else %>
-          お店ロゴが登録されていません。
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-9">
-        <%= form.label :image1 %>
-        <%= form.file_field :image1, class: "form-control" %>
-      </div>
-      <div class="col">
-        <% if @shop.image1.present? %>
-          <%= image_tag(@shop.image1.to_s, class: "img-fluid") %>
-          <label>
-            <%= form.check_box :remove_image1 %>
-            画像削除
-          </label>
-        <% else %>
-          画像１が登録されていません。
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-9">
-        <%= form.label :image2 %>
-        <%= form.file_field :image2, class: "form-control" %>
-        <label>
-          <%= form.check_box :remove_image2 %>
-          画像削除
-        </label>
-      </div>
-      <div class="col">
-        <% if @shop.image2.present? %>
-          <%= image_tag(@shop.image2.to_s, class: "img-fluid") %>
-        <% else %>
-          画像2が登録されていません。
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-9">
-        <%= form.label :image3 %>
-        <%= form.file_field :image3, class: "form-control" %>
-        <label>
-          <%= form.check_box :remove_image3 %>
-          画像削除
-        </label>
-      </div>
-      <div class="col">
-        <% if @shop.image3.present? %>
-          <%= image_tag(@shop.image1.to_s, class: "img-fluid") %>
-        <% else %>
-          画像3が登録されていません。
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-9">
-        <%= form.label :image4 %>
-        <%= form.file_field :image4, class: "form-control" %>
-        <label>
-          <%= form.check_box :remove_image4 %>
-          画像削除
-        </label>
-      </div>
-      <div class="col">
-        <% if @shop.image4.present? %>
-          <%= image_tag(@shop.image4.to_s, class: "img-fluid") %>
-        <% else %>
-          画像4が登録されていません。
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-9">
-        <%= form.label :image5 %>
-        <%= form.file_field :image5, class: "form-control" %>
-        <label>
-          <%= form.check_box :remove_image5 %>
-          画像削除
-        </label>
-      </div>
-      <div class="col">
-        <% if @shop.image5.present? %>
-          <%= image_tag(@shop.image5.to_s, class: "img-fluid") %>
-        <% else %>
-          画像5が登録されていません。
-        <% end %>
-      </div>
-    </div>
-
       <div class="mb-3">
         <%= form.label :tel %>
         <%= form.text_field :tel, class: "form-control" %>
@@ -144,7 +40,7 @@
 
       <div class="mb-3">
         <%= form.label :introduction %>
-        <%= form.text_area :introduction, class: "form-control" %>
+        <%= form.text_area :introduction, class: "form-control", rows: 10 %>
       </div>
 
       <div class="mb-3">

@@ -16,6 +16,12 @@ class AdminShop::AdminController < ApplicationController
     @shop = Shop.find(session[:shop_id])
   end
 
+  def coupon
+  end
+
+  def images
+  end
+
   private
   def shop_signed_in?
     unless shop_logged_in?

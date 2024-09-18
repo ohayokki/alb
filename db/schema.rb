@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_180740) do
     t.boolean "mobile_payment"
     t.string "website"
     t.text "notes"
-    t.boolean "coupon"
+    t.text "coupon"
     t.string "address"
     t.text "area_description"
     t.bigint "area_id"

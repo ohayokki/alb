@@ -1,0 +1,26 @@
+<div class="container-xxl mt-5 mb-5">
+  <%= render "layouts/flash" %>
+  <h1><%= @shop.name %>クーポン管理</h1>
+    <%= form_with model: @shop, url: admin_shop_shop_path(@shop), local: true do |form| %>
+    <% if @shop.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
+        <ul>
+          <% @shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="mb-3">
+      <%= form.label :coupon %>
+      <%= form.text_area :coupon, class: "form-control", rows: 20 %>
+    </div>
+
+
+      <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
+    </div>
+  <% end %>
+</div>

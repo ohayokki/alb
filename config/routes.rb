@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
     resources :notices, except: [:new]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
+    get "coupon-edit", to: "admin#coupon", as: :coupon
+    get "shop-image", to: "admin#images", as: :images
   end
 
   # 管理者用

@@ -5,19 +5,14 @@
       <% if @holidays.include?(date) %>
         <div class="holiday">休</div>
       <% end %>
-
       <% notices_on_date = @notices_by_date[date] || [] %>
       <% notices_on_date.each do |notice| %>
         <div class="notice">
           <a data-bs-toggle="modal" data-bs-target="#notice-Modal-<%= notice.id %>">
             <%= notice.title %>
           </a>
-          
           <%= render "shops/calender_modal", notice: notice %>
-          <%#= image_tag notice.image.to_s if notice.image? %>
-          <%#= link_to notice.title, shop_notice_path(@shop, notice) %>
         </div>
-
       <% end %>
     </div>
   <% end %>
