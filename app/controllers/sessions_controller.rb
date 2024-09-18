@@ -56,9 +56,14 @@ class SessionsController < ApplicationController
     uri = URI('https://api.line.me/v2/profile')
     req = Net::HTTP::Get.new(uri)
     req['Authorization'] = "Bearer #{access_token}"
-  
-    http = Net::HTTP.new(uri.host, uri.port, use_ssl: true)
-    res = http.request(req)
+    begin
+      http = Net::HTTP.new(uri.host, uri.port, use_ssl: true)
+      res = http.request(req)
+    rescue TypeError => e
+      Rails.logger.error "TypeError: #{e.message}"
+      Rails.logger.error e.backtrace.join("\n")
+    end
+
   
     user_info = JSON.parse(res.body)
   
