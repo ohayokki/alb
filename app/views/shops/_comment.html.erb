@@ -1,14 +1,16 @@
 <section class="container-xxl mb-5">
-  <h2>ユーザーの口コミ</h2>
-  <% @comments.each do |comment| %>
-    <div class="comment">
-      <p class="comment-time"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
-      <p class="comment-text"><%= comment.comment %></p>
-      <p class="comment-author">- <%= comment.user.name %></p>
-      <% if comment.user == current_user %>
-        <p><%= link_to "削除する", user_comment_path(comment), data: {turbo_method: :delete, turbo_confirm: "本当に口コミを削除しますか？"} %></p>
-      <% end %>
-    </div>
+  <% if @comments.any?%>
+    <h2>ユーザーの口コミ</h2>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment-time"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+        <p class="comment-text"><%= comment.comment %></p>
+        <p class="comment-author">- <%= comment.user.name %></p>
+        <% if comment.user == current_user %>
+          <p><%= link_to "削除する", user_comment_path(comment), data: {turbo_method: :delete, turbo_confirm: "本当に口コミを削除しますか？"} %></p>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 <style>
 .comment {
@@ -45,7 +47,7 @@
 
       <div class="row mb-3">
         <div class="mb-3">
-          <%= f.label :comment, "口コミ" %>を登録
+          <h2><%= f.label :comment, "口コミ" %>を登録</h2>
           <%= f.text_area :comment, class: "form-control", rows: 5 %>
         </div>
       </div>
