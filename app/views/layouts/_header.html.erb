@@ -1,6 +1,17 @@
 <header>
   <div class="container-fluid">
-    <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
-      <h1>Allbar -アルバ<%= @title %>版-&emsp;<%= @genre.name + "一覧" if @genre.present? %></h1>
+    <div class="row">
+      <div class="col-6">
+        <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
+        <h1>Allbar -アルバ<%= @title %>版-&emsp;<%= @genre.name + "一覧" if @genre.present? %></h1>
+      </div>
+
+      <div class="col-6 text-end">
+        <% if user_signed_in? %>
+          <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete} %>
+        <% else %>
+          <%= link_to "ログイン", login_path %>
+        <% end %>
+      </div>
   </div>
 </header>
