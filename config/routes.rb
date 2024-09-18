@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get '/auth/failure', to: redirect('/')
   delete '/logout', to: 'sessions#destroy'
   get "login", to: "sessions#login"
-  post "line-login,", to: "sessions#line_login", as: :line_login
+  get "line-login", to: "sessions#line_login", as: :line_login
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

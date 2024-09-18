@@ -3,7 +3,8 @@
   <p>ようこそ、<%= current_user.name %>さん!</p>
   <%= link_to 'ログアウト', logout_path, method: :delete %>
 <% else %>
-  <%= link_to 'LINEでログイン', line_login_path, data: { turbo_method: :post}, class: 'btn btn-primary', data-turbo: "false" %>
+  <%= link_to 'LINEでログイン', line_login_path, data: { turbo: false }, class: 'btn btn-primary' %>
+
 <% end %>
 <style>
   /* app/assets/stylesheets/application.css */
