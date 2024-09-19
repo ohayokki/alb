@@ -54,7 +54,9 @@
   margin: 0 auto;
   width:98%;
 }
-
+.staff-message p{
+  padding-right: 16px;
+}
 .staff-detail .col{
   margin: 5px 0 5px 12px;
 
