@@ -1,11 +1,6 @@
 <div class="container-fluid footer">
-  <h2>都道府県別</h2>
   <div class="row area-links">
-    <% Prefecture.all.each do |prefecture| %>
-      <div class="col-2">
-        <%= link_to t("prefectures.#{prefecture.name}"), prefectures_path(prefecture.name), class: "link-badge" %><br>
-      </div>
-    <% end %>
+    <%= render "top/prefecute_modal" %>
   </div>
 
   <nav class="footer_nav">
