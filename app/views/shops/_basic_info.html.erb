@@ -1,11 +1,11 @@
 <section class="shop-basic-information">
-  <h2><%= @shop.name %>の店舗情報</h2>
+  <h2><%= shop.name %>の店舗情報</h2>
   <div class="row">
     <div class="col-3">
       店名
     </div>
     <div class="col-9">
-      <%= @shop.name %>
+      <%= shop.name %>
     </div>
   </div>
   <div class="row">
@@ -13,7 +13,7 @@
       TEL
     </div>
     <div class="col-9">
-      <%= @shop.tel %>
+      <%= shop.tel %>
     </div>
   </div>
   <div class="row">
@@ -21,7 +21,7 @@
       住所
     </div>
     <div class="col-9">
-      <%= @shop.address %>
+      <%= shop.address %>
     </div>
   </div>
   <div class="row">
@@ -29,7 +29,7 @@
       アクセス
     </div>
     <div class="col-9">
-      <%= @shop.access %>
+      <%= shop.access %>
     </div>
   </div>
   <div class="row">
@@ -37,7 +37,7 @@
       営業時間
     </div>
     <div class="col-9">
-      <%= @shop.hours %>
+      <%= shop.hours %>
     </div>
   </div>
   <div class="row">
@@ -45,7 +45,7 @@
       定休日
     </div>
     <div class="col-9">
-      <%= @shop.holiday %>
+      <%= shop.holiday %>
     </div>
   </div>
   <div class="row">
@@ -53,7 +53,7 @@
       平均予算
     </div>
     <div class="col-9">
-      <%= @shop.budget %>
+      <%= shop.budget %>
     </div>
   </div>
   <div class="row">
@@ -61,7 +61,7 @@
       ホームページ
     </div>
     <div class="col-9">
-      <%= link_to @shop.website, @shop.website, target: "blank" %>
+      <%= link_to shop.website, shop.website, target: "blank" %>
     </div>
   </div>
 </section>

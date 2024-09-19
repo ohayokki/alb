@@ -1,17 +1,8 @@
-<div class="container-xxl mb-5 mt-5">
 
   <h1>お知らせ作成</h1>
 
   <%= form_with model: @notice, url: admin_shop_notices_path, local: true, multipart: true do |form| %>
-    <% if @notice&.errors&.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% @notice.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render "layouts/error", model: @notice %>
 
     <div class="mb-3">
       <%= form.label :title, "タイトル" %>
@@ -49,4 +40,4 @@
     </tr>
   <% end %>
   </table>
-</div>
+

@@ -17,6 +17,7 @@ class Shop < ApplicationRecord
   }
   has_many :holidays
   has_many :notices
+  has_many :staffs
   has_many :user_comments
   belongs_to :area, optional: true
   belongs_to :prefecture, optional: true

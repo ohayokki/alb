@@ -19,6 +19,7 @@ class ShopsController < ApplicationController
     @notices = Notice.where(shop: @shop)
     @notices_by_date = @notices.group_by(&:date)
     @comments = @shop.user_comments.includes(:user).order("created_at")
+    @staffs = @shop.staffs
     if user_signed_in?
       @comment = current_user.user_comments.new
     end

@@ -16,7 +16,7 @@
     <div class="btn btn-primary w-100 mb-3">ただいま空席あります！</div>
   <% end %>
   <%= render "icon" %>
-
+  <%= render "staff" %>
   <%= render "calendar" %>
 </div>
 
@@ -26,5 +26,5 @@
 <%= render "coupon" %>
 <div class="container-xxl mb-5">
   <%= render "map"%>
-  <%= render "basic_info" %>
+  <%= render "basic_info", shop: @shop %>
 </div>

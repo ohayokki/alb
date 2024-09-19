@@ -1,5 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  get "staffs/show"
   # Sidekiqの管理画面にBasic認証を追加する
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
   
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
     resources :shops, only: [:update] do
       patch :set_vacant, on: :member # 空席中の処理
       delete :remove_vacant, on: :member # 空席中の処理
+    end
+    resources :staffs, except: [:new] do
     end
     resources :notices, except: [:new]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
@@ -55,6 +58,7 @@ Rails.application.routes.draw do
 
   resources :shops, only: [:create, :show]
   resources :areas, only: [:show]
+  resources :staffs, only: [:show]
 
   #口コミ用
   resources :user_comments, only: [:create, :destroy]

@@ -40,8 +40,12 @@ class Admin::ShopsController < ApplicationController
     if params[:status] == "お試し有料掲載"
       @shop.update(tiral_start_date: Time.current)
     end
-    @shop.update!(status: params[:status])
-    redirect_to admin_shops_url
+    if @shop.update(status: params[:status])
+      redirect_to admin_shops_url
+    else
+      flash[:danger] = "ステータス変更ができません、エリアやGmapを登録してください。"
+      redirect_back(fallback_location: root_url)
+    end
   end
 
   private

@@ -1,0 +1,2 @@
+module AdminShop::StaffsHelper
+end

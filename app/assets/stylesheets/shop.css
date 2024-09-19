@@ -28,6 +28,11 @@
   margin-right: 12px;
 }
 
+section.shop-basic-information{
+  padding: 10px;
+  background-color: #fefefe;
+}
+
 .cafe {
   color: #fff;
   background-color: #d4a373; /* 柔らかいコーヒー色 */

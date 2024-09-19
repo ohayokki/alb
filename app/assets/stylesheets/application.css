@@ -17,7 +17,6 @@
 
  body{
   background-color: rgb(251, 242, 216);
-  
   font-family: "Noto Sans JP", sans-serif;
   font-style: normal;
   color: #333;
@@ -26,6 +25,9 @@
  section{
   margin-top: 50px;
  }
+ .burgundy{
+  color: #72313e;
+}
 .bread-column{
   font-size: 0.8em;
   padding: 4px 12px 40px 0;
