@@ -20,6 +20,7 @@
   font-family: "Noto Sans JP", sans-serif;
   font-style: normal;
   color: #333;
+  overflow-wrap: break-word;
  }
 
  section{
