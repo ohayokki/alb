@@ -5,6 +5,7 @@
 }
 .calendar .day {
   position: relative;
+  height: auto;
 }
 
 .calendar .holiday {
@@ -23,6 +24,7 @@
   padding: 2px 4px;
   border-radius: 4px;
   font-size: 0.9em;
+  margin-bottom: 3px;
 }
 
 .calendar .notice img {
