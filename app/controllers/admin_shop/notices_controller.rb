@@ -10,6 +10,7 @@ class AdminShop::NoticesController < AdminShop::AdminController
       flash[:success] = "お知らせが作成されました。"
       redirect_to  admin_shop_admin_index_url
     else
+      @notices = @shop.notices.order("created_at")
       flash.now[:danger] = "お知らせの作成に失敗しました。"
       render "admin_shop/notices/index", status: :unprocessable_entity
     end
