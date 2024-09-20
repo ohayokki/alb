@@ -11,12 +11,14 @@
   background-color: #f8d7da; /* 定休日の色 */
   color: #721c24;
   padding: 2px 4px;
-  border-radius: 4px;
+  text-align:center;
   font-size: 0.9em;
+  border-radius: 5px;
+
 }
 
 .calendar .notice {
-  background-color: #d4edda; /* お知らせの色 */
+  background-color: #d4e5ed; /* お知らせの色 */
   color: #155724;
   padding: 2px 4px;
   border-radius: 4px;
