@@ -1,16 +1,30 @@
 <div class="container-fluid footer">
-  <div class="row area-links">
-    <%= render "top/prefecute_modal" %>
-  </div>
+  <%= render "top/prefecute_modal" %>
 
-  <nav class="footer_nav">
-    <%= link_to "アルバ", root_path %>
-    <%= link_to "サイトマップ", "#" %>
-    <%= link_to "店舗ログイン", shop_login_path %>
-    <%= link_to "利用規約", terms_path %>
-    <%= link_to "プライバシーポリシー", privacy_policy_path %>
-    <%= link_to "管理", admin_shops_path %>
-    <%= link_to "お問い合わせ", contacts_path %>
+  <nav class="container-xxl footer_nav">
+    <div class="row">
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "アルバ", root_path %>
+      </div>
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "サイトマップ", "#" %>
+      </div>
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "店舗ログイン", shop_login_path %>
+      </div>
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "利用規約", terms_path %>
+      </div>
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "プライバシーポリシー", privacy_policy_path %>
+      </div>
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "管理", admin_shops_path %>
+      </div>
+      <div class="col-6 col-sm-4 mb-3">
+        <%= link_to "お問い合わせ", contacts_path %>
+      </div>
+    </div>
   </nav>
 </div>
 <div class="copy text-center">
