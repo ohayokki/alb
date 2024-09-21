@@ -1,6 +1,5 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  get "staffs/show"
   # Sidekiqの管理画面にBasic認証を追加する
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
   
@@ -62,6 +61,8 @@ Rails.application.routes.draw do
   resources :areas, only: [:show]
   resources :staffs, only: [:show]
 
+  #user
+  get "users", to: "users#show", as: :user_page
   #口コミ用
   resources :user_comments, only: [:create, :destroy]
   #　店舗ログイン関係

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   def line_login
     if Rails.env.development?
       session[:user_id] = 1
-      return redirect_to root_path, notice: 'ログインしました!'
+      return  redirect_to user_page_path, notice: 'ログインしました!'
     end
     # ログインセッションごとにWebアプリでランダム生成CSRF用
     session[:state] = SecureRandom.urlsafe_base64
@@ -72,7 +72,7 @@ class SessionsController < ApplicationController
     
     if @user.persisted?
       session[:user_id] = @user.id
-      redirect_to root_path, notice: 'ログインしました!'
+      redirect_to user_page_path, notice: 'ログインしました!'
     else
       flash[:danger] = "ログインに失敗しました。"
       redirect_to root_path

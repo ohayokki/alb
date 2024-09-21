@@ -1,21 +1,33 @@
-<header>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-6">
-        <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
-        <h1>Allbar -アルバ<%= @title %>版-&emsp;<%= @genre.name + "一覧" if @genre.present? %></h1>
-      </div>
 
-      <div class="col-6 text-end">
-        <div class="signed">
-          <% if user_signed_in? %>
-            ようこそ<%= current_user.name %>さん<br>
-            <%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
-          <% else %>
-            <%= link_to "ログイン", login_path %>
-          <% end %>
-        </div>
-      </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="navbar-brand">
+      <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
+      <h1 class="mb-0">Allbar -アルバ<%= @title %>版-&emsp;<%= @genre.name + "一覧" if @genre.present? %></h1>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </li>
+
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
-</header>
+</nav>
+
+          <% if user_signed_in? %>
+            ようこそ<%= current_user.name %>さん<br>
+            <% end %>
