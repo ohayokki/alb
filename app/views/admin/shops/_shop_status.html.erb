@@ -1,14 +1,9 @@
 <% if @shop.tiral_start_date.nil? && ( @shop.status != "無料掲載" || @shop.status != "有料掲載" ) %>
   <%= link_to "お試し有料掲載にする", status_change_admin_shop_path(@shop, status: "お試し有料掲載"), data: { turbo_confirm: "お試し有料掲載にしますか？"}, class: "btn btn-warning" %>
 <% end  %>
-<% if @shop.status == "掲載依頼" || @shop.status == "お試し有料掲載" %>
+<% if @shop.status != "無料掲載" %>
   <%= link_to "無料掲載にする", status_change_admin_shop_path(@shop, status: "無料掲載"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-success" %>
-  <%= link_to "有料掲載にする", status_change_admin_shop_path(@shop, status: "有料掲載"), data: { turbo_confirm: "有料掲載しますか？"}, class: "btn btn-primary" %>
-<% elsif @shop.status ==  "有料掲載" %>
-  <%= link_to "無料掲載にする", status_change_admin_shop_path(@shop, status: "無料掲載"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-success" %>
-<% elsif @shop.status ==  "無料掲載" %>
-  <%= link_to "有料掲載にする", status_change_admin_shop_path(@shop, status: "有料掲載"), data: { turbo_confirm: "有料掲載しますか？"}, class: "btn btn-primary" %>
-<% elsif @shop.status ==  "閉店" %>
-  <%= link_to "無料掲載にする", status_change_admin_shop_path(@shop, status: "無料掲載"), data: { turbo_confirm: "無料掲載しますか？"}, class: "btn btn-success" %>
+<% end %>
+<% if @shop.status != "有料掲載" %>
   <%= link_to "有料掲載にする", status_change_admin_shop_path(@shop, status: "有料掲載"), data: { turbo_confirm: "有料掲載しますか？"}, class: "btn btn-primary" %>
 <% end %>

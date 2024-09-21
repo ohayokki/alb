@@ -1,41 +1,39 @@
-<div class="container-fluid">
-  <h1>お店一覧</h1>
-  <p>
-    位置情報が登録されていないお店は赤く表示されます。<br>
-    エリアが登録されていないお店は黄色で表示されます。<br>
-    店名をクリックすると編集できます。
-  </p>
-  <table class="table table-borderd table-straiped">
+<h1>お店一覧</h1>
+<p>
+  位置情報・エリア・Googolemapへの共有リンクは必須です。<br>
+  店名をクリックすると編集できます。
+</p>
+<table class="table table-borderd table-straiped">
+  <tr>
+    <th>店名</th>
+    <th>ご担当者名</th>
+    <th>エリア</th>
+    <th>ジャンル</th>
+    <th>Satus</th>
+  </tr>
+  <% @shops.each do |shop| %>
     <tr>
-      <th>店名</th>
-      <th>ご担当者名</th>
-      <th>エリア</th>
-      <th>ジャンル</th>
-      <th>Satus</th>
+      <td <%= "class=bg-danger" unless shop.area || shop.latitude || shop.googlemap %>><%= link_to shop.name, admin_shop_path(shop) %></td>
+      <td><%= shop.manager_name %></td>
+      <td><%= shop.area&.name %></td>
+      <td><%= shop.genre.name %></td>
+      <td>
+        <% badge_class = case shop.status
+          when "有料掲載"
+            "text-bg-primary"
+          when "無料掲載"
+            "text-bg-success"
+          when "掲載依頼"
+            "text-bg-warning"
+          when "閉店"
+            "text-bg-secondary"
+          else
+            "text-bg-secondary" # デフォルトクラス
+          end %>
+        <span class="badge <%= badge_class %>"><%= shop.status %></span>
+      </td>
     </tr>
-    <% @shops.each do |shop| %>
-      <tr>
-        <td ><%= link_to shop.name, admin_shop_path(shop) %></td>
-        <td><%= shop.manager_name %></td>
-        <td <%= "class=bg-warning text-white" unless shop.area %>><%= shop.area&.name %></td>
-        <td <%= "class=bg-danger text-white" unless shop.latitude || shop.longitude %>><%= shop.genre.name %></td>
-        <td>
-          <% badge_class = case shop.status
-            when "有料掲載"
-              "text-bg-primary"
-            when "無料掲載"
-              "text-bg-success"
-            when "掲載依頼"
-              "text-bg-warning"
-            when "閉店"
-              "text-bg-secondary"
-            else
-              "text-bg-secondary" # デフォルトクラス
-            end %>
-          <span class="badge <%= badge_class %>"><%= shop.status %></span>
-        </td>
-      </tr>
-    <% end %>
+  <% end %>
 
-  </table>
-</div>
+</table>
+

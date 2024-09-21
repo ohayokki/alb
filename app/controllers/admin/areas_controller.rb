@@ -1,4 +1,4 @@
-class Admin::AreasController < ApplicationController
+class Admin::AreasController < Admin::AdminController 
   def create
     @area = Area.new(area_params)
     if @area.save

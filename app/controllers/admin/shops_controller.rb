@@ -1,4 +1,4 @@
-class Admin::ShopsController < ApplicationController
+class Admin::ShopsController < Admin::AdminController 
   before_action :set_shop, only: %i[edit show update status_change]
   before_action :shop_trial_end_check, only: [:index]
 
