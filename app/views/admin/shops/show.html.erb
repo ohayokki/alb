@@ -22,13 +22,22 @@
         <% end %>
 
         <div class="mb-3">
-          <%= form.label :name, "店名", class: "form-label" %>
-          <%= form.text_field :name, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
           <%= form.label :shop_logo, "ロゴ(190*190にリサイズされます。)", class: "form-label" %>
           <%= form.file_field :shop_logo %>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-9">
+            <%= form.label :shop_logo, "ロゴ(190*190にリサイズされます。)", class: "form-label" %>
+            <%= form.file_field :shop_logo, class: "form-control" %>
+          </div>
+          <div class="col">
+            <% if @shop.shop_logo %>
+              <%= image_tag(@shop.shop_logo.to_s, class: "img-fluid") %>
+            <% else %>
+              お店ロゴが登録されていません。
+            <% end %>
+          </div>
         </div>
 
         <div class="mb-3">
