@@ -10,6 +10,10 @@ class SessionsController < ApplicationController
   end
 
   def line_login
+    if Rails.env.development?
+      session[:user_id] = 1
+      return redirect_to root_path, notice: 'ログインしました!'
+    end
     # ログインセッションごとにWebアプリでランダム生成CSRF用
     session[:state] = SecureRandom.urlsafe_base64
     base_authorization_url = 'https://access.line.me/oauth2/v2.1/authorize'
@@ -68,7 +72,7 @@ class SessionsController < ApplicationController
     
     if @user.persisted?
       session[:user_id] = @user.id
-      redirect_to root_path, notice: 'Logged in successfully!'
+      redirect_to root_path, notice: 'ログインしました!'
     else
       flash[:danger] = "ログインに失敗しました。"
       redirect_to root_path
