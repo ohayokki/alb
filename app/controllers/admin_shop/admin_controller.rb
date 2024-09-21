@@ -22,6 +22,10 @@ class AdminShop::AdminController < ApplicationController
   def images
   end
 
+  def labels
+    @labels = Label.all
+  end
+
   private
   def shop_signed_in?
     unless shop_logged_in?

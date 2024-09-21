@@ -1,0 +1,20 @@
+<%= form_with model: @shop, url: admin_shop_shop_path(@shop), local: true do |form| %>
+  <div class="field">
+    <%= form.label :labels, "ラベルを選択（3つまで）" %>
+    <div>
+      <% @labels.each do |label| %>
+        <%= check_box_tag 'shop[label_ids][]', label.id, @shop.labels.include?(label) %>
+        <%= label.name %><br>
+      <% end %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :labels, "新しいタグを追加" %>
+    <div>
+      <%= text_field_tag 'shop[label_names][]', nil, placeholder: "タグ1" %><br>
+      <%= text_field_tag 'shop[label_names][]', nil, placeholder: "タグ2" %><br>
+      <%= text_field_tag 'shop[label_names][]', nil, placeholder: "タグ3" %><br>
+    </div>
+  </div>
+  <%= form.submit class: "btn btn-user w-100" %>
+<% end %>

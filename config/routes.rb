@@ -31,9 +31,11 @@ Rails.application.routes.draw do
     resources :staffs, except: [:new] do
     end
     resources :notices, except: [:new]
+    resources :labels, only: [:create]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
     get "coupon-edit", to: "admin#coupon", as: :coupon
     get "shop-image", to: "admin#images", as: :images
+    get "shop-tag", to: "admin#labels", as: :tag
   end
 
   # 管理者用

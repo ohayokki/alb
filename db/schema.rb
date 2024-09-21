@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_18_155455) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_18_155455) do
     t.index ["shop_id"], name: "index_holidays_on_shop_id"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notices", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -70,6 +76,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_18_155455) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_labels", force: :cascade do |t|
+    t.bigint "shop_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_shop_labels_on_label_id"
+    t.index ["shop_id"], name: "index_shop_labels_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -178,6 +193,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_18_155455) do
   add_foreign_key "districts", "prefectures"
   add_foreign_key "holidays", "shops"
   add_foreign_key "notices", "shops"
+  add_foreign_key "shop_labels", "labels"
+  add_foreign_key "shop_labels", "shops"
   add_foreign_key "staffs", "shops"
   add_foreign_key "user_comments", "shops"
   add_foreign_key "user_comments", "users"

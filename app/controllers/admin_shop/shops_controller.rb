@@ -1,6 +1,24 @@
-class AdminShop::ShopsController < AdminShop::AdminController 
+class AdminShop::ShopsController < AdminShop::AdminController
   def update
+    if params[:shop][:label_names].present?
+      # 空でないラベルのみ処理
+      label_names = params[:shop][:label_names].reject(&:blank?)
+
+      # すべてのラベルを保存
+      label_names.each do |label_name|
+        label = Label.find_or_create_by(name: label_name.strip)
+        @shop.labels << label unless @shop.labels.include?(label)
+      end
+
+      # もし4つ以上のラベルが選択された場合、警告メッセージを表示
+      if @shop.labels.size > 3
+        flash.now[:alert] = "ラベルは3つまで選んでください。#{label_names.size}個のラベルが登録されましたが、表示されるのは最初の3つです。"
+        retuen render "admin_shop/admin/shopedit", status: :unprocessable_entity
+      end
+    end
+
     if @shop.update(shop_params)
+
       flash[:success] = "店舗情報修正しました。"
       redirect_to admin_shop_admin_index_url
     else
@@ -59,6 +77,8 @@ class AdminShop::ShopsController < AdminShop::AdminController
   def shop_params
     params.require(:shop).permit(:shop_logo, :tel, :address, :hours, :holiday, :budget, :access, :coupon,
      :title, :introduction, :website, :reservation, :wifi, :alcohol, :smoking, :english, :korean, :card_payment, :mobile_payment,
-     :image1, :image2, :image3, :image4, :image5, :remove_image1, :remove_image2, :remove_image3, :remove_image4, :remove_image5, weekly_holidays: [])
+     :image1, :image2, :image3, :image4, :image5, :remove_image1,
+     :remove_image2, :remove_image3, :remove_image4, :remove_image5,
+     label_ids: [], weekly_holidays: [])
   end
 end

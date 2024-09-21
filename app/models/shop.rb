@@ -7,7 +7,8 @@ class Shop < ApplicationRecord
   mount_uploader :shop_logo, ShopLogoUploader
   has_secure_password
   attr_accessor :distance #仮想属性（お店までの距離）
-  
+  before_save { self.email.downcase! }
+
   enum status: {
     掲載依頼: 1,
     無料掲載: 2,
@@ -19,13 +20,14 @@ class Shop < ApplicationRecord
   has_many :notices
   has_many :staffs
   has_many :user_comments
+  has_many :shop_labels
+  has_many :labels, through: :shop_labels
   belongs_to :area, optional: true
   belongs_to :prefecture, optional: true
   belongs_to :district, optional: true
   belongs_to :genre
 
-
-  before_save { self.email.downcase! }
+  validate :validate_label_limit  
   validate :googlemap_must_contain_iframe, unless: :new_record?
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -121,5 +123,9 @@ class Shop < ApplicationRecord
     unless googlemap.present? && googlemap.match?(/<iframe.*?>.*?<\/iframe>/)
       errors.add(:googlemap, "には有効なiframeタグが必要です")
     end
+  end
+  # ラベルが3つまでしか登録できないバリデーション
+  def validate_label_limit
+    errors.add(:labels, "は3つまでしか登録できません。") if labels.size > 3
   end
 end
