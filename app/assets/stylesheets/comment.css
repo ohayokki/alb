@@ -1,0 +1,25 @@
+.comment {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.comment-time {
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.comment-text {
+  font-size: 1em;
+  color: #333;
+}
+
+.comment-author {
+  font-size: 0.9em;
+  color: #007bff;
+  text-align: right;
+  margin-top: 10px;
+}

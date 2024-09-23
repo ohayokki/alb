@@ -1,6 +1,16 @@
-<div class="container-xxl">
+<div class="container-xxl mt-5 mb-5">
+  <h1><%= current_user.name %>さんのマイページ</h1>
   <% if @comments.any? %>
     <h2>お店口コミ一覧</h2>
-    <%= render @comments %>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment-time"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+        <p><%= link_to comment.shop.name, shop_path(comment.shop) %></p>
+        <p class="comment-text"><%= comment.comment %></p>
+        <% if comment.user == current_user %>
+          <p><%= link_to "削除する", user_comment_path(comment), data: {turbo_method: :delete, turbo_confirm: "本当に口コミを削除しますか？"} %></p>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>

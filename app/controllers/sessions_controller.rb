@@ -26,7 +26,6 @@ class SessionsController < ApplicationController
     redirect_to authorization_url, allow_other_host: true
   end
 
-
   def create
     # CSRF対策のトークンが一致する場合のみ、ログイン処理を続ける
     # ステートが一致しない場合はエラー処理

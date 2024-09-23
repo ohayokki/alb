@@ -1,44 +1,9 @@
 <section class="container-xxl mb-5">
   <% if @comments.any?%>
     <h2>ユーザーの口コミ</h2>
-    <% @comments.each do |comment| %>
-      <div class="comment">
-        <p class="comment-time"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
-        <p class="comment-text"><%= comment.comment %></p>
-        <p class="comment-author">- <%= comment.user.name %></p>
-        <% if comment.user == current_user %>
-          <p><%= link_to "削除する", user_comment_path(comment), data: {turbo_method: :delete, turbo_confirm: "本当に口コミを削除しますか？"} %></p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render @comments%>
   <% end %>
-<style>
-.comment {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-}
 
-.comment-time {
-  font-size: 0.85em;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.comment-text {
-  font-size: 1em;
-  color: #333;
-}
-
-.comment-author {
-  font-size: 0.9em;
-  color: #007bff;
-  text-align: right;
-  margin-top: 10px;
-}
-</style>
 
 
   <% if user_signed_in? %>
