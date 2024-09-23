@@ -16,6 +16,17 @@ class Shop < ApplicationRecord
     有料掲載: 4,
     閉店: 5
   }
+  enum budget: {
+    under_1000: 0,
+    from_1000_to_1999: 1,
+    from_2000_to_2999: 2,
+    from_3000_to_4999: 3,
+    from_5000_to_7999: 4,
+    from_8000_to_9999: 5,
+    over_10000: 6
+  }
+
+  
   has_many :holidays
   has_many :notices
   has_many :staffs

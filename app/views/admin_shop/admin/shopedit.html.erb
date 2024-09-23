@@ -30,7 +30,7 @@
 
       <div class="mb-3">
         <%= form.label :budget %>
-        <%= form.text_area :budget, class: "form-control" %>
+        <%= form.select :budget, Shop.budgets.keys.map { |key| [I18n.t("activerecord.attributes.shop.budget_values.#{key}"), key] }, {prompt: '選択してください'}, {class: "form-control"} %>
       </div>
 
       <div class="mb-3">

@@ -92,7 +92,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
     t.string "manager_name"
     t.string "email"
     t.string "title"
-    t.string "budget"
+    t.integer "budget"
     t.string "shop_logo"
     t.string "tel"
     t.boolean "reservation"

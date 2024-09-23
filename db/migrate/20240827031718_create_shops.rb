@@ -5,7 +5,7 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.string :manager_name
       t.string :email
       t.string :title
-      t.string :budget
+      t.integer :budget #平均予算
       t.string :shop_logo
       t.string :tel
       t.boolean :reservation
