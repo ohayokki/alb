@@ -1,0 +1,19 @@
+<h1>問い合わせ一覧</h1>
+
+<table class="table table-bordered" >
+  <% @contacts.each do |contact| %>
+    <tr>
+      <td><%= contact.name %></td>
+      <td><%= contact.email %></td>
+      <td><%= t("inquiries.#{contact.inquiry_type}") %></td>
+      <td><%= contact.inquiry_details %></td>
+      <td>
+        <% if contact.status == true %>
+          既読
+        <% else %>
+          <%= link_to "既読にする", admin_contact_path(contact), data: {turbo_method: :patch, data_confirm: "既読にしますか？" } %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

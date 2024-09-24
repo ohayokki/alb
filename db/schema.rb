@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_24_141952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +24,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
     t.index ["prefecture_id"], name: "index_areas_on_prefecture_id"
   end
 
-  create_table "costumes", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "inquiry_type"
+    t.text "inquiry_details"
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -145,12 +150,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
     t.index ["district_id"], name: "index_shops_on_district_id"
     t.index ["genre_id"], name: "index_shops_on_genre_id"
     t.index ["prefecture_id"], name: "index_shops_on_prefecture_id"
-  end
-
-  create_table "socials", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "staffs", force: :cascade do |t|

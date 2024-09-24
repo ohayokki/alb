@@ -1,0 +1,36 @@
+<section class="container-xxl contact">
+  <h1><%= t('activerecord.models.contact') %>フォーム</h1>
+
+  <%= form_with model: @contact, local: true do |form| %>
+    <%= render "layouts/error", model: @contact %>
+
+    <div class="mb-3">
+      <%= form.label :name, t('activerecord.attributes.contact.name') %>
+      <%= form.text_field :name, required: true, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :email, t('activerecord.attributes.contact.email') %>
+      <%= form.email_field :email, required: true, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :inquiry_type, t('activerecord.attributes.contact.inquiry_type') %>
+      <%= form.select :inquiry_type, [
+            [t('inquiries.bar_owner'), 'bar_owner'], 
+            [t('inquiries.user'), 'user'], 
+            [t('inquiries.technical'), 'technical'], 
+            [t('inquiries.other'), 'other']
+          ], { prompt: '選択してください' }, { class: 'form-control' } %>
+  </div>
+
+    <div class="mb-3">
+      <%= form.label :inquiry_details, t('activerecord.attributes.contact.inquiry_details') %>
+      <%= form.text_area :inquiry_details, rows: 5, required: true, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
+    </div>
+  <% end %>
+</section>

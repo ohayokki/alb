@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
+    get "contacts/index"
     resources :shops, except: [:new, :edit, :create] do
       member do
         get :status_change
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
       get 'prefectures', on: :collection
       get 'districts', on: :collection
     end
+    resources :contacts, only: [:index, :update]
   end
   get "genre/:genre/:area", to: "genres#area", as: :genre_area
  
@@ -84,6 +86,10 @@ Rails.application.routes.draw do
   get "line-login", to: "sessions#line_login", as: :line_login
   #user
   get "users", to: "users#show", as: :user_page
+
+  #問い合わせ関係
+  resources :contacts, only: [:new, :create]
+  get 'thanks', to: 'contacts#thanks', as: 'thanks_contacts'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
