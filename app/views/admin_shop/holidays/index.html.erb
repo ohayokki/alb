@@ -34,13 +34,15 @@
       <%= form.label :hours %>
       <%= form.text_area :hours, class: "form-control" %>
     </div>
+
     <div class="mb-3">
       <p>店休日にチェックを入れてください</p>
-      <% ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].each_with_index do |day, index| %>
+      <% ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].each_with_index do |day, index| %>
         <%= check_box_tag 'shop[weekly_holidays][]', index, @shop.weekly_holidays.include?(index) %>
-        <%= label_tag "shop_holidays_#{index}", day %>
+        <%= label_tag "shop_holidays_#{index}", t("shop.weekly_holidays.#{day}") %>&emsp;
       <% end %>
     </div>
+
 
     <div class="mb-3">
       <%= form.label :holiday %>補足

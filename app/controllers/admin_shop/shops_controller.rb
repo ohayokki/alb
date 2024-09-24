@@ -18,15 +18,16 @@ class AdminShop::ShopsController < AdminShop::AdminController
 
       # もし4つ以上のラベルが選択された場合、警告メッセージを表示
       if @shop.labels.size > 3
+        @shop.labels = @shop.labels.first(3)
+        @shop.save
         @shop = Shop.includes(:labels).find(shop_obj.id)
         @labels = Label.all
-        flash.now[:danger] = "ラベルは3つまで選んでください。#{label_names.size}個のラベルが登録されましたが、表示されるのは最初の3つです。"
+        flash.now[:danger] = "ラベルは３つまでです。最初の3つに制限しました。"
         return render "admin_shop/admin/labels", status: :unprocessable_entity
       end
     end
 
     if @shop.update(shop_params)
-
       flash[:success] = "店舗情報修正しました。"
       redirect_to admin_shop_admin_index_url
     else

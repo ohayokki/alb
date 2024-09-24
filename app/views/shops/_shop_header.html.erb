@@ -29,4 +29,14 @@
       </div>
     </div>
   </div>
+
+  <div class="row mb-3">
+    <% @labels.each do |label| %>
+      <div class="col-4">
+        <div class="shop-tag">
+          <%= label.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
