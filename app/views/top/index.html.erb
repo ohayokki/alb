@@ -1,7 +1,7 @@
 <% title = "全国" %>
 
 <div class="container-xxl mt-5">
-  <% if @shops.any? %>
+  <% if @shops&.any? %>
     <h2>近くのバー（<%= @shops.count %>）</h2>
     <%= render @shops %>
   <% end %>
