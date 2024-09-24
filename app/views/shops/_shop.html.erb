@@ -24,7 +24,7 @@
       <div>営業時間:&emsp;<%= shop.hours %></div>
     <% end %>
     <% if shop.budget.present? %>
-      <div>予算:&emsp;<%= shop.budget %></div>
+      <div>予算:&emsp;<%= I18n.t("activerecord.attributes.shop.budget_values.#{shop.budget}") %></div>
     <% end %>
     <% if shop.access.present? %>
       <div>アクセス:&emsp;<%= shop.access %></div>
