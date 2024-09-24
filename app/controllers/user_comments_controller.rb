@@ -13,13 +13,20 @@ class UserCommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = current_user.user_comments.find_by(id: params[:id])
+    @comment.update!(status: false)
+    flash[:success] = "コメントを公開しました。"
+    redirect_back(fallback_location: root_url)
+  end
+
   def destroy
     @comment = current_user.user_comments.find_by(id: params[:id])
-    shop = @comment.shop
-    @comment.destroy
-    flash[:success] = "コメントを削除しました。"
-    redirect_to shops_url(shop)
+    @comment.update!(status: true)
+    flash[:success] = "コメントを非公開にしました。"
+    redirect_back(fallback_location: root_url)
   end
+
   private
   def comment_params
     params.require(:user_comment).permit(:comment, :shop_id)

@@ -173,6 +173,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
     t.bigint "user_id", null: false
     t.bigint "shop_id", null: false
     t.text "comment"
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_user_comments_on_shop_id"

@@ -1,0 +1,16 @@
+<% if @comments.any? %>
+  <h2>お店口コミ一覧</h2>
+  <% @comments.each do |comment| %>
+    <div class="comment<%= ' comment-false' if comment.status == true %>">
+      <p class="comment-time"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+      <p>投稿者：<%= comment.user.name %></p>
+      <p class="comment-text"><%= comment.comment %></p>
+      <% if comment.status == false %>
+        <p><%= link_to "非公開にする", admin_shop_comment_path(comment), data: {turbo_method: :delete, turbo_confirm: "本当に口コミを非表示にしますか？"} %></p>
+      <% else %>
+        <p><%= link_to "公開する", admin_shop_comment_path(comment), data: {turbo_method: :patch, turbo_confirm: "公開してもよろしいでしょうか？"} %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+  

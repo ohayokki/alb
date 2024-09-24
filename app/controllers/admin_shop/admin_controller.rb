@@ -26,6 +26,10 @@ class AdminShop::AdminController < ApplicationController
     @labels = Label.all
   end
 
+  def comments
+    @comments = @shop.user_comments
+  end
+
   private
   def shop_signed_in?
     unless shop_logged_in?

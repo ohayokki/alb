@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   get "terms-of-use", to: "top#terms", as: :terms #プライバシーポリシー
   get "shop_request_confirm", to: "contacts#shop_request_confirm",as: :shop_request_confirm #お店登録申請後の結果画面
 
+  #　店舗ログイン関係
+  get "shop_login", to: "shops#login", as: :shop_login
+  post "shop_login", to: "shops#login_process"
+  delete "shop_logout", to: "shops#logout", as: :shop_logout
   # 店舗管理
   namespace :admin_shop do
     get "admin/index"
@@ -29,12 +33,14 @@ Rails.application.routes.draw do
     end
     resources :staffs, except: [:new] do
     end
+    resources :comments, only: [:destroy, :update]
     resources :notices, except: [:new]
     resources :labels, only: [:create]
     get "shop-edit", to: "admin#shopedit", as: :shopedit
     get "coupon-edit", to: "admin#coupon", as: :coupon
     get "shop-image", to: "admin#images", as: :images
     get "shop-tag", to: "admin#labels", as: :tag
+    get "shop-comment", to: "admin#comments", as: :comments
   end
 
   # 管理者用
@@ -61,14 +67,8 @@ Rails.application.routes.draw do
   resources :areas, only: [:show]
   resources :staffs, only: [:show]
 
-  #user
-  get "users", to: "users#show", as: :user_page
   #口コミ用
-  resources :user_comments, only: [:create, :destroy]
-  #　店舗ログイン関係
-  get "shop_login", to: "shops#login", as: :shop_login
-  post "shop_login", to: "shops#login_process"
-  delete "shop_logout", to: "shops#logout", as: :shop_logout
+  resources :user_comments, only: [:create, :update, :destroy]
 
   # 地域選択用
   get 'districts/by_prefecture/:prefecture_id', to: 'districts#by_prefecture', as: 'districts_by_prefecture'
@@ -81,6 +81,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get "login", to: "sessions#login"
   get "line-login", to: "sessions#line_login", as: :line_login
+  #user
+  get "users", to: "users#show", as: :user_page
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
