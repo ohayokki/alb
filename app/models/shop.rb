@@ -143,19 +143,19 @@ class Shop < ApplicationRecord
   #snsバリデーション
   def validate_social_media_links
     if facebook.present? && !valid_facebook_url?(facebook)
-      errors.add(:youtube, "のURLが無効です。")
+      errors.add(:facebook, "のURLが無効です。")
     end
 
     if twitter.present? && !valid_twitter_url?(twitter)
-      errors.add(:youtube, "のURLが無効です。")
+      errors.add(:twitter, "(x)のURLが無効です。")
     end
 
     if instagram.present? && !valid_instagram_url?(instagram)
-      errors.add(:youtube, "のURLが無効です。")
+      errors.add(:instagram, "のURLが無効です。")
     end
 
     if tiktok.present? && !valid_tiktok_url?(tiktok)
-      errors.add(:youtube, "のURLが無効です。")
+      errors.add(:tiktok, "のURLが無効です。")
     end
 
     if youtube.present? && !valid_youtube_url?(youtube)
@@ -168,7 +168,7 @@ class Shop < ApplicationRecord
   end
 
   def valid_twitter_url?(url)
-    url =~ /\Ahttps?:\/\/(www\.)?twitter\.com\/.+\z/
+    url =~ /\Ahttps?:\/\/(www\.)?x\.com\/.+\z/
   end
 
   def valid_instagram_url?(url)
