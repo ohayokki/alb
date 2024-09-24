@@ -1,8 +1,8 @@
-<section class="staff">
-  <% if @staffs.any? %>
+<% if @staffs.any? %>
+  <section class="staff">
     <h2><%= @shop.name %>スタッフ</h2>
     <div class="row">
       <%= render @staffs %>
     </div>
-  <% end %>
-</section>
+  </section>
+<% end %>

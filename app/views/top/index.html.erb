@@ -1,7 +1,7 @@
 <% title = "全国" %>
 
 <div class="container-xxl mt-5">
-  <% if @shops %>
+  <% if @shops.any? %>
     <h2>近くのバー（<%= @shops.count %>）</h2>
     <%= render @shops %>
   <% end %>
@@ -19,7 +19,6 @@
 <script>
   function getLocation() {
     if (navigator.geolocation) {
-      // 位置情報を取得
       navigator.geolocation.getCurrentPosition(sendPositionToServer, showError);
     } else {
       alert("Geolocation is not supported by this browser.");
@@ -30,7 +29,6 @@
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    // 現在地を含むURLを作成してリダイレクト
     var url = new URL(window.location.href);
     url.searchParams.set('latitude', latitude);
     url.searchParams.set('longitude', longitude);
@@ -54,10 +52,10 @@
     }
   }
 
-  // ページがロードされたときに位置情報を取得
-  window.onload = function() {
+  // Turboのページがロードされたときに位置情報を取得
+  document.addEventListener("turbo:load", function() {
     if (!new URL(window.location.href).searchParams.has('latitude')) {
       getLocation();
     }
-  };
+  });
 </script>
