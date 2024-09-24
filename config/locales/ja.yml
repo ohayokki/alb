@@ -4,6 +4,7 @@ ja:
       prefecture: "県"
       district: "地区"
       shop: "ショップ"
+      contact: "お問い合わせ"
     attributes:
       shop:
         name: "店名"
@@ -54,6 +55,12 @@ ja:
         image4: "画像4"
         image5: "画像5"
         weekly_holidays: "店休日"
+      contact:
+        name: "お名前"
+        email: "メールアドレス"
+        inquiry_type: "お問い合わせ種別"
+        inquiry_details: "詳細内容"
+  
   shop:
     weekly_holidays:
       sunday: "日曜日"
@@ -63,26 +70,7 @@ ja:
       thursday: "木曜日"
       friday: "金曜日"
       saturday: "土曜日"
-
-  activerecord:
-    models:
-      contact: "お問い合わせ"
-    attributes:
-      contact:
-        name: "お名前"
-        email: "メールアドレス"
-        inquiry_type: "お問い合わせ種別"
-        inquiry_details: "詳細内容"
-  helpers:
-    submit:
-      create: "送信"
-  inquiries:
-    bar_owner: "バー運営者からの問い合わせ"
-    user: "ユーザーからの問い合わせ"
-    technical: "技術サポート"
-    other: "その他"
-
-
+  
   prompts:
     genre_id: "選択してください"
 
@@ -105,7 +93,6 @@ ja:
   errors:
     count: "error"
     prohibited: "が発生しました"
-
 
   helpers:
     label:
@@ -132,7 +119,19 @@ ja:
       mobile_payment: "モバイル決済の有無"
       website: "ホームページURL"
       notes: "ご質問・ご要望・備考"
-  
+
+  inquiries:
+    bar_owner: "バー運営者からの問い合わせ"
+    user: "ユーザーからの問い合わせ"
+    technical: "技術サポート"
+    other: "その他"
+
+  helpers:
+    submit:
+      create: "送信"
+
+
+
   simple_calendar:
     previous: "<<"
     next: ">>"
