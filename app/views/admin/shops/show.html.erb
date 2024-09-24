@@ -176,9 +176,25 @@
       </div>
 
       <div class="mb-3">
-        <%= form.label :mobile_payment, "モバイル決済の有無", class: "form-label" %>
-        <%= form.check_box :mobile_payment, class: "form-check-input" %>
-        <%= form.label :mobile_payment, "モバイル決済あり", class: "form-check-label" %>
+        <%= form.label :qr_code_payment, "QR決済の可否", class: "form-label" %>
+        <%= form.check_box :qr_code_payment, class: "form-check-input" %>
+        <%= form.label :qr_code_payment, "QR決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :qr_code_company, "使用可能QR決済", class: "form-label" %>
+        <%= form.text_field :qr_code_company, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_payment, "電子マネー決済の可否", class: "form-label" %>
+        <%= form.check_box :e_money_payment, class: "form-check-input" %>
+        <%= form.label :e_money_payment, "電子マネー決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_company, "使用可能電子マネー", class: "form-label" %>
+        <%= form.text_field :e_money_company, class: "form-control" %>
       </div>
 
 <% if false %>

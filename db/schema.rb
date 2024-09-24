@@ -109,7 +109,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
     t.integer "weekly_holidays", default: [], array: true
     t.boolean "card_payment"
     t.string "card_company"
-    t.boolean "mobile_payment"
+    t.boolean "qr_code_payment"
+    t.string "qr_code_company"
+    t.boolean "e_money_payment"
+    t.string "e_money_company"
     t.string "website"
     t.text "notes"
     t.text "coupon"
@@ -172,7 +175,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_190947) do
   create_table "user_comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "shop_id", null: false
-    t.text "comment"
+    t.text "comment", null: false
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

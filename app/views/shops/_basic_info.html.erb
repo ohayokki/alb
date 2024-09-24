@@ -64,5 +64,35 @@
       <%= link_to shop.website, shop.website, target: "blank" %>
     </div>
   </div>
+  <% if shop.card_company? %>
+    <div class="row">
+      <div class="col-3">
+        カード決済
+      </div>
+      <div class="col-9">
+        <%= shop.card_company %>
+      </div>
+    </div>
+  <% end %>
+  <% if shop.qr_code_company? %>
+    <div class="row">
+      <div class="col-3">
+        QR決済
+      </div>
+      <div class="col-9">
+        <%= shop.qr_code_company %>
+      </div>
+    </div>
+  <% end %>
+  <% if shop.e_money_company? %>
+    <div class="row">
+      <div class="col-3">
+        電子マネー
+      </div>
+      <div class="col-9">
+        <%= shop.e_money_company %>
+      </div>
+    </div>
+  <% end %>
 </section>
 

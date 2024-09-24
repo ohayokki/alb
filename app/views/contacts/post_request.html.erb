@@ -137,9 +137,15 @@
       </div>
 
       <div class="mb-3">
-        <%= form.label :mobile_payment %>
-        <%= form.check_box :mobile_payment, class: "form-check-input" %>
-        <%= form.label :mobile_payment, t('form.mobile_payment_label'), class: "form-check-label" %>
+        <%= form.label :qr_code_payment %>
+        <%= form.check_box :qr_code_payment, class: "form-check-input" %>
+        <%= form.label :qr_code_payment, t('form.qr_code_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_payment %>
+        <%= form.check_box :e_money_payment, class: "form-check-input" %>
+        <%= form.label :e_money_payment, t('form.e_money_payment_label'), class: "form-check-label" %>
       </div>
 
       <div class="mb-3">

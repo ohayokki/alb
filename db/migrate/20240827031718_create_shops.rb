@@ -20,9 +20,12 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.string :hours
       t.string :holiday # 定休日説明文
       t.integer :weekly_holidays, array: true, default: [] #定休日保存用
-      t.boolean :card_payment
-      t.string :card_company
-      t.boolean :mobile_payment
+      t.boolean :card_payment #カード使用可否
+      t.string :card_company  #カード使用可能会社
+      t.boolean :qr_code_payment #QR決済可否
+      t.string :qr_code_company  #QR決済可能会社(PayPay、d払い、楽天ペイ、au PAYなど)
+      t.boolean :e_money_payment
+      t.string :e_money_company #電子マネー可能会社 楽天Edy、WAON SUICAなど
       t.string :website
       t.text :notes
       t.text :coupon, default: nil

@@ -33,7 +33,7 @@ ja:
         hours: "営業時間"
         holiday: "店休日"
         card_payment: "カード支払い"
-        mobile_payment: "モバイル決済"
+        qr_code_payment: "モバイル決済"
         website: "ウェブサイトURL"
         notes: "備考"
         coupon: "クーポン"
@@ -72,7 +72,8 @@ ja:
     english_label: "英語対応可"
     korean_label: "韓国語対応可"
     card_payment_label: "カード決済あり"
-    mobile_payment_label: "モバイル決済あり"
+    qr_code_payment_label: "QRコード決済あり(PayPay、d払い、楽天ペイ、au PAYなど)"
+    e_money_payment_label: "電子マネー決済有(suica,waonなど)"
 
   errors:
     count: "error"

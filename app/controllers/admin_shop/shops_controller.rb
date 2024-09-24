@@ -76,7 +76,8 @@ class AdminShop::ShopsController < AdminShop::AdminController
 
   def shop_params
     params.require(:shop).permit(:shop_logo, :tel, :address, :hours, :holiday, :budget, :access, :coupon,
-     :title, :introduction, :website, :reservation, :wifi, :alcohol, :smoking, :english, :korean, :card_payment, :mobile_payment,
+     :title, :introduction, :website, :reservation, :wifi, :alcohol, :smoking, :english, :korean, :card_payment,
+     :card_company, :qr_code_payment, :qr_code_company, :e_money_payment, :e_money_company,
      :image1, :image2, :image3, :image4, :image5, :remove_image1,
      :remove_image2, :remove_image3, :remove_image4, :remove_image5,
      label_ids: [], weekly_holidays: [])
