@@ -19,6 +19,9 @@ class AdminShop::AdminController < ApplicationController
   def coupon
   end
 
+  def sns
+  end
+
   def images
   end
 

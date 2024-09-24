@@ -36,6 +36,8 @@ class AdminShop::ShopsController < AdminShop::AdminController
         @shop = Shop.includes(:labels).find(shop_obj.id)
         @labels = Label.all
         render "admin_shop/admin/labels", status: :unprocessable_entity
+      elsif  request.referer.include?("sns")
+        render "admin_shop/admin/sns", status: :unprocessable_entity
       else
         render "admin_shop/admin/shopedit", status: :unprocessable_entity
       end
@@ -95,6 +97,7 @@ class AdminShop::ShopsController < AdminShop::AdminController
      :card_company, :qr_code_payment, :qr_code_company, :e_money_payment, :e_money_company,
      :image1, :image2, :image3, :image4, :image5, :remove_image1,
      :remove_image2, :remove_image3, :remove_image4, :remove_image5, :label_names,
+     :facebook, :twitter, :instagram, :tiktok, :youtube,
      label_ids: [], weekly_holidays: [])
   end
 end

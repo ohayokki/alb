@@ -45,7 +45,7 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.string :facebook
       t.string :twitter
       t.string :instagram
-      t.string :tikTok
+      t.string :tiktok
       t.string :youtube
       t.string :vacant_job_id, default: nil # 空席中JobのID
       t.datetime :vacant_until, default: nil #空席中の終了時間

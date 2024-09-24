@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get "shop-image", to: "admin#images", as: :images
     get "shop-tag", to: "admin#labels", as: :tag
     get "shop-comment", to: "admin#comments", as: :comments
+    get "sns", to: "admin#sns", as: :sns
   end
 
   # 管理者用

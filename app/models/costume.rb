@@ -1,2 +1,0 @@
-class Costume < ApplicationRecord
-end

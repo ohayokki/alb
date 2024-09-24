@@ -1,5 +1,5 @@
 <section class="shop-basic-information">
-  <h2><%= shop.name %>の店舗情報</h2>
+  <h2 class="mt-3"><%= shop.name %>の店舗情報</h2>
   <div class="row">
     <div class="col-3">
       店名
@@ -48,14 +48,16 @@
       <%= shop.holiday %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3">
-      平均予算
+  <% if shop.budget? %>
+    <div class="row">
+      <div class="col-3">
+        平均予算
+      </div>
+      <div class="col-9">
+        <%= I18n.t("activerecord.attributes.shop.budget_values.#{shop.budget}") %>
+      </div>
     </div>
-    <div class="col-9">
-      <%= I18n.t("activerecord.attributes.shop.budget_values.#{shop.budget}") %>
-    </div>
-  </div>
+  <% end %>
   <div class="row">
     <div class="col-3">
       ホームページ

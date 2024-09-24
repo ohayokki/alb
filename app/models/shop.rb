@@ -25,7 +25,6 @@ class Shop < ApplicationRecord
     from_8000_to_9999: 5,
     over_10000: 6
   }
-
   
   has_many :holidays
   has_many :notices
@@ -38,6 +37,7 @@ class Shop < ApplicationRecord
   belongs_to :district, optional: true
   belongs_to :genre
 
+  validate :validate_social_media_links #SNSのバリデーション
   validate :validate_label_limit  
   validate :googlemap_must_contain_iframe, unless: :new_record?
   validates :name, presence: true, length: { maximum: 50 }
@@ -138,5 +138,48 @@ class Shop < ApplicationRecord
   # タグが3つまでしか登録できないバリデーション
   def validate_label_limit
     errors.add(:labels, "は3つまでしか登録できません。") if labels.size > 3
+  end
+
+  #snsバリデーション
+  def validate_social_media_links
+    if facebook.present? && !valid_facebook_url?(facebook)
+      errors.add(:youtube, "のURLが無効です。")
+    end
+
+    if twitter.present? && !valid_twitter_url?(twitter)
+      errors.add(:youtube, "のURLが無効です。")
+    end
+
+    if instagram.present? && !valid_instagram_url?(instagram)
+      errors.add(:youtube, "のURLが無効です。")
+    end
+
+    if tiktok.present? && !valid_tiktok_url?(tiktok)
+      errors.add(:youtube, "のURLが無効です。")
+    end
+
+    if youtube.present? && !valid_youtube_url?(youtube)
+      errors.add(:youtube, "のURLが無効です。")
+    end
+  end
+
+  def valid_facebook_url?(url)
+    url =~ /\Ahttps?:\/\/(www\.)?facebook\.com\/.+\z/
+  end
+
+  def valid_twitter_url?(url)
+    url =~ /\Ahttps?:\/\/(www\.)?twitter\.com\/.+\z/
+  end
+
+  def valid_instagram_url?(url)
+    url =~ /\Ahttps?:\/\/(www\.)?instagram\.com\/.+\z/
+  end
+
+  def valid_tiktok_url?(url)
+    url =~ /\Ahttps?:\/\/(www\.)?tiktok\.com\/.+\z/
+  end
+
+  def valid_youtube_url?(url)
+    url =~ /\Ahttps?:\/\/(www\.)?youtube\.com\/.+\z/
   end
 end
