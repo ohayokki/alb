@@ -1,14 +1,27 @@
 class Admin::AreasController < Admin::AdminController 
+
+  def new
+    @area = Area.new
+  end
+
   def create
     @area = Area.new(area_params)
+    # Districtの選択肢または新規追加の処理
+    if params[:area][:new_district_name].present?
+      # 新しいDistrictを作成
+      district = District.find_or_create_by(name: params[:area][:new_district_name], prefecture_id: params[:area][:prefecture_id])
+      @area.district = district
+    end
     if @area.save
       respond_to do |format|
-        format.html { redirect_to new_admin_shop_path, notice: 'エリアが追加されました。' }
+        flash[:success] = "エリアを追加しました。"
+        format.html { redirect_to admin_shops_path }
         format.json { render json: @area, status: :created }
       end
     else
       respond_to do |format|
-        format.html { render :new }
+        flash.now[:danger] = "エリア追加に失敗しました。"
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @area.errors, status: :unprocessable_entity }
       end
     end
@@ -29,6 +42,6 @@ class Admin::AreasController < Admin::AdminController
   private
 
   def area_params
-    params.require(:area).permit(:name, :prefecture_id, :district_id)
+    params.require(:area).permit(:name, :prefecture_id, :district_id, :new_district_name)
   end
 end

@@ -50,7 +50,7 @@ Rails.application.routes.draw do
         get :status_change
       end
     end
-    resources :areas, only: [:create, :edit, :update] do
+    resources :areas, only: [:new, :create, :edit, :update] do
       get 'prefectures', on: :collection
       get 'districts', on: :collection
     end

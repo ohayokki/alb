@@ -1,0 +1,68 @@
+<h1>エリア追加</h1>
+<%= form_with model: @area, url: admin_areas_path, local: true do |f| %>
+  <%= render "layouts/error", model: @area %>
+  <div class="row mb-3">
+    <!-- Prefectureを選択 -->
+    <div class="col-4">
+      <%= f.label :prefecture_id, "都道府県（選択必須）", class: "form-label" %>
+      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :display_name, { prompt: "選択" }, { class: "form-select", id: 'prefecture_select' } %>
+    </div>
+
+    <div class="col-4">
+      <%= f.label :district_id, "広域エリア", class: "form-label", id: 'district_label', style: "display:none;" %>
+      <%= f.select :district_id, [], { prompt: "選択" }, { class: "form-select", id: 'district_select', style: "display:none;"} %>
+    </div>
+
+    <!-- 新しいDistrictを追加するためのフィールド -->
+    <div class="col-4">
+      <%= f.label :new_district_name, "広域エリアを追加", class: "form-label" %>
+      <%= f.text_field :new_district_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Area名 -->
+  <div class="mb-3">
+    <%= f.label :name, "Area Name", class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <%= f.submit "エリア追加", class: "btn btn-user w-100" %>
+<% end %>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    const prefectureSelect = document.getElementById('prefecture_select');
+    const districtSelect = document.getElementById('district_select');
+    const districtLabel = document.getElementById('district_label');
+
+    prefectureSelect.addEventListener('change', function() {
+      const prefectureId = this.value;
+      
+      if (prefectureId) {
+        // Ajaxリクエストを送信して、関連するDistrictを取得
+        fetch(`/districts/by_prefecture/${prefectureId}`)
+          .then(response => response.json())
+          .then(data => {
+            // 既存のDistrictの選択肢をクリア
+            districtSelect.innerHTML = '';
+            districtLabel.style.display = 'block';
+            districtSelect.style.display = 'block';
+
+            // 新しいDistrictの選択肢を追加
+            data.forEach(function(district) {
+              const option = document.createElement('option');
+              option.value = district.id;
+              option.textContent = district.name;
+              districtSelect.appendChild(option);
+            });
+          })
+          .catch(error => console.error('Error:', error));
+      } else {
+        // Prefectureが選択されていない場合、Districtの選択肢を空にする
+        districtSelect.innerHTML = '';
+        districtSelect.style.display = 'none';
+        districtLabel.style.display = 'none';
+      }
+    });
+  });
+</script>
