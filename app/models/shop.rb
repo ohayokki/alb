@@ -135,7 +135,7 @@ class Shop < ApplicationRecord
       errors.add(:googlemap, "には有効なiframeタグが必要です")
     end
   end
-  # ラベルが3つまでしか登録できないバリデーション
+  # タグが3つまでしか登録できないバリデーション
   def validate_label_limit
     errors.add(:labels, "は3つまでしか登録できません。") if labels.size > 3
   end

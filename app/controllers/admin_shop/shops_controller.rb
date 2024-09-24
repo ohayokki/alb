@@ -6,14 +6,22 @@ class AdminShop::ShopsController < AdminShop::AdminController
 
       # すべてのラベルを保存
       label_names.each do |label_name|
+        if label_name.length > 8
+          @shop = Shop.includes(:labels).find(shop_obj.id)
+          @labels = Label.all
+          flash.now[:danger] = "ラベルの文字数は最大8文字です。"
+          return render "admin_shop/admin/labels", status: :unprocessable_entity
+        end
         label = Label.find_or_create_by(name: label_name.strip)
         @shop.labels << label unless @shop.labels.include?(label)
       end
 
       # もし4つ以上のラベルが選択された場合、警告メッセージを表示
       if @shop.labels.size > 3
-        flash.now[:alert] = "ラベルは3つまで選んでください。#{label_names.size}個のラベルが登録されましたが、表示されるのは最初の3つです。"
-        retuen render "admin_shop/admin/shopedit", status: :unprocessable_entity
+        @shop = Shop.includes(:labels).find(shop_obj.id)
+        @labels = Label.all
+        flash.now[:danger] = "ラベルは3つまで選んでください。#{label_names.size}個のラベルが登録されましたが、表示されるのは最初の3つです。"
+        return render "admin_shop/admin/labels", status: :unprocessable_entity
       end
     end
 
@@ -23,7 +31,13 @@ class AdminShop::ShopsController < AdminShop::AdminController
       redirect_to admin_shop_admin_index_url
     else
       flash.now[:danger] = "店舗情報修正に失敗しました。"
-      render "admin_shop/admin/shopedit", status: :unprocessable_entity
+      if request.referer.include?("shop-tag")
+        @shop = Shop.includes(:labels).find(shop_obj.id)
+        @labels = Label.all
+        render "admin_shop/admin/labels", status: :unprocessable_entity
+      else
+        render "admin_shop/admin/shopedit", status: :unprocessable_entity
+      end
     end
   end
 
@@ -79,7 +93,7 @@ class AdminShop::ShopsController < AdminShop::AdminController
      :title, :introduction, :website, :reservation, :wifi, :alcohol, :smoking, :english, :korean, :card_payment,
      :card_company, :qr_code_payment, :qr_code_company, :e_money_payment, :e_money_company,
      :image1, :image2, :image3, :image4, :image5, :remove_image1,
-     :remove_image2, :remove_image3, :remove_image4, :remove_image5,
+     :remove_image2, :remove_image3, :remove_image4, :remove_image5, :label_names,
      label_ids: [], weekly_holidays: [])
   end
 end

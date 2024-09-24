@@ -23,6 +23,7 @@ class AdminShop::AdminController < ApplicationController
   end
 
   def labels
+    @shop = Shop.includes(:labels).find(shop_obj.id)
     @labels = Label.all
   end
 
