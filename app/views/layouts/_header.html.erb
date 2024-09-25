@@ -12,7 +12,6 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'マイページ', user_page_path(current_user), class: "nav-link" %></li>
@@ -20,10 +19,11 @@
           <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
         <% end %>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <%= form_with(url: root_path, method: :get, local: true, class: "d-flex", html: { role: "search" }) do %>
+        <%= text_field_tag :search, params[:search], class: "form-control mew", type: "search", placeholder: "お店検索", aria: { label: "Search" } %>
+        <%= button_tag "Search", class: "btn btn-outline-user", type: "submit" %>
+      <% end %>
     </div>
   </div>
 </nav>

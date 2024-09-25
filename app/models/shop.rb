@@ -1,4 +1,16 @@
 class Shop < ApplicationRecord
+  include PgSearch::Model
+
+  pg_search_scope :search_by_term, 
+    against: [:name, :title, :introduction, :access, :coupon, :introduction], # 検索対象のカラム
+    associated_against: {
+      area: [:name] # Areaのカラム
+    },
+    using: {
+      tsearch: { prefix: false },
+      trigram: { threshold: 0.1 }  # 類似度の閾値を調整
+    }
+
   mount_uploader :image1, ShopUploader
   mount_uploader :image2, ShopUploader
   mount_uploader :image3, ShopUploader

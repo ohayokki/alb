@@ -1,22 +1,31 @@
 <% title = "全国" %>
 
-<%= image_tag("/allbar.png", class:"img-fluid") %>
+<%#= image_tag("/allbar.png", class:"img-fluid") %>
 <div class="container-xxl mt-5">
-  <% if @shops&.any? %>
-    <h2>近くのバー（<%= @shops.count %>）</h2>
-    <%= render @shops %>
-  <% end %>
+  <% if params[:search].present? %>
+    <h2><%= params[:search] %>の検索結果</h2>
+    <% if @shops.any? %>
+      <%= render @shops %>
+    <% else %>
+      <p class="mb-3">該当するお店が見つかりませんでした。</p>
+    <% end %>
+  <% else %>
+    <% if @shops&.any? %>
+      <h2>近くのバー（<%= @shops.count %>）</h2>
+      <%= render @shops %>
+    <% end %>
 
-  <h2>新しく登録されたバー（<%= @new_shops.count %>）</h2>
-  <%= render @new_shops %>
+    <h2>新しく登録されたバー（<%= @new_shops.count %>）</h2>
+    <%= render @new_shops %>
 
-  <% if @new_shops.count > 25 %>
-    <div class="text-end">
-      <%= link_to "新着BAR一覧", "#" %>
-    </div>
+    <% if @new_shops.count > 25 %>
+      <div class="text-end">
+        <%= link_to "新着BAR一覧", "#" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
+  
 <script>
   function getLocation() {
     if (navigator.geolocation) {

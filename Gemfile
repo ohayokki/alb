@@ -66,3 +66,6 @@ gem "simple_calendar"
 gem "sassc-rails"
 gem 'sidekiq'
 gem 'sidekiq-cron'
+
+# 全文検索
+gem 'pg_search'
