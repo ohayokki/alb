@@ -40,6 +40,6 @@ class AdminShop::NoticesController < AdminShop::AdminController
 
   private
   def notice_params
-    params.require(:notice).permit(:title, :content, :date, :image, :remove_image)
+    params.require(:notice).permit(:title, :content, :date, :image, :image_cache, :remove_image)
   end
 end

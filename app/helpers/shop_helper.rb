@@ -16,7 +16,7 @@ module ShopHelper
           elsif object.send("#{attribute}_cache").present?
             concat image_tag(object.send("#{attribute}_cache"), class: "img-fluid")
           else
-            concat "お店ロゴが登録されていません。"
+            concat "画像が登録されていません"
           end
         end
       )

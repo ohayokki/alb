@@ -32,23 +32,13 @@
     <%= f.text_area :message, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <div class="row">
-      <div class="col">
-       <%= f.label :image, "画像", class: "form-label" %>
-        <%= f.file_field :image, class: "form-control" %>
-      </div>
-      <div class="col text-end">
-        <% if model.image.present? %>
-          <label class="mt-3">
-            <%= f.check_box :remove_image %>
-            画像削除
-          </label>
-          <%= image_tag(model.image.to_s, style: "width: 100px") %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= image_upload_field(f, @staff, :image, "スタッフ画像") %>
+  <% if model.image.present? %>
+    <label class="mb-4 mt-0">
+      <%= f.check_box :remove_image %>
+      画像削除
+    </label>
+  <% end %>
 
   <div class="mb-3">
     <%= f.label :hobby, "趣味", class: "form-label" %>

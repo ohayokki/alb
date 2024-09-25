@@ -38,6 +38,7 @@ class AdminShop::StaffsController < AdminShop::AdminController
     @staff = @shop.staffs.find(params[:id])
   end
   def staff_params
-    params.require(:staff).permit(:remove_image, :name, :blood_type, :birthday, :height, :alcohol, :message, :image, :hobby, :role, :service_style, :qualifications)
+    params.require(:staff).permit(:name, :blood_type, :birthday, :height, :alcohol, :message,
+                         :image, :remove_image, :image_cache, :hobby, :role, :service_style, :qualifications)
   end
 end
