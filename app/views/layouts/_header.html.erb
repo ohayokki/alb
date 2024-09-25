@@ -4,7 +4,10 @@
   <div class="container-fluid">
     <div class="navbar-brand">
       <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
-      <h1 class="mb-0">Allbar -アルバ<%= @title %>版-&emsp;<%= @genre.name + "一覧" if @genre.present? %></h1>
+      <h1 class="mb-0">
+        <%= link_to 'Allbar -アルバ', root_path %>
+        <%= @title %>版&emsp;<%= @genre.name + "一覧" if @genre.present? %>
+      </h1>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,6 +31,6 @@
   </div>
 </nav>
 
-          <% if user_signed_in? %>
-            ようこそ<%= current_user.name %>さん<br>
-            <% end %>
+<% if user_signed_in? %>
+  ようこそ<%= current_user.name %>さん<br>
+<% end %>
