@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
   def area
     controller_name =  URI(request.referer).path.split('/')[1]
-    @genre = Genre.find_by(rubi:params[:genre])
+    @genre = Genre.find_by(name:params[:genre])
     
 
     if controller_name == "districts"
