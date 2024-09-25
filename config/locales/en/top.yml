@@ -1,0 +1,7 @@
+en:
+  search_results:
+    title: "Search results for %{search}"
+    not_found: "No shops found."
+    nearby_bars: "Nearby bars (%{count})"
+    new_bars: "Newly registered bars (%{count})"
+    new_bars_link: "View all new bars"

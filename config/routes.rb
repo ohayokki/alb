@@ -1,9 +1,9 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  # Sidekiqの管理画面にBasic認証を追加する
+  #管理画面にBasic認証を追加する
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
   
-  # Basic Authentication
+  # Sidekiqの Basic Authentication
   if Rails.env.production?
     Sidekiq::Web.use(Rack::Auth::Basic) do |username, password|
       username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Defines the root path route ("/")
-  root "top#index"
   get "prefectures/:id", to: "prefectures#index", as: :prefectures
   get "districts/:id", to: "districts#index", as: :districts
   get "privacy-policy", to: "top#privacy_policy", as: :privacy_policy #プライバシーポリシー
@@ -100,4 +98,16 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
+
+
+
+
+
+
+
+  ### i18n済
+  scope "(:locale)", locale: /ja|en/ do
+    root "top#index"
+  end
 end

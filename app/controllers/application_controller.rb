@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
+  before_action :set_locale
   include SessionsHelper
 
   private
@@ -40,5 +41,9 @@ class ApplicationController < ActionController::Base
     else
       @shops = scope.where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).includes(:area, :genre)
     end
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end

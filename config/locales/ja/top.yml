@@ -1,0 +1,7 @@
+ja:
+  search_results:
+    title: "%{search}の検索結果"
+    not_found: "該当するお店が見つかりませんでした。"
+    nearby_bars: "近くのバー（%{count}）"
+    new_bars: "新しく登録されたバー（%{count}）"
+    new_bars_link: "新着BAR一覧"

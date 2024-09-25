@@ -3,7 +3,7 @@
 
   <h1>店舗掲載について</h1>
   <p class="text-center">
-    全国のバー情報アルバでは自薦・他薦問わず掲載店舗様を広く募集しております。<br>
+    全国のバー情報アルバでは掲載店舗様を広く募集しております。<br>
     掲載ご希望の方は以下のフォームより必要事項の入力をお願いします。<br>
     折り返しご連絡致します。
   </p>
@@ -53,7 +53,11 @@
 
       <div class="mb-3">
         <%= form.label :genre_id %> ※必須
-        <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: t('prompts.genre_id') }, { class: "form-select" } %>
+        
+        <%= form.collection_select :genre_id, Genre.all, :id, 
+            ->(genre) { I18n.t("genres.#{genre.name}", default: genre.name) }, 
+            { prompt: t('prompts.genre_id') }, 
+            { class: "form-select" } %>     
       </div>
 
       <div class="mb-3">

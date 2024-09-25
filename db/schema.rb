@@ -46,8 +46,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_062527) do
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "image"
-    t.string "rubi"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -147,10 +145,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_062527) do
     t.datetime "tiral_start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["access"], name: "index_shops_on_access", opclass: :gin_trgm_ops, using: :gin
     t.index ["area_id"], name: "index_shops_on_area_id"
+    t.index ["coupon"], name: "index_shops_on_coupon", opclass: :gin_trgm_ops, using: :gin
     t.index ["district_id"], name: "index_shops_on_district_id"
     t.index ["genre_id"], name: "index_shops_on_genre_id"
+    t.index ["introduction"], name: "index_shops_on_introduction", opclass: :gin_trgm_ops, using: :gin
+    t.index ["name"], name: "index_shops_on_name", opclass: :gin_trgm_ops, using: :gin
     t.index ["prefecture_id"], name: "index_shops_on_prefecture_id"
+    t.index ["title"], name: "index_shops_on_title", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "staffs", force: :cascade do |t|
