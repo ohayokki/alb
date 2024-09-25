@@ -1,5 +1,4 @@
 <div class="container-xxl">
-
   <div class="bread-column">
     <%= link_to "アルバ", root_path %>
     &emsp;-&emsp;
@@ -7,7 +6,6 @@
     &emsp;-&emsp;
     <%= link_to @area.district.display_name, districts_path(@area.district.name) %>
     &emsp;-&emsp;
-
     <%= @title %>
   </div>
 
@@ -34,7 +32,7 @@
                 <img src="..." class="card-img-top" alt="...">
               <% end %>
               <div class="card-body">
-                <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.rubi, @area.id) %></h5>
+                <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.name, @area.id) %></h5>
                 <p class="card-text"><%= genre.description %></p>
               </div>
             </div>

@@ -19,8 +19,8 @@
 
   <div class="row mb-3">
     <div class="col-sm-6">
-      <div class="shop-genre-name <%= @shop.genre.rubi %> text-center mb-3">
-        <%= @shop.genre.name %>
+      <div class="shop-genre-name <%= @shop.genre.name %> text-center mb-3">
+        <%= t("genres.#{@shop.genre.name}") %>
       </div>
     </div>
     <div class="col-sm-6">
