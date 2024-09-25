@@ -86,6 +86,8 @@ Rails.application.routes.draw do
   get "line-login", to: "sessions#line_login", as: :line_login
   #user
   get "users", to: "users#show", as: :user_page
+  #位置情報をセッションに保存
+  post 'save_location', to: 'top#save_location'
 
   #問い合わせ関係
   resources :contacts, only: [:new, :create]

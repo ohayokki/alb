@@ -10,8 +10,13 @@
       getCurrentLocation() {
         document.querySelectorAll('.current_location').forEach(element => {
           element.addEventListener('click', () => {
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(this.successGetPosition, this.failGetPosition, this.options);
+            const latitude = sessionStorage.getItem('latitude');
+            const longitude = sessionStorage.getItem('longitude');
+
+            if (latitude && longitude) {
+              window.location.href = `<%= url %>?latitude=${latitude}&longitude=${longitude}`;
+            } else if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(this.successGetPosition.bind(this), this.failGetPosition.bind(this), this.options);
             } else {
               const message = 'ご使用中のブラウザは現在地検索に対応されておりません。';
               Alert.set('warning', message);
@@ -21,7 +26,24 @@
       }
 
       successGetPosition(position) {
-        window.location.href = `<%= url %>?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
+        // Railsのエンドポイントに位置情報を送信
+        fetch('/save_location', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          })
+        }).then(response => {
+          if (response.ok) {
+            window.location.href = `<%= url %>?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
+          } else {
+            Alert.set('warning', '位置情報の保存に失敗しました。');
+          }
+        });
       }
 
       failGetPosition(error) {
