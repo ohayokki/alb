@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     current_user = User.find(1)
     session[:user_id] = current_user.id
   end
-
-  def near_shop(scope)
+  
+  def near_shop(scope = nil)
     if session[:latitude].present? && session[:longitude].present?
       @latitude = session[:latitude]
       @longitude = session[:longitude]
@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
       @latitude = params[:latitude].to_f
       @longitude = params[:longitude].to_f
     end
-    
+  
+    scope ||= Shop.all
+
     if @latitude.present? && @longitude.present?
       @shops = scope.near([@latitude, @longitude], 50, units: :km) # 緯度・経度を配列で指定
                     .where(status: ["無料掲載", "有料掲載", "お試し有料掲載"])
