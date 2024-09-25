@@ -15,9 +15,3 @@
 .footer_nav a{
   color: #eee;  
 }
-
-
-hage{
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-  background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
-}
