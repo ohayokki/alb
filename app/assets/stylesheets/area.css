@@ -48,7 +48,7 @@
 
 @media (max-width: 576px) {
   .shop-area-name, .shop-genre-name{
-    font-size: 0.8em;
+    font-size: 0.9em;
     padding: 5px 10px;
     border-radius: 10px;
   }
