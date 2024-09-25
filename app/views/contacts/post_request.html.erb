@@ -34,10 +34,7 @@
         <%= form.text_field :email, class: "form-control" %>
       </div>
 
-      <div class="mb-3">
-        <%= form.label :shop_logo %>
-        <%= form.file_field :shop_logo %>
-      </div>
+      <%= image_upload_field(form, @shop, :shop_logo, "お店ロゴ") %>
 
       <div class="mb-3">
         <%= form.label :name %>

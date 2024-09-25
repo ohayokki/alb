@@ -8,6 +8,7 @@ class ShopsController < ApplicationController
       redirect_to shop_request_confirm_path
     else
       flash.now[:danger] = 'ショップの作成に失敗しました。'
+      @shop.shop_logo_cache = params[:shop][:shop_logo_cache]
       render "contacts/post_request", status: :unprocessable_entity
     end
   end
@@ -72,7 +73,7 @@ class ShopsController < ApplicationController
     params.require(:shop).permit(
       :manager_name, :name, :address, :genre_id, :access, :area_description, :hours, :budget,
       :title, :introduction, :tel, :email,
-      :shop_logo,
+      :shop_logo, :shop_logo_cache,
       :reservation,
       :wifi,
       :alcohol, :holiday,

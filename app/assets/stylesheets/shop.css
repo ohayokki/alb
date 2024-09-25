@@ -43,6 +43,15 @@ section.shop-basic-information{
   height: 100%;
 }
 
+
+.sns{
+  background-color: #000;
+  padding: 20px 0;
+}
+.sns-icon{
+  color: #fff;
+}
+
 @media (max-width: 576px) {
   .shop-tag {
     font-size: 0.7rem; /* 必要に応じてサイズを調整 */

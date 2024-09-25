@@ -12,19 +12,7 @@
     </div>
   <% end %>
 
-  <div class="row mb-3">
-    <div class="col-9">
-      <%= form.label :shop_logo %>
-      <%= form.file_field :shop_logo, class: "form-control" %>
-    </div>
-    <div class="col">
-      <% if @shop.shop_logo %>
-        <%= image_tag(@shop.shop_logo.to_s, class: "img-fluid") %>
-      <% else %>
-        お店ロゴが登録されていません。
-      <% end %>
-    </div>
-  </div>
+  <%= image_upload_field(form, @shop, :shop_logo, "お店ロゴ") %>
 
   <div class="row mb-3">
     <div class="col-9">
