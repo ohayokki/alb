@@ -26,9 +26,10 @@
  section{
   margin-top: 50px;
  }
- .burgundy{
-  color: #72313e;
-}
+
+ .ruby{ color: rgb(188, 32, 32); }
+ .burgundy{ color: #72313e; }
+ 
 .bread-column{
   font-size: 0.8em;
   padding: 4px 12px 40px 0;
@@ -64,7 +65,6 @@ h2, h3{
   font-size: 0.8em;
   color: #666;
  }
-
  
 /*------------------------------------
 - COLOR user

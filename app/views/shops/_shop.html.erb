@@ -9,25 +9,27 @@
       <img src="/no-image.png" class="img-fluid w-100">
     <% end %>
     <% if shop.distance.present? %>
-      <div class="shop_distance"><%= shop.distance.round(2) %> km</div>
+      <div class="shop-distance"><%= shop.distance.round(2) %> km</div>
     <% end %>
   </div>
   <div class="col">
     <div class="mb-3 row">
-      <span class="shop_area_name col-sm-5 mb-2"><%= shop.area.name %></span>
-      <span class="shop-genre-name <%= shop.genre.rubi %> col-sm-5 mb-2"><%= shop.genre.name %></span>
+      <div class="shop-area-name col mb-2"><%= shop.area.name %></div>
+      <div class="shop-genre-name col offset-1 <%= shop.genre.rubi %> mb-2"><%= shop.genre.name %></div>
     </div>
-    <h3><%= link_to shop.name, shop_path(shop) %></h3>
+    <h3><%= link_to shop.name, shop_path(shop), class: "ruby" %></h3>
     <%= shop.title %>
     <hr>
-    <% if shop.hours.present? %>
-      <div>営業時間:&emsp;<%= shop.hours %></div>
-    <% end %>
-    <% if shop.budget.present? %>
-      <div>予算:&emsp;<%= I18n.t("activerecord.attributes.shop.budget_values.#{shop.budget}") %></div>
-    <% end %>
-    <% if shop.access.present? %>
-      <div>アクセス:&emsp;<%= shop.access %></div>
-    <% end %>
+    <div class="shop-index-detail">
+      <% if shop.hours.present? %>
+        <div>営業時間:&emsp;<%= shop.hours %></div>
+      <% end %>
+      <% if shop.budget.present? %>
+        <div>予算:&emsp;<%= I18n.t("activerecord.attributes.shop.budget_values.#{shop.budget}") %></div>
+      <% end %>
+      <% if shop.access.present? %>
+        <div>アクセス:&emsp;<%= shop.access %></div>
+      <% end %>
+    </div>
   </div>
 </div>

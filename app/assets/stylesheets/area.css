@@ -13,19 +13,26 @@
   margin-top: 40px;
 }
 
-.shop_area_name{
-  background-color: #444;
-  color: #eee;
+
+
+.shop-area-name, .shop-genre-name{
+  text-align: center;
   padding: 5px 15px;
   border-radius: 16px;
-  margin-right: 12px;
 }
-.shop_distance{
-  background: #018f2c;
+
+.shop-area-name{
+  background-color: #444;
+  color: #eee;
+}
+
+.shop-distance{
+  background: #bfb201;
   color: #fff;
   padding: 5px 15px;
   width: 100%;
   text-align: center;
+  border-radius: 0 0 10px 10px;
 }
 
 .shop_list_detail h3{
@@ -37,4 +44,15 @@
 .shop_list_detail h3 a:hover{
   color:#fa2b2b;
   background-color: #fff;
+}
+
+@media (max-width: 576px) {
+  .shop-area-name, .shop-genre-name{
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  .shop-index-detail{
+    font-size: 0.8em;
+  }
 }

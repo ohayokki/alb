@@ -1,0 +1,85 @@
+
+.cafe {
+  color: #fff;
+  background-color: #d4a373; /* 柔らかいコーヒー色 */
+}
+
+.cocktail-bar {
+  color: #fff;
+  background-color: #ff6f61; /* カクテルの鮮やかさを反映したオレンジレッド */
+}
+
+.wine-bar {
+  color: #fff;
+  background-color: #8b0000; /* 深みのあるワインレッド */
+}
+
+.authentic-bar {
+  color: #fff;
+  background-color: #2f4f4f; /* 高級感のあるダークスレートグレー */
+}
+
+.shisha-bar {
+  color: #fff;
+  background-color: #ff6347; /* 鮮やかなトマト色 */
+}
+
+.karaoke-bar {
+  color: #fff;
+  background-color: #4169e1; /* ロイヤルブルー */
+}
+
+.darts-bar {
+  color: #fff;
+  background-color: #6a5acd; /* スレートブルー */
+}
+
+.pool-bar {
+  color: #fff;
+  background-color: #4682b4; /* スチールブルー */
+}
+
+.dining-bar {
+  color: #fff;
+  background-color: #8b4513; /* チョコレート色 */
+}
+
+.sports-bar {
+  color: #fff;
+  background-color: #32cd32; /* ライムグリーン */
+}
+
+.club {
+  color: #fff;
+  background-color: #9400d3; /* ダークバイオレット */
+}
+
+.concept-cafe {
+  color: #fff;
+  background-color: #ffb6c1; /* ライトピンク */
+}
+
+.concept-bar {
+  color: #fff;
+  background-color: #20b2aa; /* ライトシーグリーン */
+}
+
+.snack-pub {
+  color: #fff;
+  background-color: #daa520; /* ゴールデンロッド */
+}
+
+.girls-bar {
+  color: #fff;
+  background-color: #ff69b4; /* ホットピンク */
+}
+
+.mens-pub {
+  color: #fff;
+  background-color: #4682b4; /* スチールブルー */
+}
+
+.casual-bar{
+  color: #d7d7d7;
+  background-color: #4d6e21;
+}
