@@ -1,4 +1,6 @@
-<button class="current_location mb-3 mt-3">現在地から近い順に表示する</button>
+<% unless session[:latitude].present? && session[:longitude].present? %>
+  <button class="current_location mb-3 mt-3">現在地から近い順に表示する</button>
+<% end %>
 
 <script>
   document.addEventListener('turbo:load', function() {
