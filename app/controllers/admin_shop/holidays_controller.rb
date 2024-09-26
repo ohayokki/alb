@@ -10,6 +10,7 @@ class AdminShop::HolidaysController < AdminShop::AdminController
       flash[:success] = "特別な日が登録されました。"
       redirect_to admin_shop_admin_index_url
     else
+      @holidays = @shop.holidays.where.not(id: nil).order("created_at")
       flash.now[:danger] = "特別な日の登録に失敗しました。"
       render "admin_shop/holidays/index", status: :unprocessable_entity
     end

@@ -9,7 +9,7 @@ class AdminShop::StaffsController < AdminShop::AdminController
     @staff = @shop.staffs.build(staff_params)
     if @staff.save
       flash[:success] = "スタッフ登録しました。"
-      redirect_to  admin_shop_staffs_url
+      redirect_to admin_shop_staffs_url
     else
       @staffs = @shop.staffs.order("created_at")
       flash.now[:danger] = "スタッフ登録に失敗しました。"

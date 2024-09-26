@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      notice: お知らせ
+    attributes:
+      notice:
+        title: タイトル
+        date: 日付

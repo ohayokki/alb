@@ -21,11 +21,6 @@ ja:
     qr_code_payment_label: "OK(PayPay、楽天ペイ、aなど)"
     e_money_payment_label: "OK(suica,waonなど)"
 
-  errors:
-    count: "error"
-    prohibited: "が発生しました"
-
-
   inquiries:
     bar_owner: "バー運営者からの問い合わせ"
     user: "ユーザーからの問い合わせ"

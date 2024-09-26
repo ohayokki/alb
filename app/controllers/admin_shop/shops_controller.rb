@@ -28,7 +28,15 @@ class AdminShop::ShopsController < AdminShop::AdminController
     end
 
     if @shop.update(shop_params)
-      flash[:success] = "店舗情報修正しました。"
+      if request.referer.include?("coupon")
+        flash[:success] = "クーポンを登録しました。"
+      elsif request.referer.include?("holiday")
+        flash[:success] = "店休日を設定しました。"
+      elsif request.referer.include?("sns")
+        flash[:success] = "SNSを設定しました。"
+      else
+        flash[:success] = "店舗情報修正しました。"
+      end
       redirect_to admin_shop_admin_index_url
     else
       flash.now[:danger] = "店舗情報修正に失敗しました。"

@@ -1,6 +1,5 @@
 <% if model.errors.any? %>
   <div id="error_explanation" class="alert alert-danger">
-    <h2><%= pluralize(model.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
     <ul>
       <% model.errors.full_messages.each do |message| %>
         <li><%= message %></li>

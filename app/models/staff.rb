@@ -6,7 +6,8 @@ class Staff < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }  # 名前は必須で50文字以内
   #validates :blood_type, presence: true, inclusion: { in: %w[A B AB O], message: "%{value} is not a valid blood type" } # 血液型は必須でA, B, AB, O のいずれか
-  validates :birthday, presence: true  # 誕生日は必須
+  # validates :birthday, optional: true
+  
   validates :height, numericality: { only_integer: true, greater_than: 50, less_than: 250 }, allow_nil: true # 身長は数値で50cmから250cmの範囲
   # validates :alcohol, presence: true, inclusion: { in: %w[強い 普通 弱い 飲めない], message: "%{value} is not a valid alcohol preference" } # アルコールの得意度は指定された値
   validates :message, length: { maximum: 500 }, allow_blank: true # メッセージは任意だが、500文字以内
