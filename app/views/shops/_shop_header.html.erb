@@ -1,7 +1,30 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<% images = [] %>
+<% images << @shop.image1.to_s if @shop.image1.present? %>
+<% images << @shop.image2.to_s if @shop.image2.present? %>
+<% images << @shop.image3.to_s if @shop.image3.present? %>
+<% images << @shop.image4.to_s if @shop.image4.present? %>
+<% images << @shop.image5.to_s if @shop.image5.present? %>
+
 <div class="shop-header">
-  <% if @shop.image1.present? %>
-    <div class="text-center mb-3">
-      <%= image_tag @shop.image1.to_s, class: "img-fluid" %>
+  <% if images.any? %>
+    <div class="swiper">
+      <!-- 必要に応じたwrapper -->
+      <div class="swiper-wrapper">
+        <% images.each do |image| %>
+          <div class="swiper-slide"><%= image_tag(image, alt: @shop.name + "の写真") %></div>
+        <% end %>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+
     </div>
   <% end %>
 
@@ -40,3 +63,25 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  const swiper = new Swiper(".swiper", { 
+    // Optional parameters
+    loop: true,
+    speed: 3000,
+    autoplay: {
+      delay: 3000, // 途切れなくループ
+    },
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+

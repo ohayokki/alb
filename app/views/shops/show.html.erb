@@ -9,7 +9,6 @@
     <%= link_to @shop.area.name, area_path(@shop.area) %>
     &emsp;-&emsp;
     <%=  @shop.name %>
-
   </div>
   <%= render "shop_header" %>
   <% if @shop.vacant_job_id %>
@@ -29,16 +28,3 @@
   <%= render "map"%>
   <%= render "basic_info", shop: @shop %>
 </div>
-
-<% "slick Carousel" %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
-<script>
-$('.your-carousel').slick({
-   dots: true,
-   infinite: true,
-   slidesToShow: 3,
-   slidesToScroll: 1
-});
-</sclipt>
