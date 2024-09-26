@@ -35,11 +35,13 @@
   padding: 4px 12px 40px 0;
 }
 
-.area-links{
-  padding-bottom: 40px;
+.accordion-header {
+  background-color: #eee;
 }
-.area-links .col-2{
-  height: 30px;
+/* アコーディオンが開いているときのボタンスタイル */
+.accordion-button:not(.collapsed) {
+  color: #fff;
+  background-color: #000;
 }
 
 h1{

@@ -1,19 +1,14 @@
-.link-badge {
-  text-decoration: none;
-  color: #444;
+.aria-link{
+  padding: 20px 0;
+  border-bottom: 1px dashed #aaa;
+}
+.aria-link a{
   display: block;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 5px;
-  font-size: 0.7em;
-  padding: 5px 7px; 
 }
 
 .genre{
   margin-top: 40px;
 }
-
-
 
 .shop-area-name, .shop-genre-name{
   text-align: center;

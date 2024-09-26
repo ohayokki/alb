@@ -9,14 +9,6 @@
     <%= @title %>
   </div>
 
-
-  <% if @areas.any? %>
-    <h2><%= @area.district.display_name %>の他エリア</h2>
-    <div class="row area-links">
-      <%= render @areas %>
-    </div>
-  <% end %>
-
   <h2><%= @title %>のバー</h2>
   <%= render "shops/near_serch", url:  area_path(@area) %>
   <%= render @shops %>
@@ -38,6 +30,23 @@
             </div>
           </div>
         <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @areas.any? %>
+    <div class="accordion accordion-flush mb-3" id="accordionFlush">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <h2><%= @area.district.display_name %>の他エリア</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+          <div class="accordion-body">
+            <%= render @areas %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

@@ -1,6 +1,7 @@
 class PrefecturesController < ApplicationController
   def index
     @prefecture = Prefecture.includes(:districts).find_by(name: params[:id])
+    @districts = @prefecture.districts
     @title = @prefecture.display_name
     near_shop(@prefecture.shops)
     @genres = Genre.joins(:shops)

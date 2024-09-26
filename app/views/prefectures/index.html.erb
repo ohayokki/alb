@@ -5,18 +5,6 @@
     <%= @title %>
   </div>
 
-  <div class="row">
-    <% @prefecture.districts.each do |district| %>
-      <div class="col-6">
-        <%= link_to t("districts.#{district.name}"), districts_path(district.name)  %><br>
-
-                <%# district.areas.each do |area| %>
-                  <%#= area.name %><br>
-                <%# end %>
-      </div>
-    <% end %>
-  </div>
-
   <h2><%= @prefecture.display_name %>のバー</h2>
   <%= render "shops/near_serch", url:  prefectures_path(@prefecture.name) %>
   <%= render @shops %>
@@ -40,4 +28,20 @@
     </div>
   </div>
 
+  <% if @districts.any? %>
+    <div class="accordion accordion-flush mb-3" id="accordionFlush">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <h2><%= @prefecture.display_name %>のエリア</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+          <div class="accordion-body">
+            <%= render @districts %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
