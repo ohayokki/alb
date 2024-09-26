@@ -11,26 +11,32 @@
   <%= render "shops/near_serch", url:  districts_path(@district.name) %>
   <%= render @shops %>
 
-  <% if @genres.any? %>
-    <div class="genre">
-      <h2><%= @district.display_name %>バージャンル別</h2>
-      <div class="row">
-        <% @genres.each do |genre| %>
-          <div class="col-sm-4 mb-3">
-            <div class="card">
-              <% if false%>
-                <img src="..." class="card-img-top" alt="...">
-              <% end %>
-              <div class="card-body">
-                <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.name, @district.name) %></h5>
-                <p class="card-text"><%= genre.description %></p>
-              </div>
+<% if @genres.any? %>
+  <div class="genre">
+    <h2><%= @district.display_name %>ジャンル別</h2>
+    <div class="row">
+      <% @genres.each do |genre| %>
+        <div class="col-sm-4 mb-3">
+          <div class="card">
+            <% random_shop = genre.shops
+                                   .where(district_id: @district.id, status: ["無料掲載", "有料掲載", "お試し有料掲載"])
+                                   .where.not(image1: nil) # image1が存在する店舗のみ
+                                   .sample %>
+            <% if random_shop %>
+              <%= image_tag random_shop.image1.to_s, class: "card-img-top", alt: "#{genre.name}の店舗画像" %>
+            <% else %>
+              <img src="/no-image.png" class="card-img-top" alt="デフォルト画像">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.name, @district.name) %></h5>
+              <p class="card-text"><%= genre.description %></p>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
   <% if @areas.any? %>
     <div class="accordion accordion-flush mb-3" id="accordionFlush">

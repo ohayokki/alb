@@ -15,8 +15,14 @@
       <% @genres.each do |genre| %>
         <div class="col-sm-4 mb-3">
           <div class="card">
-            <% if false%>
-              <img src="..." class="card-img-top" alt="...">
+            <% random_shop = genre.shops
+                                   .where(prefecture_id: @prefecture.id, status: ["無料掲載", "有料掲載", "お試し有料掲載"])
+                                   .where.not(image1: nil) # image1が存在する店舗のみ
+                                   .sample %>
+            <% if random_shop %>
+              <%= image_tag random_shop.image1.to_s, class: "card-img-top", alt: "#{genre.name}の店舗画像" %>
+            <% else %>
+              <img src="/no-image.png" class="card-img-top" alt="デフォルト画像">
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.name, @prefecture.name) %></h5>
