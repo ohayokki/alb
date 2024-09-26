@@ -70,9 +70,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_062527) do
     t.text "content"
     t.date "date"
     t.bigint "shop_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.bigint "district_id", null: false
+    t.bigint "area_id", null: false
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_notices_on_area_id"
+    t.index ["district_id"], name: "index_notices_on_district_id"
+    t.index ["prefecture_id"], name: "index_notices_on_prefecture_id"
     t.index ["shop_id"], name: "index_notices_on_shop_id"
   end
 
@@ -204,6 +210,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_062527) do
   add_foreign_key "areas", "prefectures"
   add_foreign_key "districts", "prefectures"
   add_foreign_key "holidays", "shops"
+  add_foreign_key "notices", "areas"
+  add_foreign_key "notices", "districts"
+  add_foreign_key "notices", "prefectures"
   add_foreign_key "notices", "shops"
   add_foreign_key "shop_labels", "labels"
   add_foreign_key "shop_labels", "shops"
