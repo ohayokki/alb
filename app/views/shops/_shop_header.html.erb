@@ -9,22 +9,20 @@
 <% images << @shop.image5.to_s if @shop.image5.present? %>
 
 <div class="shop-header">
-  <% if images.any? %>
+  <% if images.count >= 2  %>
     <div class="swiper">
-      <!-- 必要に応じたwrapper -->
       <div class="swiper-wrapper">
         <% images.each do |image| %>
           <div class="swiper-slide"><%= image_tag(image, alt: @shop.name + "の写真") %></div>
         <% end %>
       </div>
-      <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
-
-      <!-- If we need navigation buttons -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-
-
+    </div>
+  <% elsif images.count == 1 %>
+    <div class="text-center">
+      <%= image_tag(images[0], alt: @shop.name + "の写真") %>
     </div>
   <% end %>
 
