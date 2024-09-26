@@ -1,4 +1,4 @@
-<% if @shop.tiral_start_date.nil? && ( @shop.status != "無料掲載" || @shop.status != "有料掲載" ) %>
+<% if @shop.trial_start_date.nil? && ( @shop.status != "無料掲載" || @shop.status != "有料掲載" ) %>
   <%= link_to "お試し有料掲載にする", status_change_admin_shop_path(@shop, status: "お試し有料掲載"), data: { turbo_confirm: "お試し有料掲載にしますか？"}, class: "btn btn-warning" %>
 <% end  %>
 <% if @shop.status != "無料掲載" %>

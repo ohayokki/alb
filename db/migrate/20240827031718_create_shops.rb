@@ -51,7 +51,7 @@ class CreateShops < ActiveRecord::Migration[7.2]
       t.datetime :vacant_until, default: nil #空席中の終了時間
       t.string :password_digest, default: nil
       t.integer :status, default: 1, null: false
-      t.datetime :tiral_start_date, default: nil # 無料掲載開始日 １度だけOK初期値nil
+      t.datetime :trial_start_date, default: nil # 無料掲載開始日 １度だけOK初期値nil
       t.timestamps
     end
   end

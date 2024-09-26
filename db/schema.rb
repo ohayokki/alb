@@ -142,7 +142,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_062527) do
     t.datetime "vacant_until"
     t.string "password_digest"
     t.integer "status", default: 1, null: false
-    t.datetime "tiral_start_date"
+    t.datetime "trial_start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["access"], name: "index_shops_on_access", opclass: :gin_trgm_ops, using: :gin

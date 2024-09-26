@@ -1,3 +1,4 @@
+<h2>【空席情報】</h2>
 <% unless @shop.vacant_until %>
   <%= form_with url: set_vacant_admin_shop_shop_path(@shop), method: :patch, remote: true, id: "vacant_form" do |form| %>
     <div class="form-group">
