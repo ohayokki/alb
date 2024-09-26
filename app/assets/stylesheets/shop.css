@@ -44,11 +44,38 @@ section.shop-basic-information{
 }
 
 .sns{
-  background-color: #000;
   padding: 20px 0;
 }
-.sns-icon{
-  color: #fff;
+.icon-link{
+  padding: 10px 0;
+}
+
+.twitter, .tiktok{
+  background-color: rgb(0, 0, 0);
+}
+.twitter .icon-link, .tiktok .icon-link{
+  color: #eee;
+}
+
+.instagram{
+  background-color: #fff;
+}
+.instagram .icon-link{
+  color: #222;
+}
+
+.youtube{
+  background-color: rgb(255, 0, 0);
+}
+.youtube .icon-link{
+  color: #eee;
+}
+
+.facebook{
+  background-color: rgb(24, 119, 242);
+}
+.facebook .icon-link{
+  color: #eee;
 }
 
 @media (max-width: 576px) {
