@@ -21,6 +21,13 @@
     <%= shop.title %>
     <hr>
     <div class="shop-index-detail">
+      <% if shop.staffs %>
+        <% shop.staffs.each do |staff| %>
+          <% if staff.image.present? %>
+            <%= image_tag staff.image.url(:square), class: "rounded-circle", style: "width: 60px;" %>
+          <% end %>
+        <% end %>
+      <% end %>
       <% if shop.hours.present? %>
         <div>営業時間:&emsp;<%= shop.hours %></div>
       <% end %>
