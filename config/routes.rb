@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  #管理画面にBasic認証を追加する
+  devise_for :admin_users #先頭行
+
+  #Sidekiq管理画面にBasic認証を追加する
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
   
   # Sidekiqの Basic Authentication

@@ -69,3 +69,6 @@ gem 'sidekiq-cron'
 
 # 全文検索
 gem 'pg_search'
+
+gem 'devise'
+gem 'devise-i18n-views'
