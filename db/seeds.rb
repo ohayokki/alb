@@ -33,8 +33,3 @@ areas.each do |area|
 end
 
 
-# Shop.find_or_create_by!(name: "Bar i.Space", manager_name: "のり", email: "test@email.com",
-#   password: "Ja123456!", 
-#   address: "北海道札幌市中央区南６条西６丁目７−２ ライオンビル太陽館 4F",
-#   area_description: "すすきの、札幌市中央区", 
-#   genre_id: 2)
