@@ -21,12 +21,23 @@
       <div class="col-6 col-sm-4 mb-3">
         <%= link_to "お問い合わせ", contacts_path %>
       </div>
-      <div class="col-6 col-sm-4 mb-3">
-        <%= link_to "管理", admin_shops_path %>
-      </div>
+
+      <% if admin_user_signed_in? %>
+        <div class="col-6 col-sm-4 mb-3">
+          <%= link_to "管理者TOP",admin_shops_path %>
+        </div>
+        <div class="col-6 col-sm-4 mb-3">
+          <%= link_to "管理者ログアウト", destroy_admin_user_session_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
+        </div>
+      <% else %>
+        <div class="col-6 col-sm-4 mb-3">
+          <%= link_to "管理者ログイン", new_admin_user_session_path %>
+        </div>
+      <% end %>
     </div>
   </nav>
 </div>
+
 <div class="copy text-center">
   &copy;allbar all right reserved.
 </div>
