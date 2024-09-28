@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     if @latitude.present? && @longitude.present?
       @shops = scope.near([@latitude, @longitude], 50, units: :km) # 緯度・経度を配列で指定
                     .where(status: ["無料掲載", "有料掲載", "お試し有料掲載"])
-                    .includes(:area, :genre)
+                    .includes(:area, :genre, :staffs)
                     .limit(20)
       
       # サーバーサイドで距離を計算
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       
       return @shops
     else
-      @shops = scope.where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).includes(:area, :genre)
+      @shops = scope.where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).includes(:area, :genre, :staffs)
     end
   end
 
