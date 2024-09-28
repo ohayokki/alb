@@ -2,7 +2,6 @@
 
   <h1>掲載店舗様ログイン</h1>
   <%= form_with(url: shop_login_path, scope: :session)  do|f| %>
-      <%= render "layouts/flash" %>
       <div class="mb-3">
         <%= f.label :email, 'Email' %>
         <%= f.email_field :email, class: 'form-control' %>

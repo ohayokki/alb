@@ -3,11 +3,12 @@
     <div class="col">
       <%= link_to "管理TOP", admin_shops_path %>
     </div>
-      <div class="col">
-      </div>
 
     <div class="col">
-      <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
+    </div>
+
+    <div class="col">
+      <%= link_to "ログアウト", destroy_admin_user_session_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
     </div>
   </div>
 </div>

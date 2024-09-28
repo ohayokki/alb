@@ -46,4 +46,22 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
+
+  #ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(AdminUser)
+      admin_shops_path
+    else
+      root_path # その他のユーザーの場合のリダイレクト先
+    end
+  end
+
+  # 登録後のリダイレクト先
+  def after_sign_up_path_for(resource)
+    if resource.is_a?(AdminUser)
+      admin_shops_path
+    else
+      root_path # その他のユーザーの場合のリダイレクト先
+    end
+  end
 end

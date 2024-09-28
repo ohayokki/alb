@@ -13,7 +13,6 @@ require_relative 'seeds/district'
 require_relative 'seeds/genre'
 require_relative 'seeds/tag'
 
-  
 areas = [
   {prefecture_id: 1, district_id: 1, name: "札幌・すすきの" }, 
   {prefecture_id: 1, district_id: 1, name: "札幌駅" },
@@ -31,5 +30,3 @@ areas = [
 areas.each do |area|
   Area.find_or_create_by!(area)
 end
-
-

@@ -1,0 +1,21 @@
+ja:
+  errors:
+    messages:
+      not_saved: 保存に失敗しました。
+  devise:
+    failure:
+      invalid: ログインに失敗しました。
+      not_found_in_database: ログイン情報が見つかりませんでした。
+      unauthenticated: 不正なアクセスです。
+    sessions:
+      signed_in: ログインしました
+      signed_out: ログアウトしました。
+  activerecord:
+    models:
+      admin_user: 管理者ユーザ
+    attributes:
+      admin_user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+
