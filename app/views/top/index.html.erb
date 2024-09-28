@@ -1,4 +1,14 @@
 <div class="container-xxl mt-5">
+
+  <% if @noticies.any? %>
+    
+    <% @noticies.each do |notice| %>
+      <%= notice.date %><br>
+      <%= notice.title %><br>
+      <%= link_to notice.shop.name, shop_path(notice.shop) %><br>
+    <% end %>
+  <% end %>
+
   <% if params[:search].present? %>
     <h2><%= t('search_results.title', search: params[:search]) %></h2>
     <% if @shops.any? %>

@@ -1,6 +1,7 @@
 class TopController < ApplicationController
   def index
     @title = "全国"
+    @noticies = Notice.order("created_at").limit(20).includes(:shop)
     if params[:search].present?
       @shops = Shop.search_by_term(params[:search])
     else
