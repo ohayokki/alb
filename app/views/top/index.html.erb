@@ -1,16 +1,14 @@
 <div class="container-xxl mt-5">
 
   <% if @noticies.any? %>
-    
+    <h2 class="heading">新着お知らせ</h2>
     <% @noticies.each do |notice| %>
-      <%= notice.date %><br>
-      <%= notice.title %><br>
-      <%= link_to notice.shop.name, shop_path(notice.shop) %><br>
+      <%= link_to notice.date.to_s + notice.title + notice.shop.name, shop_path(notice.shop) %><br>
     <% end %>
   <% end %>
 
   <% if params[:search].present? %>
-    <h2><%= t('search_results.title', search: params[:search]) %></h2>
+    <h2 class="heading"><%= t('search_results.title', search: params[:search]) %></h2>
     <% if @shops.any? %>
       <%= render @shops %>
     <% else %>
@@ -18,11 +16,11 @@
     <% end %>
   <% else %>
     <% if @shops&.any? %>
-      <h2><%= t('search_results.nearby_bars', count: @shops.count) %></h2>
+      <h2 class="heading"><%= t('search_results.nearby_bars', count: @shops.count) %></h2>
       <%= render @shops %>
     <% end %>
 
-    <h2><%= t('search_results.new_bars', count: @new_shops.count) %></h2>
+    <h2 class="heading"><%= t('search_results.new_bars', count: @new_shops.count) %></h2>
     <%= render @new_shops %>
 
     <% if @new_shops.count > 25 %>

@@ -1,11 +1,11 @@
 class TopController < ApplicationController
   def index
     @title = "全国"
-    @noticies = Notice.order("created_at").limit(20).includes(:shop)
+    @noticies = Notice.order("date desc").limit(20).includes(:shop)
     if params[:search].present?
       @shops = Shop.search_by_term(params[:search])
     else
-      @new_shops = Shop.includes(:area, :genre).order("created_at desc").where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).limit(25)
+      @new_shops = Shop.includes(:area, :genre, :staffs).order("created_at desc").where(status: ["無料掲載", "有料掲載", "お試し有料掲載"]).limit(25)
       near_shop
     end
   end
@@ -15,6 +15,7 @@ class TopController < ApplicationController
 
   def terms
   end
+
   def save_location
     session[:latitude] = params[:latitude]
     session[:longitude] = params[:longitude]

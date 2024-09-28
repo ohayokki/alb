@@ -53,9 +53,16 @@ h2, h3{
   font-size: 1.2em;
 }
 
- h5{
+.heading{
+  background: radial-gradient(circle, #4e3c18 0%, #30271e 100%);
+  color: #eee;
+  padding: 10px 4px;
+  margin-top: 30px;
+}
+
+h5{
   font-size: 1.1em;
- }
+}
 
  a{
   text-decoration: none;
