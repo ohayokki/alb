@@ -1,0 +1,69 @@
+<div class="container-xxl mt-5">
+  <%= render "notices/notices", notices: @notices %>
+  <% if params[:search].present? %>
+    <h2 class="heading"><%= t('search_results.title', search: params[:search]) %></h2>
+    <% if @shops.any? %>
+      <%= render @shops %>
+    <% else %>
+      <p class="mb-3"><%= t('search_results.not_found') %></p>
+    <% end %>
+  <% else %>
+    <% if @shops&.any? %>
+      <h2 class="heading"><%= t('search_results.nearby_bars', count: @shops.count) %></h2>
+      <%= render @shops %>
+    <% end %>
+
+    <h2 class="heading"><%= t('search_results.new_bars', count: @new_shops.count) %></h2>
+    <%= render @new_shops %>
+
+    <% if @new_shops.count > 25 %>
+      <div class="text-end">
+        <%= link_to t('search_results.new_bars_link'), "#" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<script>
+  function getLocation() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(sendPositionToServer, showError);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  function sendPositionToServer(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    var url = new URL(window.location.href);
+    url.searchParams.set('latitude', latitude);
+    url.searchParams.set('longitude', longitude);
+    window.location.href = url.toString();
+  }
+
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("このサイトに位置情報の取得を送信しない設定にしています。\n位置情報を送信すると近くのバーを表示します。");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("位置情報が利用できません。");
+        break;
+      case error.TIMEOUT:
+        alert("リクエストがタイムアウトしました。");
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("不明なエラーが発生しました。");
+        break;
+    }
+  }
+
+  // Turboのページがロードされたときに位置情報を取得
+  document.addEventListener("turbo:load", function() {
+    if (!new URL(window.location.href).searchParams.has('latitude')) {
+      getLocation();
+    }
+  });
+</script>

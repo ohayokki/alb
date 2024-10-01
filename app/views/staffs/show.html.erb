@@ -1,0 +1,120 @@
+<div class="container-xxl">
+  <div class="bread-column">
+    <%= link_to "アルバ", root_path %>
+    &emsp;-&emsp;
+    <%= link_to @staff.shop.prefecture.display_name, prefectures_path(@staff.shop.prefecture.name) %>
+    &emsp;-&emsp;
+    <%= link_to @staff.shop.district.display_name, districts_path(@staff.shop.district.name) %>
+    &emsp;-&emsp;
+    <%= link_to @staff.shop.area.name, area_path(@staff.shop.area) %>
+    &emsp;-&emsp;
+    <%= link_to @staff.shop.name, shop_path(@staff.shop) %>
+  </div>
+
+  <div class="row">
+      <div class="staff col-lg-8">
+        <div class="staff-photo">
+          <% if @staff.image.present? %>
+            <%= image_tag @staff.image.url %>
+          <% else %>
+            <%= image_tag("/no-image.png") %>
+          <% end %>
+          <div class="staff-name">
+            <h2><%= @staff.name %></h3>
+            <span class="burgundy"><%= @staff.shop.name%></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="staff-detail col-lg-4 row">
+        <div class="staff-message">
+          <div class="row">
+            <h3>スタッフプロフィール</h3>
+            <div class="col col-md-12">
+              <div class="row">
+                <div class="col-5">
+                  肩書
+                </div>
+                <div class="col">
+                  <%= @staff.role %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  血液型
+                </div>
+                <div class="col">
+                  <%= @staff.blood_type %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  誕生日
+                </div>
+                <div class="col">
+                  <%= @staff.birthday %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  身長
+                </div>
+                <div class="col">
+                  <%= @staff.height %>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col-5">
+                  趣味
+                </div>
+                <div class="col">
+                  <%= @staff.hobby %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  接客スタイル
+                </div>
+                <div class="col">
+                  <%= @staff.service_style %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  お酒
+                </div>
+                <div class="col">
+                  <%= @staff.alcohol %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  経験・資格
+                </div>
+                <div class="col">
+                  <%= @staff.qualifications %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <hr>
+          <h3>スタッフメッセージ</h3>
+          <p><%= @staff.message %></p>
+        </div>
+      </div>
+    </div>
+
+  <div class="text-center">
+    <%= link_to "店舗詳細へ戻る", shop_path(@staff.shop), class: "btn btn-user w-50 mt-5" %>
+  </div>
+  <%= render "shops/basic_info", shop: @staff.shop %>
+</div>

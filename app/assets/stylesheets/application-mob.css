@@ -1,0 +1,13 @@
+@media (max-width: 576px) {
+  body{
+    font-size: 0.9rem;
+  }
+
+  h1.title {
+    font-size: 0.9em;
+    padding-bottom: 2px;
+  }
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5 button{
+    font-size: 0.9em;
+  }
+}

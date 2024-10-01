@@ -1,0 +1,50 @@
+<div class="row mb-5 mt-4">
+  <div class="col-4 col-sm-3 col-lg-2">
+    <% if shop.vacant_job_id %>
+      <div class="btn btn-primary w-100 rounded-0">空席あります！</div>
+    <% end %>
+    <% if shop.shop_logo.present? %>
+      <%= image_tag shop.shop_logo.to_s, class: "img-fluid w-100" %>
+    <% else %>
+      <img src="/no-image-logo.png" class="img-fluid w-100">
+    <% end %>
+    <% if shop.distance.present? %>
+      <div class="shop-distance"><%= shop.distance.round(2) %> km</div>
+    <% end %>
+  </div>
+  <div class="col">
+    <div class="mb-3 row">
+      <div class="shop-area-name col-5 mb-2"><%= t("areas.#{shop.area.name}") %></div>
+      <div class="shop-genre-name col-5 offset-1 <%= shop.genre.name %> mb-2"><%= t("genres.#{shop.genre.name}", default: shop.genre.name) %></div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <h3><%= link_to shop.name, shop_path(shop), class: "ruby" %></h3>
+      </div>
+      <div class="col">
+        <%= render "relationships/follow", shop: shop %>
+      </div>
+    </div>
+    <%= shop.title %>
+
+    <hr>
+    <div class="shop-index-detail">
+      <% if shop.staffs %>
+        <% shop.staffs.each do |staff| %>
+          <% if staff.image.present? %>
+            <%= image_tag staff.image.url(:square), class: "rounded-circle", style: "width: 60px;" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if shop.hours.present? %>
+        <div>営業時間:&emsp;<%= shop.hours %></div>
+      <% end %>
+      <% if shop.budget.present? %>
+        <div>予算:&emsp;<%= I18n.t("activerecord.attributes.shop.budget_values.#{shop.budget}") %></div>
+      <% end %>
+      <% if shop.access.present? %>
+        <div>アクセス:&emsp;<%= shop.access %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

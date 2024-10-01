@@ -1,0 +1,18 @@
+<h1>掲載店舗様店舗管理</h1>
+<p class="mb-3"><%= @shop.status %></p>
+<% if @shop.status == "お試し有料掲載" && @shop.trial_start_date.present? %>
+  <% trial_end_date = (@shop.trial_start_date + 3.months).to_date %>
+  <% days_left = (trial_end_date - Date.today).to_i %>
+  <% if days_left > 0 %>
+    <p>お試し期間はあと <%= days_left %> 日です。</p>
+  <% else %>
+  <% end %>
+<% end %>
+
+<% if @shop.status == "掲載依頼" %>
+  順次掲載しております。恐れ入りますがお待ちくださいませ。
+<% else %>
+  <%= render "vacant", shop: @shop %>
+  <%= render "menu" %>
+  <%= render "shops/calendar" %>
+<% end %>

@@ -1,0 +1,68 @@
+<div class="container-xxl mt-5 mb-5">
+  <h1>店舗休日管理</h1>
+
+  <h2>臨時休業・営業日登録</h2>
+  <p>週休以外の臨時休業や、週休日に営業する場合に登録してください。</p>
+  <%= form_with(model: @holiday, url: admin_shop_holidays_path) do |form| %>
+    <div class="mb-3">
+      <%= form.label :date, "特別な営業日" %>
+      <%= form.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :status, "営業状況" %>
+      <%= form.select :status, Holiday.statuses.keys.map { |status| [status.humanize, status] }, class: "form-control" %>
+    </div>
+
+    <%= form.submit "保存", class: "btn btn-user w-100" %>
+  <% end %>
+
+  <h2 class="mt-5">営業時間・定休日</h2>
+  <%= form_with model: @shop, url: admin_shop_shop_path(@shop), local: true do |form| %>
+    <% if @shop.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
+        <ul>
+          <% @shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :hours %>
+      <%= form.text_area :hours, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <p>店休日にチェックを入れてください</p>
+      <% ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].each_with_index do |day, index| %>
+        <%= check_box_tag 'shop[weekly_holidays][]', index, @shop.weekly_holidays.include?(index) %>
+        <%= label_tag "shop_holidays_#{index}", t("shop.weekly_holidays.#{day}") %>&emsp;
+      <% end %>
+    </div>
+
+
+    <div class="mb-3">
+      <%= form.label :holiday %>補足
+      <%= form.text_area :holiday, class: "form-control" %>
+    </div>
+    <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
+  <% end %>
+
+  <% if @holidays.any? %>
+    <h2 class="mt-5">登録された特別な日</h2>
+    <table class="table table-responsive">
+      <tr><th>ステータス</th><th>日付</th><th></th><th></th></tr>
+      <% @holidays.each do |holiday| %>
+        <tr>
+          <td><%= holiday.status %></td>
+          <td><%= holiday.date %></td>
+          <td><%= link_to "編集", edit_admin_shop_holiday_path(holiday) %></td>
+          <td><%= link_to "削除", admin_shop_holiday_path(holiday), data: { turbo_method: :delete, turbo_confirm: "本当に削除してよろしいですか？" } %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

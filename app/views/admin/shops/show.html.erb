@@ -1,0 +1,282 @@
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+    <h1><%= @shop.name %>(<%= @shop.status %>中）</h1>
+
+    <%= render "shop_status" %>
+    <%= render "shop_alert" %>
+
+    <h2 class="mt-3">編集フォーム</h2>
+    <%= form_with model: @shop, url: admin_shop_path(@shop), local: true, html: { class: "container" } do |form| %>
+      <%= render "layouts/error", model: @shop %>
+
+      <div class="row mb-3">
+        <div class="col-9">
+          <%= form.label :shop_logo, "ロゴ(190*190にリサイズされます。)", class: "form-label" %>
+          <%= form.file_field :shop_logo, class: "form-control" %>
+        </div>
+        <div class="col">
+          <% if @shop.shop_logo %>
+            <%= image_tag(@shop.shop_logo.to_s, class: "img-fluid") %>
+          <% else %>
+            お店ロゴが登録されていません。
+          <% end %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :genre_id, "ジャンル", class: "form-label" %>
+        <%= form.collection_select :genre_id, Genre.all, :id, :name, { prompt: "選択してください" }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :tel, "電話番号", class: "form-label" %>
+        <%= form.text_field :tel, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :address, "住所", class: "form-label" %> 
+        <% if @shop.address %>
+          <span class="map_link"><%= link_to "GoogleMapを開く", "https://www.google.com/maps/search/" + @shop.address + @shop.name, target: "_blank" %></span>
+        <% end %>
+        <%= form.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="area_description">
+        <%= @shop.area_description %>
+      </div>
+      <p>※お客様が入力したエリア（表示されません）</p>
+
+      <% unless @shop.district_id.present? %>
+        <div class="danger-zone">
+          <h3>上記を参照にして地域を登録してください。</h3>
+      <% end %>
+
+      <div class="row mb-3">
+        <div class="col-4">
+          <%= form.label :prefecture_id, "都道府県", class: "form-label" %>
+          <%= form.collection_select :prefecture_id, Prefecture.all, :id, :display_name, { prompt: "選択" }, { class: "form-select", id: 'prefecture_select', selected: @shop.prefecture_id } %>
+        </div>
+        <div class="col-4">
+          <%= form.label :district_id, "広域エリア", class: "form-label", id: 'district_label', style: @districts.any? ? "" : "display:none;" %>
+          <%= form.collection_select :district_id, @districts, :id, :display_name, { prompt: "選択" }, { class: "form-select", id: 'district_select', style: @districts.any? ? "" : "display:none;", selected: @shop.district_id } %>
+        </div>
+        <div class="col-4">
+          <%= form.label :area_id, "詳細エリア", class: "form-label", id: 'area_label', style: @areas.any? ? "" : "display:none;" %>
+          <%= form.collection_select :area_id, @areas, :id, :display_name, { prompt: "選択" }, { class: "form-select", id: 'area_select', style: @areas.any? ? "" : "display:none;", selected: @shop.area_id } %>
+        </div>
+      </div>
+
+      <% unless @shop.district_id.present? %>
+        </div>
+      <% end %>
+
+      <div class="mb-3<%= ' danger-zone' unless @shop.googlemap.present? %>">
+        <%= form.label :googlemap, "GoogleMapの共有埋め込みリンク", class: "form-label" %>
+        <%= form.text_field :googlemap, class: "form-control" %>
+      </div>
+
+      <div class="mb-3<%= ' danger-zone' unless @shop.latitude || @shop.longitude %>">
+        <div class="mb-3">
+          <%= form.label :latitude, "緯度", class: "form-label" %>
+          <%= form.text_field :latitude, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :longitude, "緯度", class: "form-label" %>
+          <%= form.text_field :longitude, class: "form-control" %>
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <%= form.label :access, "最寄り駅・アクセス", class: "form-label" %>
+        <%= form.text_area :access, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :title, "店舗紹介タイトル", class: "form-label" %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :introduction, "紹介文", class: "form-label" %>
+        <%= form.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :hours, "営業時間", class: "form-label" %>
+        <%= form.text_field :hours, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :website, "ホームページURL", class: "form-label" %>
+        <%= form.text_field :website, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :notes, "備考", class: "form-label" %>
+        <%= form.text_area :notes, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :coupon, class: "form-label" %>
+        <%= form.text_area :coupon, class: "form-control", rows: 10 %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :budget, "予算", class: "form-label" %>
+        <%= form.select :budget, Shop.budgets.keys.map { |key| [I18n.t("activerecord.attributes.shop.budget_values.#{key}"), key] }, {prompt: '選択してください'}, {class: "form-control"} %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :reservation, "予約可否", class: "form-label" %>
+        <%= form.check_box :reservation, class: "form-check-input" %>
+        <%= form.label :reservation, "予約可", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :wifi, "Wi-Fi有無", class: "form-label" %>
+        <%= form.check_box :wifi, class: "form-check-input" %>
+        <%= form.label :wifi, "Wi-Fiあり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :alcohol, "お酒の有無", class: "form-label" %>
+        <%= form.check_box :alcohol, class: "form-check-input" %>
+        <%= form.label :alcohol, "お酒あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :smoking, "喫煙の可否", class: "form-label" %>
+        <%= form.check_box :smoking, class: "form-check-input" %>
+        <%= form.label :smoking, "喫煙可", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :english, "英語対応の有無", class: "form-label" %>
+        <%= form.check_box :english, class: "form-check-input" %>
+        <%= form.label :english, "英語対応", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :korean, "韓国語対応の有無", class: "form-label" %>
+        <%= form.check_box :korean, class: "form-check-input" %>
+        <%= form.label :korean, "韓国語対応", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_payment, "カード決済の有無", class: "form-label" %>
+        <%= form.check_box :card_payment, class: "form-check-input" %>
+        <%= form.label :card_payment, "カード決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_company, "使用可能カード会社", class: "form-label" %>
+        <%= form.text_field :card_company, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :qr_code_payment, "QR決済の可否", class: "form-label" %>
+        <%= form.check_box :qr_code_payment, class: "form-check-input" %>
+        <%= form.label :qr_code_payment, "QR決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :qr_code_company, "使用可能QR決済", class: "form-label" %>
+        <%= form.text_field :qr_code_company, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_payment, "電子マネー決済の可否", class: "form-label" %>
+        <%= form.check_box :e_money_payment, class: "form-check-input" %>
+        <%= form.label :e_money_payment, "電子マネー決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_company, "使用可能電子マネー", class: "form-label" %>
+        <%= form.text_field :e_money_company, class: "form-control" %>
+      </div>
+
+<% if false %>
+      <div class="mb-3">
+        <%= form.label :costume_id, "コスチューム", class: "form-label" %>
+        <%= form.collection_select :costume_id, Costume.all, :id, :name, { prompt: "選択してください" }, { class: "form-select" } %>
+      </div>
+
+<% end %>
+
+      <div class="mb-3">
+        <%= form.label :password %> ※パスワード変更する場合
+        <%= form.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password_confirmation %> ※パスワードは暗号化されて送信されデータベースに保存されます。
+        <%= form.password_field :password_confirmation, class: "form-control" %>
+      </div>
+
+      <%= form.submit "店舗情報修正", class: "btn btn-primary w-100" %>
+    <% end %>
+    <%= link_to "閉店にする", status_change_admin_shop_path(@shop, status: "閉店"), data: { turbo_method: :get, turbo_confirm: "本当に閉店にしますか？"}, class: "btn btn-danger w-100 mt-5" %>
+  </div>
+</div>
+<!-- JavaScript -->
+<script>
+document.addEventListener('turbo:load', function() {
+  const prefectureSelect = document.getElementById("prefecture_select");
+  const districtSelect = document.getElementById("district_select");
+  const districtLabel = document.getElementById("district_label");
+  const areaSelect = document.getElementById("area_select");
+  const areaLabel = document.getElementById("area_label");
+
+  prefectureSelect.addEventListener("change", function() {
+    const prefectureId = this.value;
+
+    if (prefectureId) {
+      fetch(`/districts/by_prefecture/${prefectureId}`)
+        .then(response => response.json())
+        .then(data => {
+          districtSelect.innerHTML = '';  // 既存のオプションをクリア
+          districtLabel.style.display = 'block';
+          districtSelect.style.display = 'block';
+          
+          districtSelect.insertAdjacentHTML('beforeend', '<option value="">選択</option>');
+          
+          data.forEach(function(district) {
+            districtSelect.insertAdjacentHTML('beforeend', `<option value="${district.id}">${district.name}</option>`);
+          });
+        })
+        .catch(error => console.error('Error fetching districts:', error));
+    } else {
+      districtSelect.style.display = 'none';
+      districtLabel.style.display = 'none';
+      areaSelect.style.display = 'none';
+      areaLabel.style.display = 'none';
+    }
+  });
+
+  districtSelect.addEventListener("change", function() {
+    const districtId = this.value;
+
+    if (districtId) {
+      fetch(`/areas/by_district/${districtId}`)
+        .then(response => response.json())
+        .then(data => {
+          areaSelect.innerHTML = '';  // 既存のオプションをクリア
+          areaLabel.style.display = 'block';
+          areaSelect.style.display = 'block';
+          
+          areaSelect.insertAdjacentHTML('beforeend', '<option value="">選択</option>');
+          
+          data.forEach(function(area) {
+            areaSelect.insertAdjacentHTML('beforeend', `<option value="${area.id}">${area.name}</option>`);
+          });
+        })
+        .catch(error => console.error('Error fetching areas:', error));
+    } else {
+      areaSelect.style.display = 'none';
+      areaLabel.style.display = 'none';
+    }
+  });
+});
+</script>

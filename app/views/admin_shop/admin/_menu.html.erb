@@ -1,0 +1,36 @@
+<div class="row mt-5">
+  <h2 class="mb-3">【店舗メニュー】</h2>
+  <div class="col-6 mb-5">
+    <%= link_to "店舗編集", admin_shop_shopedit_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "休日管理",  admin_shop_holidays_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "お知らせ登録",  admin_shop_notices_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "SNS管理", admin_shop_sns_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "クーポン管理", admin_shop_coupon_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "店舗画像管理", admin_shop_images_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "スタッフ管理", admin_shop_staffs_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "タグ管理", admin_shop_tag_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "口コミ管理", admin_shop_comments_path, class: "btn btn-user w-50" %>
+  </div>
+
+  <% if admin_user_signed_in? %>
+    <div class="col-6 mb-5">
+      <%= link_to "管理者TOP", admin_shops_path, class: "btn btn-user w-50" %>
+    </div>
+  <% end %>
+</div>

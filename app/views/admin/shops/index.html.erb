@@ -1,0 +1,53 @@
+<div class="row mt-5">
+  <div class="col-6 mb-5">
+    <%= link_to "エリア追加", new_admin_area_path, class: "btn btn-user w-50" %>
+  </div>
+  <div class="col-6 mb-5">
+    <%= link_to "問い合わせ確認", admin_contacts_index_path, class: "btn btn-user w-50" %>
+    <% if Contact.where(status: false).any? %>
+      <span class="ruby">未読あり</span>
+    <% end %>
+  </div>
+</div>
+
+<h1>お店一覧</h1>
+<p>
+  位置情報・エリア・Googolemapへの共有リンクは必須です。<br>
+  店名をクリックすると編集できます。
+</p>
+<table class="table table-borderd table-straiped">
+  <tr>
+    <th>店名</th>
+    <th>ご担当者名</th>
+    <th>エリア</th>
+    <th>ジャンル</th>
+    <th>管理</th>
+    <th>Satus</th>
+  </tr>
+  <% @shops.each do |shop| %>
+    <tr>
+      <td <%= "class=bg-danger" unless shop.area || shop.latitude || shop.googlemap %>><%= link_to shop.name, admin_shop_path(shop) %></td>
+      <td><%= shop.manager_name %></td>
+      <td><%= shop.area&.name %></td>
+      <td><%= shop.genre.name %></td>
+      <td><%= link_to "H", admin_shop_admin_index_path(shop: shop.id) %></td>
+      <td>
+        <% badge_class = case shop.status
+          when "有料掲載"
+            "text-bg-primary"
+          when "無料掲載"
+            "text-bg-success"
+          when "掲載依頼"
+            "text-bg-warning"
+          when "閉店"
+            "text-bg-secondary"
+          else
+            "text-bg-secondary" # デフォルトクラス
+          end %>
+        <span class="badge <%= badge_class %>"><%= shop.status %></span>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+

@@ -1,0 +1,2 @@
+module AdminShop::NoticesHelper
+end

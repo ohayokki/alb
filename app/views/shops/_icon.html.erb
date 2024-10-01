@@ -1,0 +1,40 @@
+<div class="icon-space">
+  <img src="/icons/alc.svg" alt="お酒アイコン" class="icon">
+  <% if @shop.alcohol %>
+    お酒有
+  <% else %>
+    お酒無
+  <% end %>
+  <% if @shop.smoking %>
+    <img src="/icons/smoking.png" alt="喫煙OKアイコン" class="icon mt-3">喫煙OK
+  <% else %>
+    <img src="/icons/smoking-ng.png" alt="喫煙NGアイコン" class="icon mt-3">店内禁煙
+  <% end %>
+  <% if @shop.wifi %>
+    <img src="/icons/wifi.svg" alt="wifiアイコン" class="icon mt-3">Wifi有
+  <% end %>
+
+  <%if @shop.reservation %>
+    <img src="/icons/yoyaku.svg" alt="予約OKアイコン" class="icon mt-3">予約OK
+  <% end %>
+
+  <% if @shop.english %>
+    <img src="/icons/en.png" alt="英語対応OKアイコン" class="icon mt-3">英語対応
+  <% end %>
+
+  <% if @shop.korean %>
+    <img src="/icons/kor.png" alt="韓国語対応OKアイコン" class="icon mt-3">韓国語対応
+  <% end %>
+
+  <% if @shop.card_payment %>
+    <img src="/icons/card.svg" alt="クレジットOKアイコン" class="icon mt-3">クレジットカード可
+  <% end %>
+
+  <% if @shop.qr_code_payment %>
+    <img src="/icons/pay.png" alt="モバイル決済OKアイコン" class="icon mt-3">モバイル決済可
+  <% end %>
+
+  <% if @shop.e_money_payment? %>
+    <img src="/icons/pay.png" alt="電子マネーOKアイコン" class="icon mt-3">電子マネー可
+  <% end %>
+</div>

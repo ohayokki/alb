@@ -1,0 +1,36 @@
+
+<% @title ||= "全国" %>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="navbar-brand">
+      <div class="page-title"><%= @title %>のBAR・飲み屋情報ポータル</div>
+      <h1 class="mb-0 title">
+        <%= link_to 'Allbar -アルバ', root_path %>
+        <%= @title %>版&emsp;<%= @genre.name + "一覧" if @genre.present? %>
+      </h1>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to 'ログアウト', logout_path, data: {turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'マイページ', user_page_path, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+
+      <%= form_with(url: root_path, method: :get, local: true, class: "d-flex", html: { role: "search" }) do %>
+        <%= text_field_tag :search, params[:search], class: "form-control mew", type: "search", placeholder: "お店検索", aria: { label: "Search" } %>
+        <%= button_tag "Search", class: "btn btn-outline-user", type: "submit" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<% if user_signed_in? %>
+  ようこそ<%= current_user.name %>さん<br>
+<% end %>

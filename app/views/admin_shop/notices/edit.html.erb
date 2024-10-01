@@ -1,0 +1,50 @@
+<div class="container-xxl mt-5 mb-5">
+  <h2>お知らせ編集</h2>
+  <%= form_with model: @notice, url: admin_shop_notice_path(@notice), local: true, multipart: true do |form| %>
+    <% if @notice&.errors&.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @notice.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :content, "内容" %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :date, "日付" %>
+      <%= form.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-9">
+        <%= form.label :image %>
+        <%= form.file_field :image, class: "form-control" %>
+
+      </div>
+      <div class="col">
+        <% if @notice.image.present? %>
+          <%= image_tag(@notice.image.to_s, class: "img-fluid") %>
+          <label class="mt-3">
+          <%= form.check_box :remove_image %>
+            画像削除
+          </label>
+        <% else %>
+          画像が登録されていません。
+        <% end %>
+      </div>
+    </div>
+ 
+    <%= form.submit "作成", class: "btn btn-user w-100" %>
+  <% end %>
+</div>

@@ -1,0 +1,167 @@
+<div class="container-xxl pt-5 contact">
+  <a href="/">TOP</a> - <a href="/contacts">お問い合わせ</a> - 店舗掲載について
+
+  <h1>店舗掲載について</h1>
+  <p class="text-center">
+    全国のバー情報アルバでは掲載店舗様を広く募集しております。<br>
+    掲載ご希望の方は以下のフォームより必要事項の入力をお願いします。<br>
+    折り返しご連絡致します。
+  </p>
+
+  <h2 mt-5><%= t('form.title') %></h2>
+
+  <%= form_with model: @shop, local: true, data: { turbo: false } do |form| %>
+    <%= render "layouts/error", model: @shop %>
+
+    <div class="row mb-3">
+      <div class="mb-3">
+        <%= form.label :manager_name %>
+        <%= form.text_field :manager_name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
+
+      <%= image_upload_field(form, @shop, :shop_logo, "お店ロゴ") %>
+
+      <div class="mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :tel %>&emsp; <%= t('form.tel_note') %>
+        <%= form.text_field :tel, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :address %> ※必須
+        <%= form.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :genre_id %> ※必須
+        
+        <%= form.collection_select :genre_id, Genre.all, :id, 
+            ->(genre) { I18n.t("genres.#{genre.name}", default: genre.name) }, 
+            { prompt: t('prompts.genre_id') }, 
+            { class: "form-select" } %>     
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :area_description %> ※必須
+        <%= form.text_field :area_description, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :access %>
+        <%= form.text_area :access, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :hours %>
+        <%= form.text_field :hours, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :holiday %>
+        <%= form.text_field :holiday, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :budget %>
+        <%= form.select :budget, Shop.budgets.keys.map { |key| [I18n.t("activerecord.attributes.shop.budget_values.#{key}"), key] }, {prompt: '選択してください'}, {class: "form-control"} %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :introduction %>
+        <%= form.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :reservation %>
+        <%= form.check_box :reservation, class: "form-check-input" %>
+        <%= form.label :reservation, t('form.reservation_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :wifi %>
+        <%= form.check_box :wifi, class: "form-check-input" %>
+        <%= form.label :wifi, t('form.wifi_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :alcohol %>
+        <%= form.check_box :alcohol, class: "form-check-input" %>
+        <%= form.label :alcohol, t('form.alcohol_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :smoking %>
+        <%= form.check_box :smoking, class: "form-check-input" %>
+        <%= form.label :smoking, t('form.smoking_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :english %>
+        <%= form.check_box :english, class: "form-check-input" %>
+        <%= form.label :english, t('form.english_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :korean %>
+        <%= form.check_box :korean, class: "form-check-input" %>
+        <%= form.label :korean, t('form.korean_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_payment %>
+        <%= form.check_box :card_payment, class: "form-check-input" %>
+        <%= form.label :card_payment, t('form.card_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :qr_code_payment %>
+        <%= form.check_box :qr_code_payment, class: "form-check-input" %>
+        <%= form.label :qr_code_payment, t('form.qr_code_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_payment %>
+        <%= form.check_box :e_money_payment, class: "form-check-input" %>
+        <%= form.label :e_money_payment, t('form.e_money_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :website %>
+        <%= form.text_field :website, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password, "ご希望のログインパスワード" %> ※必須
+        <%= form.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="mb-3"> ※必須
+        <%= form.label :password_confirmation %> ※パスワードは暗号化されて送信されデータベースに保存されます。
+        <%= form.password_field :password_confirmation, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :notes %>
+        <%= form.text_area :notes, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
+    </div>
+  <% end %>
+</div>

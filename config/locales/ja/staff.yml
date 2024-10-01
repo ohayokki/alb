@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      staff: スタッフ
+    attributes:
+      notice:
+        role: 役職・肩書
+        service_style: 接客スタイル

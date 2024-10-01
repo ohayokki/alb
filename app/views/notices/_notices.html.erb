@@ -1,0 +1,6 @@
+<% if notices.any? %>
+  <h2 class="heading">新着お知らせ</h2>
+  <% notices.each do |notice| %>
+    <%= link_to notice.date.to_s + notice.title + notice.shop.name, shop_path(notice.shop) %><br>
+  <% end %>
+<% end %>

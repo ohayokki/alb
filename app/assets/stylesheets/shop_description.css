@@ -1,0 +1,14 @@
+.shop-description{
+  padding:30px 5px;
+  margin-top: 60px;
+  font-size: 1.3em;
+  background: linear-gradient(#e0efef, #bbd2d1);
+}
+
+.shop-description h3{
+  font-size: 1.4em;
+}
+
+.shop-description p{
+  white-space: pre-wrap;
+}

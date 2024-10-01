@@ -1,0 +1,94 @@
+.prefecture-select h2{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.modal-title{
+  color: #444;
+}
+.map-area {
+  position: relative;
+  width: 100%; /* 横幅を親要素の100%に設定 */
+  padding-top: 56.25%; /* 9:16のアスペクト比を維持 (高さ = 幅の56.25%) */
+  background-image: url("/prefecture.png");
+  background-size: cover; /* 画像がエリア全体に広がり、縦横比を保つ */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像の繰り返しを防ぐ */
+}
+body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(4) > button{
+  position: absolute;
+  top: 8%;
+  right: 16%;
+  background-color: rgb(19, 165, 223);
+}
+body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(3) > button{
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  background-color: rgb(22, 190, 47);
+}
+
+body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(2) > button{
+  position: absolute;
+  top: 65%;
+  left: 20%;
+  background-color: rgb(224, 211, 23);
+  color: #333;
+}
+
+
+body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(7) > button{
+  position: absolute;
+  left:60%;
+  bottom: 20%;
+  background-color: rgb(230, 17, 17);
+}
+
+/* kyusyu */
+body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(5) > button{
+  left:10%;
+  bottom: 10%;
+  background-color: rgb(192, 50, 185);
+}
+
+body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(6) > button{
+  left:38%;
+  bottom: 18%;
+  background-color: rgb(101, 12, 143);
+}
+
+
+@media (max-width: 576px) {
+  /* hokaido */
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(4) > button{
+    top: 36%;
+    right: 5%;
+  }
+  /* chubu */
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(3) > button{
+    top: 50%;
+    right: 50%;
+  }
+
+  /* chugoku */
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(2) > button{
+    top: 60%;
+    left: 10%;
+  }
+  
+  
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(7) > button{
+    left:60%;
+    bottom: 20%;
+  }
+  
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(5) > button{
+    left: 5%;
+    bottom: 10%;
+  }
+  
+  body > div.container-fluid.footer > div > div.row.mb-5.mt-5.map-area > div:nth-child(6) > button{
+    left:42%;
+    bottom: 18%;
+  }
+}

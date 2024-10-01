@@ -1,0 +1,124 @@
+<div class="container-xxl mt-5 mb-5">
+  <h1><%= @shop.name %>店舗基本情報編集</h1>
+    <%= form_with model: @shop, url: admin_shop_shop_path(@shop), local: true do |form| %>
+    <% if @shop.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@shop.errors.count, t('errors.count')) %> <%= t('errors.prohibited') %>:</h2>
+        <ul>
+          <% @shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <div class="mb-3">
+        <%= form.label :tel %>
+        <%= form.text_field :tel, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :access %>
+        <%= form.text_area :access, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :budget %>
+        <%= form.select :budget, Shop.budgets.keys.map { |key| [I18n.t("activerecord.attributes.shop.budget_values.#{key}"), key] }, {prompt: '選択してください'}, {class: "form-control"} %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :introduction %>
+        <%= form.text_area :introduction, class: "form-control", rows: 10 %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :website %>
+        <%= form.text_field :website, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :reservation %>
+        <%= form.check_box :reservation, class: "form-check-input" %>
+        <%= form.label :reservation, t('form.reservation_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :wifi %>
+        <%= form.check_box :wifi, class: "form-check-input" %>
+        <%= form.label :wifi, t('form.wifi_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :alcohol %>
+        <%= form.check_box :alcohol, class: "form-check-input" %>
+        <%= form.label :alcohol, t('form.alcohol_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :smoking %>
+        <%= form.check_box :smoking, class: "form-check-input" %>
+        <%= form.label :smoking, t('form.smoking_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :english %>
+        <%= form.check_box :english, class: "form-check-input" %>
+        <%= form.label :english, t('form.english_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :korean %>
+        <%= form.check_box :korean, class: "form-check-input" %>
+        <%= form.label :korean, t('form.korean_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_payment %>
+        <%= form.check_box :card_payment, class: "form-check-input" %>
+        <%= form.label :card_payment, t('form.card_payment_label'), class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :card_company, "使用可能カード会社", class: "form-label" %>
+        <%= form.text_field :card_company, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :qr_code_payment, "QR決済の可否", class: "form-label" %>
+        <%= form.check_box :qr_code_payment, class: "form-check-input" %>
+        <%= form.label :qr_code_payment, "QR決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :qr_code_company, "使用可能QR決済", class: "form-label" %>
+        <%= form.text_field :qr_code_company, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_payment, "電子マネー決済の可否", class: "form-label" %>
+        <%= form.check_box :e_money_payment, class: "form-check-input" %>
+        <%= form.label :e_money_payment, "電子マネー決済あり", class: "form-check-label" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :e_money_company, "使用可能電子マネー", class: "form-label" %>
+        <%= form.text_field :e_money_company, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit t('helpers.submit.create'), class: "btn btn-user w-100" %>
+      </div>
+    </div>
+  <% end %>
+</div>

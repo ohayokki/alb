@@ -1,0 +1,14 @@
+.contact h1{
+  margin: 160px 0;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+.contact-link{
+  margin-bottom: 60px;
+}
+
+.contact h2{
+  margin-top: 40px;
+}

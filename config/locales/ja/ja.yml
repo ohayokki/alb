@@ -1,0 +1,37 @@
+ja:
+  activerecord:
+    models:
+      contact: "お問い合わせ"
+  prompts:
+    genre_id: "選択してください"
+
+  submit:
+    create: "作成"
+
+  form:
+    title: "店舗掲載依頼フォーム"
+    tel_note: "お店の電話番号を記載してください。"
+    reservation_label: "予約可"
+    wifi_label: "Wi-Fiあり"
+    alcohol_label: "お酒あり"
+    smoking_label: "喫煙可"
+    english_label: "英語対応可"
+    korean_label: "韓国語対応可"
+    card_payment_label: "OK（VISA、MASTERなど）"
+    qr_code_payment_label: "OK(PayPay、楽天ペイ、aなど)"
+    e_money_payment_label: "OK(suica,waonなど)"
+
+  inquiries:
+    bar_owner: "バー運営者からの問い合わせ"
+    user: "ユーザーからの問い合わせ"
+    technical: "技術サポート"
+    other: "その他"
+
+  helpers:
+    submit:
+      create: "送信"
+
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    week: "週"

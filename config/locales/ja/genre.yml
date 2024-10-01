@@ -1,0 +1,87 @@
+ja:
+  genres:
+    cafe: "カフェ"
+    casual-bar: "カジュアルバー"
+    cocktail-bar: "カクテルバー"
+    wine-bar: "ワインバー"
+    authentic-bar: "オーセンティックバー"
+    shisha-bar: "シーシャバー"
+    karaoke-bar: "カラオケバー"
+    darts-bar: "ダーツバー"
+    pool-bar: "プールバー"
+    dining-bar: "ダイニングバー"
+    sports-bar: "スポーツバー"
+    club: "クラブ"
+    concept-cafe: "コンセプトカフェ"
+    concept-bar: "コンセプトバー"
+    snack-pub: "スナック・パブ"
+    girls-bar: "ガールズバー"
+    mens-pub: "メンパブ"
+
+#   genres:
+#     cocktail_bar:
+#       name: "カクテルバー"
+#       description: "華やかなカクテルで特別な夜を演出" # (Craft cocktails for a special night)
+      
+#     wine_bar:
+#       name: "ワインバー"
+#       description: "選び抜かれたワインをじっくり堪能する空間" # (Enjoy carefully selected wines in style)
+
+#     authentic_bar:
+#       name: "オーセンティックバー"
+#       description: "本格派カクテルと上質な時間を楽しむ高級バー" # (Experience quality in a true authentic bar)
+
+#     shisha_bar:
+#       name: "シーシャバー"
+#       description: "異国の香り漂うシーシャでリラックス" # (Relax with exotic shisha flavors)
+
+#     karaoke_bar:
+#       name: "カラオケバー"
+#       description: "歌って飲んでストレス発散、楽しさ満点！" # (Sing your heart out with a drink in hand!)
+
+#     darts_bar:
+#       name: "ダーツバー"
+#       description: "ダーツとお酒で盛り上がる大人の遊び場" # (Fun and games with darts and drinks)
+
+#     pool_bar:
+#       name: "プールバー"
+#       description: "ビリヤードと共にお酒を楽しむ社交の場" # (Enjoy pool and drinks in a social setting)
+
+#     dining_bar:
+#       name: "ダイニングバー"
+#       description: "美味しい食事とお酒が同時に楽しめる贅沢空間" # (Indulge in fine food and drinks together)
+
+#     sports_bar:
+#       name: "スポーツバー"
+#       rubi: "sports-bar"
+#       description: "大画面で観戦しながら仲間と盛り上がれるバー" # (Cheer on your team with friends in a bar)
+
+#     club:
+#       name: "クラブ"
+#       rubi: "club"
+#       description: "音楽とダンスで夜を楽しむエンタメバー" # (Dance and party the night away)
+
+#     concept_cafe:
+#       name: "コンセプトカフェ"
+#       rubi: "concept-cafe"
+#       description: "個性的なテーマで非日常を楽しめるカフェ" # (Unique themes for a special cafe experience)
+
+#     concept_bar:
+#       name: "コンセプトバー"
+#       rubi: "concept-bar"
+#       description: "独自の世界観でお酒を楽しむ特別なバー" # (Explore distinct vibes and drinks)
+
+#     snack_pub:
+#       name: "スナック・パブ"
+#       rubi: "snack-pub"
+#       description: "気軽に立ち寄れる、アットホームな雰囲気" # (Casual, homey atmosphere for a quick drink)
+
+#     girls_bar:
+#       name: "ガールズバー"
+#       rubi: "girls-bar"
+#       description: "楽しい会話とお酒を楽しめる女性接客のバー" # (Friendly female staff and drinks to enjoy)
+
+#     mens_pub:
+#       name: "メンパブ"
+#       rubi: "mens-pub"
+#       description: "男性スタッフとの楽しいひとときを過ごせるパブ" # (Enjoy a fun time with male staff)

@@ -1,0 +1,9 @@
+.swiper--wrapper {
+  /* wrapperのサイズを調整 */
+  width: 100%;
+}
+
+.swiper-slide {
+  /* スライドのサイズを調整、中身のテキスト配置調整、背景色 */
+  text-align: center;
+}

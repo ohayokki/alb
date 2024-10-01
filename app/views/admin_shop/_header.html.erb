@@ -1,0 +1,15 @@
+<div class="container-xxl mb-5">
+  <div class="row mt-4">
+    <div class="col">
+      <%= link_to "管理TOP", admin_shop_admin_index_path %>
+    </div>
+    <% unless @shop.status == "掲載依頼" %>
+      <div class="col">
+        <%= link_to "店舗ページ", shop_path(@shop) %>
+      </div>
+    <% end %>
+    <div class="col">
+      <%= link_to "ログアウト", shop_logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" } %>
+    </div>
+  </div>
+</div>

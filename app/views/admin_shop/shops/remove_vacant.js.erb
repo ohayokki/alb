@@ -1,0 +1,5 @@
+<% if flash[:success] %>
+  alert("<%= flash[:success] %>");
+<% elsif flash[:danger] %>
+  alert("<%= flash[:danger] %>");
+<% end %>

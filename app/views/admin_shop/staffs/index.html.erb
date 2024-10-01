@@ -1,0 +1,13 @@
+<h1>スタッフ一覧</h1>
+<table class="table">
+  <% @staffs.each do |staff| %>
+    <tr>
+      <td><%= staff.name %></td>
+      <td><%= staff.birthday %></td>
+      <td><%= image_tag(staff.image.to_s, style: "width: 100px") if staff.image.present?  %></td>
+      <td><%= link_to "編集",  edit_admin_shop_staff_path(staff), class: "btn btn-user" %></td>
+    </tr>
+  <% end %>
+</table>
+<h2 class="mt-5">スタッフ登録</h2>
+<%= render "form", model: @staff, url: admin_shop_staffs_path %>

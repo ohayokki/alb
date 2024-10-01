@@ -1,0 +1,37 @@
+<% if @area %>
+  <% page_title = @area.name %>
+  <% title =  "[#{@genre.name}]" + @area.name %>
+<% elsif @district %>
+  <% page_title = @district.display_name %>
+<% elsif @prefecture %>
+  <% page_title = @prefecture.display_name %>
+<% end %>
+<% content_for :title,  page_title + "の" + t("genres.#{@genre.name}") + "一覧" %>
+
+
+<%= render "layouts/header", title: page_title unless @genre.present? %>
+
+<div class="container-xxl">
+  <div class="bread-column">
+    <%= link_to "アルバ", root_path %>
+    <% if @prefecture%>
+      &emsp;-&emsp;
+      <%= link_to @prefecture.display_name, prefectures_path(@prefecture.name) %>
+    <% end %>
+
+    <% if @district%>
+      &emsp;-&emsp;
+    <%= link_to t("prefectures.#{@district.prefecture.name}"), prefectures_path(@district.prefecture.name) %>
+      &emsp;-&emsp;
+      <%= link_to t("districts.#{@district.name}"), districts_path(@district.name) %>
+    <% end %>
+
+    <% if @area %>
+      &emsp;-&emsp;
+      <%= link_to @area.name, area_path(@area) %>
+    <% end %>
+  </div>
+
+  <h2><%= page_title %><%= @genre.name %></h2>
+  <%= render @shops %>
+</div>

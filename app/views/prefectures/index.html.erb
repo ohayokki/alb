@@ -1,0 +1,60 @@
+<% content_for :title, "#{@title}のバー・飲み屋情報検索サイト" %>
+<div class="container-xxl">
+  <div class="bread-column">
+    <%= link_to "アルバ", root_path %>
+    &emsp;-&emsp;
+    <%= @title %>
+  </div>
+
+  <%= render "notices/notices", notices: @notices %>
+
+  <h2><%= @prefecture.display_name %>のバー</h2>
+  <%= render @shops %>
+  <%= render "shops/near_serch", url:  prefectures_path(@prefecture.name) %>
+  <% if @near_shops.any? %>
+    <h2>近くのバー</h2>
+    <%= render @near_shops %>
+  <% end %>
+
+  <div class="genre">
+    <h2><%= @prefecture.display_name %>バージャンル別</h2>
+    <div class="row">
+      <% @genres.each do |genre| %>
+        <div class="col-sm-4 mb-3">
+          <div class="card">
+            <% random_shop = genre.shops
+                                   .where(prefecture_id: @prefecture.id, status: ["無料掲載", "有料掲載", "お試し有料掲載"])
+                                   .where.not(image1: nil) # image1が存在する店舗のみ
+                                   .sample %>
+            <% if random_shop %>
+              <%= image_tag random_shop.image1.to_s, class: "card-img-top", alt: "#{genre.name}の店舗画像" %>
+            <% else %>
+              <img src="/no-image.png" class="card-img-top" alt="デフォルト画像">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to genre.name, genre_area_path(genre.name, @prefecture.name) %></h5>
+              <p class="card-text"><%= genre.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @districts.any? %>
+    <div class="accordion accordion-flush mb-3" id="accordionFlush">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <h2><%= @prefecture.display_name %>のエリア</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+          <div class="accordion-body">
+            <%= render @districts %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

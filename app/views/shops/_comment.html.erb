@@ -1,0 +1,71 @@
+<section class="container-xxl mb-5">
+  <% if @comments.any?%>
+    <h2>ユーザーの口コミ</h2>
+    <%= render @comments%>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <h2><%= "口コミ" %>を登録</h2>
+    <%= form_with model: @comment, url:user_comments_path do | f| %>
+      <%= render "layouts/error", model: @comment %>
+
+      <div class="rating">
+        <% (1..5).each do |i| %> <!-- 1から5の順で表示 -->
+          <label>
+            <input type="radio" name="user_comment[score]" value="<%= i %>" style="display: none;">
+            <span class="star">&#9733;</span> <!-- 星の表示 -->
+          </label>
+        <% end %>
+      </div>
+
+<style>
+.rating {
+    direction: ltr; /* 左から右に並べる */
+}
+
+.rating label {
+    cursor: pointer; /* ポインターを表示 */
+}
+
+.star {
+    font-size: 2em; /* 星のサイズを調整 */
+    color: lightgray; /* デフォルトの星の色 */
+}
+
+.rating input:checked ~ .star {
+    color: gold; /* 選択された星の色 */
+}
+
+.rating input:not(:checked) ~ .star:hover,
+.rating input:not(:checked) ~ .star:hover ~ .star {
+    color: gold; /* ホバーした星の色 */
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const stars = document.querySelectorAll('.rating label input');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            stars.forEach(s => s.nextElementSibling.style.color = 'lightgray'); // 全ての星をグレーに戻す
+            for (let i = 0; i < star.value; i++) {
+                stars[i].nextElementSibling.style.color = 'gold'; // 選択した星を金色に
+            }
+        });
+    });
+});
+</script>
+
+      <div class="row mb-3">
+        <div class="mb-3">
+          <%= f.text_area :comment, class: "form-control", rows: 5 %>
+        </div>
+      </div>
+      <%= f.hidden_field :shop_id, value: @shop.id %>
+      <%= f.submit class: "btn btn-user w-100" %>
+    <% end %>
+  <% else %>
+    <%= link_to "ログイン", line_login_path %>して口コミを投稿しましょう！
+  <% end %>
+</section>

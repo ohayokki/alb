@@ -1,0 +1,38 @@
+<div class="comment">
+  <p class="comment-time"><%= user_comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+  <p class="comment-text"><%= user_comment.comment %></p>
+  <p class="comment-author">- <%= user_comment.user.name %></p>
+
+
+
+
+    <div class="rating">
+      <% (1..5).each do |i| %>
+        <span class="star" style="<%= i <= user_comment.score ? 'color: gold;' : 'color: lightgray;' %>">&#9733;</span> <!-- ★ -->
+      <% end %>
+      <span>(<%= user_comment.score %>/5)</span> <!-- 評価スコアの表示 -->
+    </div>
+
+
+<style>
+.rating-display {
+    margin: 10px 0;
+}
+
+.star {
+    font-size: 1.5em; /* 星のサイズを調整 */
+}
+</style>
+
+
+
+
+
+
+
+
+
+  <% if user_comment.user == current_user %>
+    <p><%= link_to "削除する", user_comment_path(user_comment), data: {turbo_method: :delete, turbo_confirm: "本当に口コミを削除しますか？"} %></p>
+  <% end %>
+</div>

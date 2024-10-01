@@ -1,0 +1,77 @@
+.calendar{
+  background-color: #cad5be;
+  padding: 18px 2px;
+  border-radius: 10px;
+}
+.calendar .day {
+  position: relative;
+  height: auto;
+}
+
+.calendar .holiday {
+  background-color: #f8d7da; /* 定休日の色 */
+  color: #721c24;
+  padding: 2px 4px;
+  text-align:center;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
+
+.calendar .notice {
+  background-color: #d4e5ed; /* お知らせの色 */
+  color: #155724;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  margin-bottom: 3px;
+}
+
+.calendar-title{
+  margin-left: 8px;
+  font-size: 1.8em;
+}
+
+/* 月カレンダー */
+.month {
+  font-size: 40px;
+  margin-left: 20px;
+  font-weight: 700;
+  padding-right: 28px;
+  border-right: 2px solid #333;
+}
+
+.calendar-row{
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.calendar-right{
+  padding-left: 24px;
+}
+.calendar-year{
+  font-weight: 700;
+  font-size: 24px;
+  vertical-align : -1em;
+}
+.calendar-month{
+  font-weight: 300;
+  font-size: 24px;
+  vertical-align : -10px;
+}
+.calendar-link{
+  padding-left: 12px;
+  width: 100%;
+  background: #eee;
+}
+.calendar-link a{
+  font-size: 15px;
+  margin-right: 10px;
+}
+.blue a:link{
+  color: rgb(68, 124, 255);
+  font-weight: 700;
+}
+
+.blue a:visited{
+  color: rgb(68, 124, 255);
+  font-weight: 700;
+}
